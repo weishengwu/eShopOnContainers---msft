@@ -4,7 +4,6 @@
 - Migrate projects to .NET 1.1 and EF 1.1 
 - Implement Event-Driven communication between microservices/containers based on Event-Bus interfaces and any simple inter-process communication implementation (That implementation could be swapped by any more advanced Service Bus, like Azure Service Bus using Topics)
 - Fork repo and implement support for Windows Containers running on Windows NanoServer using different Docker base images instead of the Linux based images (.NET Core code should be the same as it is cross-platform)
-- Build/compile process within an Integration Container (with a provided Docker Image with all SDK dependencies) instead of in local PC. This would greatly simplify the developer's installation requirements in a local machine. That integration container could also be used from a CI pipeline.
 - (To be Confirmed) In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 - (To be Confirmed) In the Windows Containers fork, implement and add a simple WCF microservice/container implementing any logic like a simulated legacy Payment Gateway, as an example of "lift and shift" scenario.
-
+- (To be Confirmed) Build/compile process within an Integration Container (with a provided Docker Image with all SDK dependencies) instead of in local PC. This would greatly simplify the developer's installation requirements in a local machine. That integration container could also be used from a CI pipeline.
