@@ -1,4 +1,4 @@
-## Roadmap (January-March timeframe)
+## Roadmap (By March/April 2017 timeframe)
 
 - Migrate to .csproj and Visual Studio 2017 support, including VS Docker Tooling requirements at the docker-compose.yml files
 
@@ -21,17 +21,23 @@ Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 - Version Management of microservices - Techniques and things to have into account
 Caos-Monkey term, etc.
 
+## Roadmap (Future releases)
+
 - (To be Confirmed) In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 
 - (To be Confirmed) In the Windows Containers fork, implement and add a simple WCF microservice/container implementing any logic like a simulated legacy Payment Gateway, as an example of "lift and shift" scenario.
 
 - (To be Confirmed) Build/compile process within an Integration Container (with a provided Docker Image with all SDK dependencies) instead of in local PC. This would greatly simplify the developer's installation requirements in a local machine. That integration container could also be used from a CI pipeline.
 
-- (To be Confirmed) Semantic log app log - Semantic logic - For the Azure and Application Insight version
-What microservices are up/down, etc. related to App Insights, but the events are custom
+- (To be Confirmed) Semantic log - Semantic logic - Related to the Azure app version and Application Insight usage
+Monitor what microservices are up/down, etc. related to App Insights, but the events are custom
 ETW events and "Semantic Application Log" from P&P
 Multiple implementations for the storage of the events, Azure Diagnostics, Elastic Search.
 Using EventSource base class, etc.
 
 - (To be Confirmed) Service Fabric and Azure version
 Actor model, stateful services, etc.
+
+- (To be Confirmed) Docker Swarm version (on Azure Container Service)
+- (To be Confirmed) Mesos DC/OS version (on Azure Container Service)
+- (To be Confirmed) Kubernetes version (on Azure Container Service)
