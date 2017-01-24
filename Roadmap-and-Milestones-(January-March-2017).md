@@ -10,7 +10,11 @@
 
 - Implement a SAGA example of a long running instance of a business process (similar to a workflow but implemented as a class with state persistence). The business process would be the "Order-Process-Saga" workflow, involving multiple mock services like PaymentGateway, StockChecking, etc. while changing the Order's state until the order is shipped. Then a background job which fakes ordre delivery and changes order states to delivered.  
 
-- Resilient synchronous communication - Like when using Circuit Breaker
+- Resilient synchronous communication for queries- Like when using Circuit Breaker
+
+- Exception Handling - As middleware
+Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
+Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 
 - (To be Confirmed) In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 
