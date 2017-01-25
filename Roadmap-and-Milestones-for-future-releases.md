@@ -7,11 +7,16 @@
 - Implement support for Windows Containers running on Windows NanoServer using different Docker base images instead of the Linux based images (.NET Core code should be the same as it is cross-platform) - Fork or the same repo?
 
 - INTEGRATION EVENTS: Implement Event-Driven communication between microservices/containers based on Event-Bus interfaces and any simple inter-process communication implementation (That implementation could be swapped by any more advanced Service Bus, like Azure Service Bus using Topics)
+Integration Events: 
 
 - DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, as communicating state changes between Aggregates, although they could derive to Integration Events if what happened in a microservice's domain should impact other additional microservices. See:    
-Domain Events – Take 2: http://udidahan.com/2008/08/25/domain-events-take-2/ 
+Domain Events – https://docs.spine3.org/biz-model/event.html
+Take 2: http://udidahan.com/2008/08/25/domain-events-take-2/ 
 http://www.tonytruong.net/domain-events-pattern-example/
-We should probably use Domain Events when implementing a SAGA example, so we should do both things altogether.
+Reactive Extensions might be useful for events: 
+http://channelsis.com/IntroToRx.pdf
+http://www.slideshare.net/EPAMSystems/reactive-extensions-39691960
+We should probably implement Domain Events when implementing a SAGA example plus integration events, so we should all those things altogether.
 
 - Implement a SAGA example of a long running instance of a business process (similar to a workflow but implemented as a class with state persistence). The business process would be the "Order-Process-Saga" workflow, involving multiple mock services like PaymentGateway, StockChecking, etc. while changing the Order's state until the order is shipped. Then a background job which fakes ordre delivery and changes order states to delivered.  
 
