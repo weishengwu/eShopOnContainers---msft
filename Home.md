@@ -1,7 +1,7 @@
 # Welcome to the eShopOnContainers wiki!
 
 ## Roadmap
-https://github.com/dotnet/eShopOnContainers/wiki/Roadmap-and-Milestones-(January-March-2017)
+https://github.com/dotnet/eShopOnContainers/wiki/Roadmap-and-Milestones-for-future-releases 
 
 ## Related Documentation
 ### Guide/eBook: Architecting and Developing Containerized and Microservice based .NET Applications
