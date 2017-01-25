@@ -8,7 +8,7 @@
 
 - INTEGRATION EVENTS: Implement Event-Driven communication between microservices/containers based on Event-Bus interfaces and any simple inter-process communication implementation (That implementation could be swapped by any more advanced Service Bus, like Azure Service Bus using Topics)
 
-- DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, although they could derive to integration events if what happened in a microservice's domain should impact other additional microservices. See:    
+- DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, as communicating state changes between Aggregates, although they could derive to Integration Events if what happened in a microservice's domain should impact other additional microservices. See:    
 Domain Events – Take 2: http://udidahan.com/2008/08/25/domain-events-take-2/ 
 http://www.tonytruong.net/domain-events-pattern-example/
 We should probably use Domain Events when implementing a SAGA example, so we should do both things altogether.
