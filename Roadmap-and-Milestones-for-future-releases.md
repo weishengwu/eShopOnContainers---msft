@@ -41,3 +41,5 @@ Actor model, stateful services, etc.
 - (To be Confirmed) Docker Swarm version (on Azure Container Service)
 - (To be Confirmed) Mesos DC/OS version (on Azure Container Service)
 - (To be Confirmed) Kubernetes version (on Azure Container Service)
+
+- (To be Confirmed) Additional microservice with data stored as a No-SQL database like Azure Document DB
