@@ -22,16 +22,20 @@ We should probably implement Domain Events when implementing a SAGA example plus
 
 - Implement "Idempotent" concept in communication/updates between microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Decide if that is Application logic or Domain logic
 
-- Resilient synchronous communication for queries- Like when using Circuit Breaker
-
 - Exception Handling - As middleware
 Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
 Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 
-- Version Management of microservices - Techniques and things to have into account
+- API versioning Management for microservices - Techniques and things to have into account
 Related to Caos-Monkey, etc.
 
+- Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
+
 ## Roadmap (Future releases)
+
+- Production-Ready Cloud application with Resilient microservices' design and implementation 
+  - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
+  - Gracefully shutting down a microservice instance - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
 
 - (To be Confirmed) In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 
