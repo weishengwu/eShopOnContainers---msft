@@ -31,7 +31,7 @@ Related to Caos-Monkey, etc.
 
 - Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
 
-## Phase 2 Roadmap (Future releases)
+## Phase 2 Roadmap (After April 2017)
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
    - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
