@@ -35,7 +35,7 @@ Related to Caos-Monkey, etc.
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
    - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
-   - Gracefully shutting down a microservice instance - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
+   - Gracefully stopping or shutting down microservice instances - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
    - Implement messaging communication to ensure Commands/Updates' communication success, using queues, etc. plus providing better scalability capabilities.
    - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilites, Azure Key Vault or using simple Certificates at container level, etc.
    - Encrypt communication with SSL (related to the specific cloud infrastructure being used)
