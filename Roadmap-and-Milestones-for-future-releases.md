@@ -20,7 +20,7 @@ We should probably implement Domain Events when implementing a SAGA example plus
 
 - Implement a SAGA example of a long running instance of a business process (similar to a workflow but implemented as a class with state persistence). The business process would be the "Order-Process-Saga" workflow, involving multiple mock services like PaymentGateway, StockChecking, etc. while changing the Order's state until the order is shipped. Then a background job which fakes ordre delivery and changes order states to delivered.  
 
-- Implement "Idempotent" concept in communication/updates between microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Decide if that is Application logic or Domain logic
+- Implement "Idempotent" updates at microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Server must implement operations idempotently. An operation is idempotent if it gets the same result when performed multiple times. Implementing idempotency is domain-specific. 
 
 - Exception Handling - As middleware
 Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
