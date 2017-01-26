@@ -34,8 +34,18 @@ Related to Caos-Monkey, etc.
 ## Roadmap (Future releases)
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
-  - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
-  - Gracefully shutting down a microservice instance - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
+   - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
+   - Gracefully shutting down a microservice instance - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
+   - Implement messaging communication to ensure Commands/Updates' communication success, using queues, etc. plus providing better scalability capabilities.
+   - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilites, Azure Key Vault or using simple Certificates at container level, etc.
+   - Encrypt communication with SSL (related to the specific cloud infrastructure being used)
+   - Additional topics for production-ready cloud microservices, like using an orchestrator/cluster
+
+- (To be Confirmed) Service Fabric and Azure version
+Actor model, stateful services, etc.
+- (To be Confirmed) Docker Swarm version (on Azure Container Service)
+- (To be Confirmed) Mesos DC/OS version (on Azure Container Service)
+- (To be Confirmed) Kubernetes version (on Azure Container Service)
 
 - (To be Confirmed) In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 
@@ -48,12 +58,5 @@ Monitor what microservices are up/down, etc. related to App Insights, but the ev
 ETW events and "Semantic Application Log" from P&P
 Multiple implementations for the storage of the events, Azure Diagnostics, Elastic Search.
 Using EventSource base class, etc.
-
-- (To be Confirmed) Service Fabric and Azure version
-Actor model, stateful services, etc.
-
-- (To be Confirmed) Docker Swarm version (on Azure Container Service)
-- (To be Confirmed) Mesos DC/OS version (on Azure Container Service)
-- (To be Confirmed) Kubernetes version (on Azure Container Service)
 
 - (To be Confirmed) Additional microservice with data stored as a No-SQL database like Azure Document DB
