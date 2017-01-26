@@ -1,4 +1,4 @@
-## Roadmap (By March/April 2017 timeframe)
+## Phase 1 Roadmap (By March/April 2017 timeframe)
 
 - Migrate to .csproj and Visual Studio 2017 support, including VS Docker Tooling requirements at the docker-compose.yml files
 
@@ -31,7 +31,7 @@ Related to Caos-Monkey, etc.
 
 - Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
 
-## Roadmap (Future releases)
+## Phase 2 Roadmap (Future releases)
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
    - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
