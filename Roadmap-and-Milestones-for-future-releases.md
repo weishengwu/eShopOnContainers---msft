@@ -39,6 +39,7 @@ Related to Caos-Monkey, etc.
    - Implement messaging communication to ensure Commands/Updates' communication success, using queues, etc. plus providing better scalability capabilities.
    - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilites, Azure Key Vault or using simple Certificates at container level, etc.
    - Encrypt communication with SSL (related to the specific cloud infrastructure being used)
+   - Implement example of Optimistic Concurrency updates and optimistic concurrency exceptions
    - Additional topics for production-ready cloud microservices, like using an orchestrator/cluster
 
 - (To be Confirmed) Service Fabric and Azure version
