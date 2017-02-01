@@ -26,22 +26,28 @@ We should probably implement Domain Events when implementing a SAGA example plus
 Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
 Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 
-- API versioning Management for microservices - Techniques and things to have into account
-Related to Caos-Monkey, etc.
+- Resiliency:
+   - Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients
+   - Resilient asynchronous communication based on queues, Service Bus, etc. (Related to the Event-Bus)
 
-- Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
+- Security:
+   - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilities, Azure Key Vault or using simple Certificates at container level, Consul, etc.
+   - Other "secure-code" practices
+   - Encrypt communication with SSL (related to the specific cloud infrastructure being used)
+
+- Topics to Review in current implementation:
+   - API versioning Management for microservices. Techniques and things to have into account Related to Caos-Monkey, etc.
+   - Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
 
 ## Phase 2 Roadmap (After April 2017)
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
-   - Resilient synchronous HTTP communication with retry-loops with exponential backup/circuit breakers to avoid DDoS initiated from clients
    - Gracefully stopping or shutting down microservice instances - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
    - Implement messaging communication to ensure Commands/Updates' communication success, using queues, etc. plus providing better scalability capabilities.
-   - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilites, Azure Key Vault or using simple Certificates at container level, etc.
-   - Encrypt communication with SSL (related to the specific cloud infrastructure being used)
-   - Implement example of Optimistic Concurrency updates and optimistic concurrency exceptions
    - Monitoring/Diagnostics of microservices based on Application Insights with custom perfkeys
    - Additional topics for production-ready cloud microservices, like using an orchestrator/cluster
+
+- Implement example of Optimistic Concurrency updates and optimistic concurrency exceptions
 
 - (To be Confirmed) Service Fabric and Azure version
 Actor model, stateful services, etc.
