@@ -1,7 +1,7 @@
 ## Phase 1 Roadmap (By March/April 2017 timeframe)
 - Migrate projects to .NET 1.1 and EF 1.1 
 - Migrate to .csproj and Visual Studio 2017 support, including VS Docker Tooling requirements at the docker-compose.yml files
-///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - Implement support for Windows Containers running on Windows NanoServer using different Docker base images instead of the Linux based images (.NET Core code should be the same as it is cross-platform) - Fork or the same repo?
 
 - Exception Handling - As an ASP.NET middleware?
