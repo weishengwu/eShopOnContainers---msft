@@ -40,7 +40,7 @@ We should probably implement Domain Events when implementing the SAGA example pl
 - Implement a SAGA example of a long running instance of a business process (similar to a workflow but implemented as a class with state persistence). The business process would be the "Order-Process-Saga" workflow, involving multiple mock services like PaymentGateway, StockChecking, etc. while changing the Order's state until the order is shipped. Then a background job which fakes ordre delivery and changes order states to delivered.  
 
 - Resiliency:
-  1.  Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***)
+  1.  Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***) - Initial implementation with Polly: https://github.com/App-vNext/Polly/ OSS lib. 
   2.  Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
 
 - Monolithic ASP.NET MVC app with public area of the eShop (Home page with catalog-view functionality, basically). As out of band, separate project (same GitHub repo but separate folder and separate solution)
