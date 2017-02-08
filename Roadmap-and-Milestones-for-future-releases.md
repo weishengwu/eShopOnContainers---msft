@@ -19,8 +19,11 @@ Two integration event scenarios to implement in the app:
   2. Complex: Events propagating Order's states changes related to the Order-Process SAGA (InProcess, Paid, Handling, Shipped, Canceled if timeout because it was not paid, etc.) - Scenario to be discussed/defined
 
 - DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, as communicating state changes between Aggregates, although they could derive to Integration Events if what happened in a microservice's domain should impact other additional microservices. 
-SCENARIOs TO IMPLEMENT:
-. 1. https://github.com/dotnet/eShopOnContainers/issues/38 
+SCENARIOS TO IMPLEMENT:
+  1. Check price change basket vs. catalog when converting to Order: https://github.com/dotnet/eShopOnContainers/issues/38 
+  2. Multiple AGGREGATE changes within the same Command-Handler, decoupled by domain events.
+  3. Might need Domain events related to the SAGA implementation
+
 See discussion:
 https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/    
 Preferred method: Two-phase Domain events (a la Jimmy Bogard): 
@@ -37,17 +40,14 @@ We should probably implement Domain Events when implementing the SAGA example pl
 - Implement a SAGA example of a long running instance of a business process (similar to a workflow but implemented as a class with state persistence). The business process would be the "Order-Process-Saga" workflow, involving multiple mock services like PaymentGateway, StockChecking, etc. while changing the Order's state until the order is shipped. Then a background job which fakes ordre delivery and changes order states to delivered.  
 
 - Resiliency:
-   - Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***)
-   - Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
+  1.  Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***)
+  2.  Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
 
 - In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 For example, a simple CRUD edit WebForms app for the Catalog, consuming the Catalog microservice to add/update/delete products. As simple as possible..
 
-Use a new Health Check Library (Preview) to be provided by the .NET Team. That library provided by the .NET team will provide:
-o A model of healthcheckresults
-o A Middleware to return ok/bad
-o A polling service calling the healthchek service and publishing results (open/pluggable to orchestrators, App Insights, etc.)
-The task here will be to use that new lib
+- Use a new Health Check Library (Preview) to be provided by the .NET Team. That library provided by the .NET team will provide: A model of healthcheckresults, A Middleware to return ok/bad, A polling service calling the healthchek service and publishing results (open/pluggable to orchestrators, App Insights, etc.)
+Our task here will be to use that new lib.
 
 - Topics to Review and document:
    - API versioning Management for microservices. Techniques and things to have into account Related to Caos-Monkey, etc.
