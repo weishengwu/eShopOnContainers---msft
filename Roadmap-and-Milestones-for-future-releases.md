@@ -61,7 +61,13 @@ Our task here will be to use that new lib.
    - Gracefully stopping or shutting down microservice instances - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
    - Implement messaging communication to ensure Commands/Updates' communication success, using queues, etc. plus providing better scalability capabilities.
    - Monitoring/Diagnostics of microservices based on Application Insights with custom perfkeys
-   - Additional topics for production-ready cloud microservices, like using an orchestrator/cluster
+   - Service Fabric Stateful Service implementation in the SF branch
+   - Additional microservice with data stored in a No-SQL database like Azure Document DB
+
+- Additional Azure cloud scenarios
+  1. Azure Functions: Implement an event-driven Azure Function microservice (i.e. grabbing uploaded images and adding a watermark and putting it into Azure blobs)
+  2. Azure Storage Blob: Related to the previous feature - Use Azure Blobs to store the Product Images
+  3. Azure App Service: Make the monolithic Web app supporting Azure App Service with Docker
 
 - Security:
    - Encrypt secrets at configuration files (like in docker-compose.yml). Multiple possibilities, Azure Key Vault or using simple Certificates at container level, Consul, etc.
@@ -87,5 +93,3 @@ Monitor what microservices are up/down, etc. related to App Insights, but the ev
 ETW events and "Semantic Application Log" from P&P
 Multiple implementations for the storage of the events, Azure Diagnostics, Elastic Search.
 Using EventSource base class, etc.
-
-- (To be Confirmed) Additional microservice with data stored as a No-SQL database like Azure Document DB
