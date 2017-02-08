@@ -47,9 +47,9 @@ Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
    - Monitoring/Diagnostics of microservices based on Application Insights with custom perfkeys
    - Additional topics for production-ready cloud microservices, like using an orchestrator/cluster
 
-- (To be Confirmed) Nancy: Add a Nancy based microservice, also with DocDB, etc.
-
 - Implement example of Optimistic Concurrency updates and optimistic concurrency exceptions
+
+- (To be Confirmed) Nancy: Add a Nancy based microservice, also with DocDB, etc.
 
 - (To be Confirmed) Service Fabric and Azure version
 Actor model, stateful services, etc.
