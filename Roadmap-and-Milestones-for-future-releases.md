@@ -43,7 +43,9 @@ We should probably implement Domain Events when implementing the SAGA example pl
   1.  Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***)
   2.  Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
 
-- In the Windows Containers fork, implement and add an ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
+- Monolithic ASP.NET MVC app with public area of the eShop (Home page with catalog-view functionality, basically). As out of band, separate project (same GitHub repo but separate folder and separate solution)
+
+- WebForms client: In the Windows Containers fork, implement and add a client ASP.NET WebForms application (running as a Windows Container) consuming the same microservices, as an example of "lift and shift" scenario.
 For example, a simple CRUD edit WebForms app for the Catalog, consuming the Catalog microservice to add/update/delete products. As simple as possible..
 
 - Use a new Health Check Library (Preview) to be provided by the .NET Team. That library provided by the .NET team will provide: A model of healthcheckresults, A Middleware to return ok/bad, A polling service calling the healthchek service and publishing results (open/pluggable to orchestrators, App Insights, etc.)
