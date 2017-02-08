@@ -18,6 +18,8 @@ Two scenarios to implement in the app:
 . Complex: Events propagating Order's states changes related to the Order-Process SAGA (InProcess, Paid, Handling, Shipped, Canceled if timeout because it was not paid, etc.) - Scenario to be discussed/defined
 
 - DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, as communicating state changes between Aggregates, although they could derive to Integration Events if what happened in a microservice's domain should impact other additional microservices. 
+SCENARIOs TO IMPLEMENT:
+. 1. https://github.com/dotnet/eShopOnContainers/issues/38 
 See discussion:
 https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/    
 Preferred method: Two-phase Domain events (a la Jimmy Bogard): 
