@@ -11,9 +11,10 @@ Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 - Implement "Idempotent" updates at microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Server must implement operations idempotently. An operation is idempotent if it gets the same result when performed multiple times. Implementing idempotency is domain-specific. 
 
 - INTEGRATION EVENTS with Event-Bus implementations: Implement Event-Driven communication between microservices/containers based on Event-Bus interfaces and two implementation:
-  1. Standalone Pub/Subs messaging implementation based on an out-of-proc RabbitMQ Container
+  1. (PRIORITY) Standalone Pub/Subs messaging implementation based on an out-of-proc RabbitMQ Container
   2. Azure-attached implementation based on Azure Service Bus using Topics for Pub/Subs
-Two scenarios to implement in the app: 
+
+Two integration event scenarios to implement in the app: 
   1. Simple (higher priority): Change Product info (name, image URL, etc.) in the Catalog and update that in the existing Orders and Baskets (all, except the price) 
   2. Complex: Events propagating Order's states changes related to the Order-Process SAGA (InProcess, Paid, Handling, Shipped, Canceled if timeout because it was not paid, etc.) - Scenario to be discussed/defined
 
