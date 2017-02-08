@@ -3,8 +3,8 @@
 - Migrate to .csproj and Visual Studio 2017 support, including VS Docker Tooling requirements at the docker-compose.yml files
 - Migrate projects to .NET 1.1 and EF 1.1 
 - Implement support for Windows Containers running on Windows NanoServer using different Docker base images instead of the Linux based images (.NET Core code should be the same as it is cross-platform) - Fork or the same repo?
----
-- Exception Handling - As ASP.NET middleware?
+
+- Exception Handling - As an ASP.NET middleware?
 Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
 Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 
