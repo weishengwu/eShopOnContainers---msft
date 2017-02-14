@@ -20,11 +20,13 @@ SCENARIO: A simple CRUD edit WebForms app for the Catalog, consuming the Catalog
 Middleware from ASP.NET Core with custom implementation which records specific exceptions depending if it is in production.
 Business-Exceptions + Generic-Exception-Handler (ExceptionHandlerHandler)
 
-- Implement "Idempotent" updates at microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Server must implement operations idempotently. An operation is idempotent if it gets the same result when performed multiple times. Implementing idempotency is domain-specific. 
+- Validations with MediatR Decorator - FluentValidation
+https://github.com/JeremySkinner/FluentValidation
 
 - Resiliency:
   1.  Resilient synchronous HTTP communication with retry-loops with circuit-breaker pattern implementations to avoid DDoS initiated from clients (*** This is a priority ***) - Initial implementation with Polly: https://github.com/App-vNext/Polly/ OSS lib. 
-  2.  Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
+  2. - Implement "Idempotent" updates at microservices, so the same update (like a Payment or OrderCreation) cannot be executed multiple times. Server must implement operations idempotently. An operation is idempotent if it gets the same result when performed multiple times. Implementing idempotency is domain-specific.
+  3.  Gracefully stopping or shutting down microservice instances – Use the new library implemented as an ASP.NET Core middleware, to be provided by the .NET Team (Need to wait for that library)
 
 - DOMAIN EVENTS: Implement Domain Events which is related but not the same as integration events for inter-microservice-communication. Domain Events are initially intended to be used within a specific microservice's Domain, as communicating state changes between Aggregates, although they could derive to Integration Events if what happened in a microservice's domain should impact other additional microservices. 
 SCENARIOS TO IMPLEMENT:
