@@ -1,7 +1,10 @@
-## Phase 1 Roadmap (By March/April 2017 timeframe)
-- Migrate projects to .NET 1.1 and EF 1.1 
-- Migrate to .csproj and Visual Studio 2017 support, including VS Docker Tooling requirements at the docker-compose.yml files
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+## Version 0.1 (Current version)
+- Docker containers with .NET Core and Linux images support/tested
+- .NET 1.1 and EF 1.1 support 
+- (vs2017 branch) Plus, migrated to .csproj and Visual Studio 2017, including VS Docker Tooling requirements at the docker-compose.yml files
+
+## Version 0.2 Roadmap (By March/April 2017 timeframe)
+
 - Implement support for Windows Containers running on Windows NanoServer using different Docker base images instead of the Linux based images (.NET Core code should be the same as it is cross-platform) - Fork or the same repo?
 
 - INTEGRATION EVENTS with Event-Bus implementations: Implement Event-Driven communication between microservices/containers based on Event-Bus interfaces and two implementation:
@@ -56,7 +59,7 @@ Our task here will be to use that new lib.
    - API versioning Management for microservices. Techniques and things to have into account Related to Caos-Monkey, etc.
    - Solid API contracts (based probably on Swagger, but interoperable with any language and explicit per paramater)
 
-## Phase 2 Roadmap (After April 2017)
+## Future versions - Roadmap (After April 2017)
 
 - Production-Ready Cloud application with Resilient microservices' design and implementation 
    - Gracefully stopping or shutting down microservice instances - Implemented as an ASP.NET Core middleware in the ASP.NET Core pipeline. Drain in-flight requests before stopping the microservice/container process.
