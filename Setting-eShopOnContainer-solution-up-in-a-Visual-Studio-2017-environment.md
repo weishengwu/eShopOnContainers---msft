@@ -7,3 +7,5 @@ The screenshot below shows the VS Solution structure for those microservices/con
 - Open <b>eShopOnContainers-ServicesAndWebApps.sln</b> for a solution containing just the server-side projects related to the microservices and web applications.
 - Open <b>eShopOnContainers-MobileApps.sln</b> for a solution containing just the client mobile app projects (Xamarin mobile apps only).
 
+
+<img src="img/vs-solution-structure.png">
