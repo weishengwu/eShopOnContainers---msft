@@ -1,9 +1,8 @@
 ## Setting eShopOnContainers up in a Visual Studio 2017 development machine
 
-Windows dev machine with Visual Studio 2017 and Docker for Windows installetion requirements:
-- <a href='https://docs.docker.com/docker-for-windows/install/'>Docker for Windows</a> installed
-- <a href='https://www.visualstudio.com/vs/'>Visual Studio 2017 installed </a> (Latest version)
-- Bower and Gulp as global installs (See steps below)
+Windows dev machine with Visual Studio 2017 and Docker for Windows installation requirements:
+- <a href='https://docs.docker.com/docker-for-windows/install/'>Docker for Windows</a> with the concrete configuration specified below.
+- <a href='https://www.visualstudio.com/vs/'>Visual Studio 2017</a> (Latest version) with the workloads specified below.
 
 ### Installing and configuring Docker in your development machine
 
@@ -12,7 +11,7 @@ Install Docker for Windows (The Stable channel should suffice) from this page: h
 About further info on Docker for windows, check this additional page
 https://docs.docker.com/docker-for-windows/ 
 
-Docker for Windows uses Hyper-V to run a Linux VM which is the by default Docker host. If you don't have Hyper-V installed/enabled, it'll be installed and you will probably need to reboot your machine.
+Docker for Windows uses Hyper-V to run a Linux VM which is the by default Docker host. If you don't have Hyper-V installed/enabled, it'll be installed and you will probably need to reboot your machine. Docker's setup should warn you about it, though.
 
 **IMPORTANT**: Check that you don't have any other hypervisor installed that might be not compatible with Hyper-V. For instance, Intel HAXM can be installed by VS 2017 if you chose to install Google's Android emulator which works on top of Intel HAXM. In that case, you'd need to uninstall Google's Android emulator and Intel HAXM.
 VS 2017 recommends to install the Google Android emulator because it is the only Android emulator with support for Google Play Store, Google Maps, etc. However, take into account that it currently is not compatible with Hyper-V, so you might have incompatibilities with this scenario.
@@ -32,6 +31,12 @@ The drive you'll need to share depends on where you place your source code.
 
 
 <img src="img/docker_settings_shared_drives.png">
+
+
+### IMPORTANT: Open ports in Firewall so Authentication to the STS (Security Token Service container) can be done through the 10.0.75.1 IP which should be available and already setup by Docker
+- You can manually create a rule in your local firewall in your development machine or you can also create that rule by just executing the <b>add-firewall-docker.ps1</b> script in the solution's root folder. 
+- Basically, you need to open the ports 5100 to 5105 that are used by the solution by creating an IN-BOUND RULE in your firewall, as shown in the screenshot below (for Windows).
+<img src="img/firewall-rule-for-eshop.png"> 
 
 
 ### Installing and configuring Visual Studio 2017 in your development machine
@@ -60,6 +65,7 @@ Make sur eyou are NOT selecting
 the highlighted options below with a red arrows:
 
 <img src="img/vs2017/xamarin-workload-options.png">
+
 
 ### Clone the eShopOnContainers code from GitHub
 **As of February 2017**, the branch to clone/download from GitHub compatible with Visual Studio 2017 is the branch named **vs2017**:
@@ -122,6 +128,43 @@ Breakpoint at the Catalog microservice running as Docker container in the Docker
 <img src="img/vs2017/debugging-webapi-microservice.png">
 
 And that's it! Super simple! Visual Studio is handling all the complexities under the covers and you can directly do F5 and debug a multi-container application! 
+
+----
+
+### Test all the applications and microservices
+Once the containers are deployed, you should be able to access any of the services in the following URLs or connection string, from your dev machine:
+
+<a href="" target="top"></a>
+- Web MVC: <a href="http://localhost:5100" target="top">http://localhost:5100</a>
+- Web Spa: <a href="http://localhost:5104" target="top">http://localhost:5104</a> (Important, check how to set up the SPA app and requirements before building the Docker images. Instructions at  https://github.com/dotnet/eShopOnContainers/tree/master/src/Web/WebSPA/eShopOnContainers.WebSPA or the README.MD from eShopOnContainers/src/Web/WebSPA/eShopOnContainers.WebSPA)
+- Catalog microservice: <a href="http://localhost:5101" target="top">http://localhost:5101</a> (Not secured)
+- Ordering microservice: <a href="http://localhost:5102" target="top">http://localhost:5102</a> (Requires token for authorization)
+- Basket microservice: <a href="http://localhost:5103" target="top">http://localhost:5103</a> (Requires token for authorization)
+- Identity microservice: <a href="http://localhost:5105" target="top">http://localhost:5105</a>
+- Orders database (SQL Server connection string): Server=tcp:localhost,5432;Database=Microsoft.eShopOnContainers.Services.OrderingDb;User Id=sa;Password=Pass@word;
+- Catalog database (SQL Server connection string): Server=tcp:localhost,5434;Database=CatalogDB;User Id=sa;Password=Pass@word
+- ASP.NET Identity database (SQL Server connection string): Server=localhost,5433;Database=aspnet-Microsoft.eShopOnContainers;User Id=sa;Password=Pass@word
+- Basket data (Redis): listening at localhost:6379
+ 
+#### Trying the Web MVC application with the DemoUser@microsoft.com user account
+When you try the Web MVC application by using the url http://localhost:5100, you'll be able to test the home page which is also the catalog page. But if you want to add articles to the basket you need to login first at the login page which is handled by the STS microservice/container (Security Token Service). At this point, you could register your own user/customer or you can also use a convenient default user/customer named DemoUser@microsoft.com so you don't need to register your own user and it'll be easier to test.
+The credentials for this demo user are:
+- User: demouser@microsoft.com
+- Password: Pass@word1
+
+Below you can see the login page when providing those credentials.
+<img src="img/login-demo-user.png">
+
+#### Trying the Xamarin.Forms mobile apps for Android, iOS and Windows
+You can deploy the Xamarin app to real iOS, Android or Windows devices.
+You can also test it on an Android Emulator based on Hyper-V like the Visual Studio Android Emulator (Do NOT install the Google's Android emulator or it will break Docker and Hyper-V, as mentioned aboce).
+
+By default, the Xamarin app shows fake data from mock-services. In order to really access the microservices/containers in Docker from the mobile app, you need to:
+ - Disable mock-services in the Xamarin app by setting the <b>UseMockServices = false</b> in the App.xaml.cs and specify the host IP in  BaseEndpoint = "http://10.106.144.28" at the GlobalSettings.cs. Both files in the Xamarin.Forms project (PCL).
+ - Another alternative is to change that IP through the app UI, by modifying the IP address in the Settings page of the App as shown in the screenshot below. 
+- In addition, you need to make sure that the used TCP ports of the services are open in the local firewall. <img src="img/xamarin-settings.png">
+
+
 
 
 
