@@ -131,7 +131,7 @@ And that's it! Super simple! Visual Studio is handling all the complexities unde
 
 ----
 
-### Test all the applications and microservices
+### Testing all the applications and microservices
 Once the containers are deployed, you should be able to access any of the services in the following URLs or connection string, from your dev machine:
 
 <a href="" target="top"></a>
@@ -146,11 +146,11 @@ Once the containers are deployed, you should be able to access any of the servic
 - ASP.NET Identity database (SQL Server connection string): Server=localhost,5433;Database=aspnet-Microsoft.eShopOnContainers;User Id=sa;Password=Pass@word
 - Basket data (Redis): listening at localhost:6379
  
-#### Trying the Web MVC application with the DemoUser@microsoft.com user account
-When you try the Web MVC application by using the url http://localhost:5100, you'll be able to test the home page which is also the catalog page. But if you want to add articles to the basket you need to login first at the login page which is handled by the STS microservice/container (Security Token Service). At this point, you could register your own user/customer or you can also use a convenient default user/customer named DemoUser@microsoft.com so you don't need to register your own user and it'll be easier to test.
+#### Creating and Order and Authenticating on the Web MVC application with the DemoUser@microsoft.com user account
+When you try the Web MVC application by using the url http://localhost:5100, you'll be able to test the home page which is also the catalog page. But if you want to add articles to the basket you need to login first at the login page which is handled by the STS microservice/container (Security Token Service). At this point, you could register your own user/customer or you can also use a convenient default user/customer named **demoUser@microsoft.com** so you don't need to register your own user and it'll be easier to test.
 The credentials for this demo user are:
-- User: demouser@microsoft.com
-- Password: Pass@word1
+- User: **demouser@microsoft.com**
+- Password: **Pass@word1**
 
 Below you can see the login page when providing those credentials.
 <img src="img/login-demo-user.png">
