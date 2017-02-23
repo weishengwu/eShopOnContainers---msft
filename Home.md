@@ -1,7 +1,7 @@
 # Welcome to the eShopOnContainers wiki!
 
 ## Roadmap
-https://github.com/dotnet/eShopOnContainers/wiki/Roadmap-and-Milestones-for-future-releases 
+https://github.com/dotnet/eShopOnContainers/wiki/01.-Roadmap-and-Milestones-for-future-releases
 
 ## Setting up your development environment for eShopOnContainers
 ### Visual Studio 2017 and Windows based
