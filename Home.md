@@ -25,4 +25,4 @@ https://github.com/dotnet/eShopOnContainers/issues
 
 ## Sending feedback and pull requests
 We'd appreciate to your feedback, improvements and ideas.
-You can create new issues at the issues section, do pull requests and/or send emails to **eshop_feedback@service.microsoft.com **
+You can create new issues at the issues section, do pull requests and/or send emails to eshop_feedback@service.microsoft.com 
