@@ -1,8 +1,7 @@
-# PC - Windows dev machine
+# Windows dev machine
 
 ## Recommended Hardware requirements:
-- 16Gb of memory RAM
-   Since you need Hyper-V for Docker for Windows in order to run the Linux Docker Host and we're also running a SQL Server container and a Redis container, 8Gb of RAM might not be enough.
+- 16Gb of memory RAM - Since you need Hyper-V for Docker for Windows in order to run the Linux Docker Host and we're also running a SQL Server container and a Redis container, 8Gb of RAM might not be enough.
 
 ## Software requirements for Windows are:
 -	Docker for Windows  (From Docker) - Requires Windows 10 Pro 64 bits
@@ -27,8 +26,7 @@ https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows
 # Mac dev machine
 
 ## Recommended Hardware requirements:
-- 16Gb of memory RAM
-   Since you a VM in the Mac with the Linux Docker host and we're also running a SQL Server container and a Redis container, 8Gb of RAM might not be enough.
+- 16Gb of memory RAM - Since you a VM in the Mac with the Linux Docker host and we're also running a SQL Server container and a Redis container, 8Gb of RAM might not be enough.
 
 ## Software requirements for Mac are:
 -	Docker for Mac (From Docker) - Requires Windows 10 Pro 64 bits
