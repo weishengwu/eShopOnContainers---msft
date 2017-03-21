@@ -1,0 +1,19 @@
+This is a draft page which will be evolving while our tests and dev regarding Windows Containers are completed.
+eShopOncontainers on Windows Containers is still under tests at the **windows-containers-test** branch.
+
+For now, we're just adding the current "Windows Containers" support.
+
+Windows Containers support:
+
+**Windows Server 2016** - Production Environments
+- Comes with Docker Enterprise Edition
+- Designed to run apps in production
+- Call Microsoft for support. If it's a Docker rather than Windows problem, they escalate to Docker and get it solved
+
+**Windows 10** - Dev Environments
+- Docker Community Edition (formerly Docker for Windows)
+- Support via forums/GitHub
+- Can switch between Windows container development and Linux (in VM). There is no plan to drop either OS from Docker CE
+- Designed for devs only. Not production
+
+Docker might provide per incident support system for Docker Community Edition, or provide a "EE Desktop" for developers, but it's their call to do so. Not Microsoft's.
