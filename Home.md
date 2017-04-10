@@ -24,7 +24,7 @@ https://github.com/dotnet/eShopOnContainers/wiki/04.-Setting-eShopOnContainer-so
 ### Guide/eBook: Architecting and Developing Containerized and Microservice based .NET Applications
 https://github.com/dotnet/eShopOnContainers/blob/master/docs/architecting-and-developing-containerized-and-microservice-based-net-applications-ebook-early-draft.pdf
 
-##Issues:
+## Issues:
 https://github.com/dotnet/eShopOnContainers/issues
 
 ## Sending feedback and pull requests
