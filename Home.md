@@ -1,5 +1,9 @@
 # Welcome to the eShopOnContainers wiki!
 
+## Related readme files (use them for more information after reading this)
+
+* Documentation index: [https://github.com/dotnet-architecture/eShopOnContainers/blob/master/readme/readme.md](https://github.com/dotnet-architecture/eShopOnContainers/blob/master/readme/readme.md)
+
 ## Questions
 [QUESTION] Answer +1 if the solution is working for you (Through VS2017 or CLI environment):
 https://github.com/dotnet/eShopOnContainers/issues/107 
