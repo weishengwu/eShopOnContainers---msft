@@ -26,7 +26,7 @@ https://github.com/dotnet/eShopOnContainers/wiki/03.-Setting-the-eShopOnContaine
 
 ### CLI and Mac based
 For those who prefer the CLI on a Mac, using dotnet CLI, docker CLI and VS Code for Mac: 
-https://github.com/dotnet/eShopOnContainers/wiki/04.-Setting-eShopOnContainer-solution-up-in-a-Mac,-VS-Code-and-CLI-environment--(dotnet-CLI,-Docker-CLI-and-VS-Code)
+https://github.com/dotnet-architecture/eShopOnContainers/wiki/04.-Setting-eShopOnContainer-solution-up-in-a-Mac,-VS-for-Mac-or-with-CLI-environment--(dotnet-CLI,-Docker-CLI-and-VS-Code)
 
 ## Related Documentation
 ### Guide/eBook: .NET Microservices: Architecture for Containerized .NET Applications
