@@ -1,7 +1,7 @@
 # Welcome to the eShopOnContainers wiki!
 
 ## NEWS / ANNOUNCEMENTS 
-What to be up-to-date on .NET Architecture guidance and reference apps like eShopOnContainers? 
+Want to be up-to-date on .NET Architecture guidance and reference apps like eShopOnContainers? 
 Subscribe by "WATCHING" this new GitHub repo: https://github.com/dotnet-architecture/News
 
 ## Related readme files (use them for more information after reading this)
