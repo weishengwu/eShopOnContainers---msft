@@ -1,6 +1,6 @@
-# eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
+## eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
-## Release 2.2 (2019-04-25)
+### Release 2.2 (2019-04-25)
 
 Reference commit [6541f0d2](https://github.com/dotnet/docs/pull/12020/commits/6541f0d22e4248cb36a63d2c80d3fdf38aee1d74) ([PR #12020](https://github.com/dotnet/docs/pull/12020))
 
