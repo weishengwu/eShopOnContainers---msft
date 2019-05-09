@@ -1,4 +1,4 @@
-# Containerized Docker Application Lifecycle with Microsoft Platform and Tools (e-book changelog)
+# eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
 ## Release 2.2 (2019-04-25)
 
