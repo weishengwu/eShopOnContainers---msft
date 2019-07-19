@@ -1,0 +1,84 @@
+The management of secrets in our business applications is always an important issue where we are looking for different alternatives. Of course, with the arrival of .NET Core and its configuration system *streamed* has given us a lot of flexibility when it comes to playing with the different configuration parameters of our applications. Being able to have them in the settings files such as our *appsettings.json* and replace or expand them through other sources such as environment variables is something that we use very often in this project in the creation of containers and composition.
+
+The use of [User Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows) or the use of *.env* files simplify some scenarios, generally for development environments but they do not save us in our release processes. In these release processes, as for example in VSTS, we can modify the configuration values by means of release variables but we will still have to know those secrets and those people who have the power to edit a release will be able to see these secret values
+
+> **CONTENT**
+
+- [Azure Key Vault](#azure-key-vault)
+- [Azure MSI](#azure-msi)
+
+## Azure Key Vault
+
+A valid option to prevent the values of secrets being known by different people is the use of a Key Vault, or private warehouse of sercrets. Azure offers a Key Vault service known as [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)  which gives us many of the desired features in a service in the cloud.
+
+> If you are not aware of Azure Key Vault, I recommend that you review the [product documentation](https://docs.microsoft.com/en-us/azure/key-vault/) to get a quick idea of everything that the service offers.
+
+.NET Core offers us a configuration provider based on Azure Key Vault, which we can integrate as another provider and where we will delegate the management of secrets. Below you can see the code fragment that Azure Key Vault configures in one of the *eshopOnContainers* services.
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .UseHealthChecks("/hc")
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .ConfigureAppConfiguration((builderContext, config) =>
+        {
+            config.AddJsonFile("settings.json");
+
+            var builtConfig = config.Build();
+
+            var configurationBuilder = new ConfigurationBuilder();
+
+            if (Convert.ToBoolean(builtConfig["UseVault"]))
+            {
+                configurationBuilder.AddAzureKeyVault(
+                    $"https://{builtConfig["Vault:Name"]}.vault.azure.net/",
+                    builtConfig["Vault:ClientId"],
+                    builtConfig["Vault:ClientSecret"]);
+            }
+
+            configurationBuilder.AddEnvironmentVariables();
+
+            config.AddConfiguration(configurationBuilder.Build());
+        })
+        .ConfigureLogging((hostingContext, builder) =>
+        {
+            builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+            builder.AddConsole();
+            builder.AddDebug();
+        })
+        .UseApplicationInsights()
+        .Build();
+```
+
+As you can see, the **AddAzureKeyVault** method is responsible for adding the configuration provider. Therefore, each time someone requests a configuration key, it will be searched for in the appropriate order, within the Azure Key Vault service.
+
+> By default the keys with the separator -- are transformed to:. If you want to change this behavior **AddAzureKeyVault** supports the specification of a new implementation of IKeyVaultSecretManager instead of the default DefaultKeyVaultSecretManager.
+
+## Azure MSI
+
+If we look closely, in reality we are facing a situation that could be described as *the snake that bites its tail*, as we no longer need to keep secrets in our applications as they will be in Azure Key Vault.  But if we need to keep our Key Vault credentials so that everyone who knows them needs to, they can access the service and obtain the information it contains.
+
+One way to overcome this problem in Azure, is by using [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) or MSI which is relatively simple to operate. Basically, Azure MSI allows the resources created in Azure (for the moment the list of possible resources is limited to AppServices, VM, AKeyVault, Azure Functions) to have an identity, an SPN, within the active directory associated with the subscription. Once this SPN is created, it can be used to give access permission to other resources.
+
+> If you use ARM templates, establish that an MSI support resource is as easy as setting the attribute *identity* to *systemAssigned*.
+
+Once we have a service, put a WebApp, with MSI enabled and in the policies of our Azure Key Vault, we have established their permissions and can connect with Key Vault without using a username or password. Below, we can see an example of how the **AddAzureKeyVault** method would change using MSI with respect to the previous form.
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .ConfigureAppConfiguration((context,builder)=>
+        {
+            var azureServiceTokenProvider = new AzureServiceTokenProvider();
+
+            var keyVaultClient = new KeyVaultClient(
+                new KeyVaultClient.AuthenticationCallback(
+                    azureServiceTokenProvider.KeyVaultTokenCallback));
+
+            builder.AddAzureKeyVault("https://[mykeyvault].vault.azure.net/",
+                keyVaultClient,
+                new DefaultKeyVaultSecretManager());
+        }).Build();
+```
