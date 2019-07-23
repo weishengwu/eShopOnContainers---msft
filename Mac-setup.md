@@ -219,13 +219,15 @@ Make sure you select the .NET Core platform:
 
 ![](images/Mac-setup/dotnetcore-workload-vs-mac.png)
 
-Before completing the VS for Mac installation, it will demand you to install XCode, that is needed for multiple dependencies. 
+Before completing the VS for Mac installation, it will demand you to install XCode, that is needed for multiple dependencies.
 
 If you install Android as a target platform, Java will also be installed as a dependency for building mobile apps for Android.
 
 For running just the Docker containers and web apps, you'd just need the .NET Core platform.
 
-But if you want to try the eShopOnContainers mobile app, that requires Xamarin and therefore, the iOS and Android platforms, too. Those mobile platforms are optional for this Wiki walkthrough, though. 
+But if you want to try the eShopOnContainers mobile app, that requires Xamarin and therefore, the iOS and Android platforms, too. Those mobile platforms are optional for this Wiki walkthrough, though.
+
+**Make sure you have the latest SDK 2.2 version from <https://dotnet.microsoft.com/download/dotnet-core/2.2> installed.**
 
 ### Open the solution with Visual Studio for Mac
 

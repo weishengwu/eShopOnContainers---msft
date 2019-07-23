@@ -140,6 +140,8 @@ If you want to explore the code and debug the application to see it working, you
 
 You have to install at least VS 2017 (15.9) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
 
+**Make sure you have the latest SDK 2.2 version from <https://dotnet.microsoft.com/download/dotnet-core/2.2> installed.**
+
 Upon running the installer, select the following workloads depending on the apps you intend to test or work with:
 
 ### Server side (Microservices and web applications) - Workloads
