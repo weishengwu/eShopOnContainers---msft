@@ -12,6 +12,7 @@
   - [Deploy your local images](#deploy-your-local-images)
   - [Deploy the public official eShopOnContainer images from DockerHub](#deploy-the-public-official-eshoponcontainer-images-from-dockerhub)
   - [Check deployment status](#check-deployment-status)
+  - [Delete deployments](#delete-deployments)
 - [Known issues](#known-issues)
 - [Optional - Install Kubernetes Dashboard UI](#optional---install-kubernetes-dashboard-ui)
   - [IMPORTANT](#important)
@@ -223,6 +224,14 @@ a5db4c521807        f06a5773f01e                     "docker-entrypoint.s…"   
 aae88fd2d810        d69a5113ceae                     "docker-entrypoint.s…"   2 hours ago         Up 2 hours                              k8s_rabbitmq_eshop-rabbitmq-6b68647bc4-gr565_default_3c37ee6a-e67f-11e8-b4b6-00155d016146_0
 65d49ca9589d        bbed8d0e01c1                     "docker-entrypoint.s…"   2 hours ago         Up 2 hours                              k8s_nosql-data_eshop-nosql-data-579c9d89f8-mtt95_default_3b9c1f89-e67f-11e8-b4b6-00155d016146_0
 090e0dde2ec4        bbe2822dfe38                     "/opt/mssql/bin/sqls…"   2 hours ago         Up 2 hours                              k8s_sql-data_eshop-sql-data-5c4fdcccf4-bscdb_default_3afd29b8-e67f-11e8-b4b6-00155d016146_0
+```
+
+### Delete deployments
+
+To delete eShop deployments you can use this command:
+
+```powershell
+helm delete --purge $(helm ls --short eshop)
 ```
 
 ## Known issues
