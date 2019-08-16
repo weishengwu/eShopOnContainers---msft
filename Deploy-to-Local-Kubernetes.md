@@ -99,7 +99,7 @@ To install the NGINX Ingress controller, run the following commands:
 
 At this point you have two options for installing eShopOnContainers:
 
-1. Use your local images or
+1. Use your local images with tag `linux-latest` or
 2. Use the [public images from DockerHub (eshop)](https://hub.docker.com/u/eshop/) with tag `dev`
 
 ### Deploy your local images
@@ -110,7 +110,7 @@ The first task to deploy your local images is to create them, which you can achi
 docker-compose build
 ```
 
-Then, just this script from the `k8s\helm` folder, to deploy your local images:
+Then, just run this script from the `k8s\helm` folder, to deploy your local images:
 
 ```powershell
 .\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -useLocalImages $true
@@ -118,7 +118,7 @@ Then, just this script from the `k8s\helm` folder, to deploy your local images:
 
 The parameter `useLocalk8s` to `$true`, forces the script to use `localhost` as the DNS for all Helm charts and also creates the ingress with the correct ingress class.
 
-When using the parameter `useLocalImages` to `$true`, helm tries to use the local images first, and if not available locally, pulls the official images from DockerHub.
+When using the parameter `useLocalImages` to `$true`, helm tries to use the local images first, and if not available locally, pulls the official ones from DockerHub.
 
 ### Deploy the public official eShopOnContainer images from DockerHub
 
