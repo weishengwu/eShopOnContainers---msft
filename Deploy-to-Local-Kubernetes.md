@@ -1,5 +1,5 @@
 
-<h3>Content></h3>
+> **CONTENT**
 
 - [Install/upgrade to the latest version of Docker for Desktop](#installupgrade-to-the-latest-version-of-docker-for-desktop)
 - [Enable Kubernetes](#enable-kubernetes)
@@ -9,6 +9,9 @@
   - [Install Helm server (Tiller)](#install-helm-server-tiller)
 - [Install the NGINX Ingress controller](#install-the-nginx-ingress-controller)
 - [Install eShopOnContainers using Helm](#install-eshoponcontainers-using-helm)
+  - [Deploy your local images](#deploy-your-local-images)
+  - [Deploy the public official eShopOnContainer images from DockerHub](#deploy-the-public-official-eshoponcontainer-images-from-dockerhub)
+  - [Check deployment status](#check-deployment-status)
 - [Known issues](#known-issues)
 - [Optional - Install Kubernetes Dashboard UI](#optional---install-kubernetes-dashboard-ui)
   - [IMPORTANT](#important)
@@ -94,23 +97,46 @@ To install the NGINX Ingress controller, run the following commands:
 
 - Go to the **k8s\helm** folder in your local copy of the eShopOnContainers repo.
 
-- Run this script to create all eShopOnContainers services in the Kubernetes cluster:
+At this point you have two options for installing eShopOnContainers:
 
-    ```powershell
-    .\deploy-all.ps1 -imageTag dev -useLocalk8s $true
-    ```
+1. Use your local images or
+2. Use the [public images from DockerHub (eshop)](https://hub.docker.com/u/eshop/) with tag `dev`
 
-The parameter `useLocalk8s` to $true, forces the script to use `localhost` as the DNS for all Helm charts and also creates the ingress with the correct ingress class.
+### Deploy your local images
 
-This will install all the [eShopOnContainers public images](https://hub.docker.com/u/eshop/) with tag `dev` on the Docker local Kubernetes cluster. By default all infrastructure (sql, mongo, rabbit and redis) is installed also in the cluster.
+The first task to deploy your local images is to create them, which you can achieve by just running this command from the CLI on the root folder of your local repo:
 
-To check the services are running, when you execute this command:
+```powershell
+docker-compose build
+```
+
+Then, just this script from the `k8s\helm` folder, to deploy your local images:
+
+```powershell
+.\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -useLocalImages $true
+```
+
+The parameter `useLocalk8s` to `$true`, forces the script to use `localhost` as the DNS for all Helm charts and also creates the ingress with the correct ingress class.
+
+When using the parameter `useLocalImages` to `$true`, helm tries to use the local images first, and if not available locally, pulls the official images from DockerHub.
+
+### Deploy the public official eShopOnContainer images from DockerHub
+
+If you prefer to deploy the public images (built from the **dev** branch on each commit), just run this script:
+
+```powershell
+.\deploy-all.ps1 -imageTag dev -useLocalk8s $true
+```
+
+### Check deployment status
+
+After running the deployment script you can check the deployment status with the command:
 
 ```powershell
 kubectl get deployment
 ```
 
-You should get an output similar to this one:
+After a while (could be ~5 min) you should get an output similar to this one:
 
 ```console
 NAME                             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -144,7 +170,7 @@ To check the public service exposed, run:
 ```powershell
 kubectl get ing
 ```
- 
+
 You should get an output similar to this one:
 
 ```console
@@ -161,7 +187,7 @@ eshop-webstatus      localhost   localhost   80        2h
 
 Note that ingresses are bound to DNS localhost and the host is also "localhost". So, you can access the **webspa** app in the address: `http://localhost` and the **MVC** in: `http://localhost/webmvc`
 
-As this is the Docker local K8s cluster, you can see also the containers running on your machine.
+As this is the Docker local k8s cluster, you can see also the containers running on your machine.
 
 If you type the command:
 
@@ -209,9 +235,9 @@ Solving this requires some manual steps:
 
 From the `/k8s` folder run `kubectl apply -f .\nginx-ingress\local-dockerk8s\mvc-fix.yaml`. This will create two additional ingresses (for MVC and Identity API) to any valid DNS that points to your machine. This enable the use of 10.75.0.1 IP.
 
-Update the configmap of Web MVC by typing (**line breaks are mandatory**):
+Update the `configmap` of Web MVC by typing (**line breaks are mandatory**):
 
-```
+```yml
 kubectl patch cm cfg-eshop-webmvc --type strategic --patch @'
 data:
   urls__IdentityUrl: http://10.0.75.1/identity
@@ -219,9 +245,9 @@ data:
 '@
 ```
 
-Update the configmap of Identity API by typing (**line breaks are mandatory**):
+Update the `configmap` of Identity API by typing (**line breaks are mandatory**):
 
-```
+```yml
 kubectl patch cm cfg-eshop-identity-api --type strategic --patch @'
 data:
   mvc_e: http://10.0.75.1/webmvc
@@ -230,13 +256,13 @@ data:
 
 Restart the SQL Server pod to ensure the database is recreated again:
 
-```
+```powershell
 kubectl delete pod --selector app=sql-data
-``` 
+```
 
 Wait until SQL Server pod is ready to accept connections and then restart all other pods:
 
-```
+```powershell
 kubectl delete pod --selector="app!=sql-data"
 ```
 
