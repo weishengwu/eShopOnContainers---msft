@@ -231,7 +231,7 @@ aae88fd2d810        d69a5113ceae                     "docker-entrypoint.s…"   
 To delete eShop deployments you can use this command:
 
 ```powershell
-helm delete --purge $(helm ls --short eshop)
+helm delete --purge $(helm ls --all --short eshop)
 ```
 
 ## Known issues
