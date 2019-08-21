@@ -13,7 +13,7 @@
   - [Deploy the public official eShopOnContainer images from DockerHub](#deploy-the-public-official-eshoponcontainer-images-from-dockerhub)
   - [Check deployment status](#check-deployment-status)
   - [Delete deployments](#delete-deployments)
-  - [Explore internal services](#explore-internal-services)
+- [Explore internal services](#explore-internal-services)
 - [Known issues](#known-issues)
 - [Optional - Install Kubernetes Dashboard UI](#optional---install-kubernetes-dashboard-ui)
   - [IMPORTANT](#important)
@@ -235,11 +235,11 @@ To delete eShop deployments you can use this command:
 helm delete --purge $(helm ls --all --short eshop)
 ```
 
-### Explore internal services
+## Explore internal services
 
 You can expose internal services by using [NodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) (among some other options)
 
-To expose the SQL Server service and the RabbitMQ admin port, you can run the following script, from the `k8s` folder:
+To expose the SQL Server service and the RabbitMQ admin port, when deploying to local Kubernetes, you can run the following script, from the `k8s` folder:
 
 ```powershell
 .\deploy-nodeports.ps1
