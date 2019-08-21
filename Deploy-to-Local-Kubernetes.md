@@ -13,6 +13,7 @@
   - [Deploy the public official eShopOnContainer images from DockerHub](#deploy-the-public-official-eshoponcontainer-images-from-dockerhub)
   - [Check deployment status](#check-deployment-status)
   - [Delete deployments](#delete-deployments)
+  - [Explore internal services](#explore-internal-services)
 - [Known issues](#known-issues)
 - [Optional - Install Kubernetes Dashboard UI](#optional---install-kubernetes-dashboard-ui)
   - [IMPORTANT](#important)
@@ -233,6 +234,25 @@ To delete eShop deployments you can use this command:
 ```powershell
 helm delete --purge $(helm ls --all --short eshop)
 ```
+
+### Explore internal services
+
+You can expose internal services by using [NodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) (among some other options)
+
+To expose the SQL Server service and the RabbitMQ admin port, you can run the following script, from the `k8s` folder:
+
+```powershell
+.\deploy-nodeports.ps1
+```
+
+This will expose the following infrastructure services:
+- SQL Server (connect with [SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) to `tcp:localhost,31433` with `User Id=sa;Password=Pass@word;` and explore databases:
+  - Identity: `Microsoft.eShopOnContainers.Service.IdentityDb`
+  - Catalog: `Microsoft.eShopOnContainers.Services.CatalogDb`
+  - Marketing: `Microsoft.eShopOnContainers.Services.MarketingDb`
+  - Ordering: `Microsoft.eShopOnContainers.Services.OrdeingDb`
+  - Webhooks: `Microsoft.eShopOnContainers.Services.WebhooksDb`
+- RabbitMQ (Queue management): <http://localhost:31672/> (login with username=guest, password=guest)
 
 ## Known issues
 
