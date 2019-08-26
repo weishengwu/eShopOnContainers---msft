@@ -18,7 +18,7 @@ For a production-grade solutions you should use a more robust implementation bas
 
 The architecture also includes an implementation of the API Gateway pattern and Backend-For-Front-End (BFF), to publish simplified APIs and include additional security measures for hiding/securing the internal microservices from the client apps or outside consumers. 
 
-These sample API Gateways based on [Ocelot](https://github.com/ThreeMammals/Ocelot), an OSS lightweight API Gateway solution. The API Gateways are deployed as autonomous microservices/containers, so you can test them in a simple development environment by just using Docker Desktop or even with orchestrators like Kubernetes in AKS or Service Fabric.
+These sample API Gateways are based on [Ocelot](https://github.com/ThreeMammals/Ocelot), an OSS lightweight API Gateway solution. The API Gateways are deployed as autonomous microservices/containers, so you can test them in a simple development environment by just using Docker Desktop or even with orchestrators like Kubernetes in AKS or Service Fabric.
 
 For a production-ready architecture you can either keep using Ocelot, which is simple and easy to use, and it's currently used in production by large companies. If you need additional functionality and a much richer set of features suitable for commercial APIs, you can also substitute those API Gateways and use Azure API Management or any other commercial API Gateway, as shown in the following diagram.
 
