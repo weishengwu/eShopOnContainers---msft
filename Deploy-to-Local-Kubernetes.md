@@ -115,12 +115,12 @@ docker-compose build
 Then, just run this script from the `k8s\helm` folder, to deploy your local images:
 
 ```powershell
-.\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -useLocalImages $true
+.\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -imagePullPolicy Never
 ```
 
 The parameter `useLocalk8s` to `$true`, forces the script to use `localhost` as the DNS for all Helm charts and also creates the ingress with the correct ingress class.
 
-When using the parameter `useLocalImages` to `$true`, helm tries to use the local images first, and if not available locally, pulls the official ones from DockerHub.
+**Note**: When using the parameter `imagePullPolicy` to `Never` only local images will be used (_pods_ will enter in error state if local images do not exist. If `imagePullPolicy` is set to `IfNotPresent` then local images will be used if present, and if not Kubernetes will try to download them from a docker registry. If the `imagePullPolicy` is set to `Always` then Kubernetes will never use the local images and will try to download them all from a docker registry. If the images are not found _pods_ will enter in error state.
 
 ### Deploy the public official eShopOnContainer images from DockerHub
 
