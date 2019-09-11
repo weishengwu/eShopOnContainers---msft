@@ -7,6 +7,7 @@ Tests are an excellent way to explore the internals of any application, besides 
   - [Running Functional/Integration Tests](#running-functionalintegration-tests)
 - [Global integration tests across microservices](#global-integration-tests-across-microservices)
 - [Load Testing](#load-testing)
+- [Additional resources](#additional-resources)
 
 The tests in eShopOnContainers are structured in the following structure, per type:
 
@@ -109,3 +110,7 @@ Then, making sure that you have the infrastructure containers up and running (th
 
 Load Testing for eShopOnContainers is described in the [Load testing](Load-testing) page
 
+## Additional resources
+
+- **Testability issue - Approach to unit testing with `HttpClient`** \
+  <https://github.com/dotnet/docs/issues/10309#issuecomment-527249102>
