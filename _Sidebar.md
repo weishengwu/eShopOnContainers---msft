@@ -22,6 +22,7 @@
 - [Application](Explore-the-application)
 - [Code](Explore-the-code)
   - [Simplified CQRS & DDD](Simplified-CQRS-and-DDD)
+  - [gRPC](gRPC)
   - [API gateways](API-gateways)
   - [Webhooks](Webhooks)
   - [Azure Key Vault](Azure-Key-Vault)
