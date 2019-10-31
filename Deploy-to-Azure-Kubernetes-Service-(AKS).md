@@ -102,7 +102,7 @@ Save the file and close the editor. This should reapply the deployment in the cl
 All steps need to be performed on `/k8s/helm` folder. The easiest way is to use the `deploy-all.ps1` script from a Powershell window:
 
 ```
-.\deploy-all.ps1 -externalDns aks -aksName eshoptest -aksRg eshoptest -imageTag dev
+.\deploy-all.ps1 -externalDns aks -aksName eshoptest -aksRg eshoptest -imageTag dev -useMesh $false
 ```
 
 This will install all the [eShopOnContainers public images](https://hub.docker.com/u/eshop/) with tag `dev` on the AKS named `eshoptest` in the resource group `eshoptest`. By default all infrastructure (sql, mongo, rabbit and redis) is installed also in the cluster.
@@ -110,30 +110,32 @@ This will install all the [eShopOnContainers public images](https://hub.docker.c
 Once the script is run, you should see following output when using `kubectl get deployment`:
 
 ```
-NAME                             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-eshop-apigwmm                    1         1         1            1           4d
-eshop-apigwms                    1         1         1            1           4d
-eshop-apigwwm                    1         1         1            1           4d
-eshop-apigwws                    1         1         1            1           4d
-eshop-basket-api                 1         1         1            1           4d
-eshop-basket-data                1         1         1            1           4d
-eshop-catalog-api                1         1         1            1           4d
-eshop-identity-api               1         1         1            1           4d
-eshop-keystore-data              1         1         1            1           4d
-eshop-locations-api              1         1         1            1           4d
-eshop-marketing-api              1         1         1            1           4d
-eshop-mobileshoppingagg          1         1         1            1           4d
-eshop-nosql-data                 1         1         1            1           4d
-eshop-ordering-api               1         1         1            1           4d
-eshop-ordering-backgroundtasks   1         1         1            1           4d
-eshop-ordering-signalrhub        1         1         1            1           4d
-eshop-payment-api                1         1         1            1           4d
-eshop-rabbitmq                   1         1         1            1           4d
-eshop-sql-data                   1         1         1            1           4d
-eshop-webmvc                     1         1         1            1           4d
-eshop-webshoppingagg             1         1         1            1           4d
-eshop-webspa                     1         1         1            1           4d
-eshop-webstatus                  1         1         1            1           4d
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+eshop-apigwmm                    1/1     1            1           29d
+eshop-apigwms                    1/1     1            1           29d
+eshop-apigwwm                    1/1     1            1           29d
+eshop-apigwws                    1/1     1            1           29d
+eshop-basket-api                 1/1     1            1           30d
+eshop-basket-data                1/1     1            1           30d
+eshop-catalog-api                1/1     1            1           30d
+eshop-identity-api               1/1     1            1           30d
+eshop-keystore-data              1/1     1            1           30d
+eshop-locations-api              1/1     1            1           30d
+eshop-marketing-api              1/1     1            1           30d
+eshop-mobileshoppingagg          1/1     1            1           30d
+eshop-nosql-data                 1/1     1            1           30d
+eshop-ordering-api               1/1     1            1           30d
+eshop-ordering-backgroundtasks   1/1     1            1           30d
+eshop-ordering-signalrhub        1/1     1            1           30d
+eshop-payment-api                1/1     1            1           30d
+eshop-rabbitmq                   1/1     1            1           30d
+eshop-sql-data                   1/1     1            1           30d
+eshop-webhooks-api               1/1     1            1           30d
+eshop-webhooks-web               1/1     1            1           30d
+eshop-webmvc                     1/1     1            1           30d
+eshop-webshoppingagg             1/1     1            1           30d
+eshop-webspa                     1/1     1            1           30d
+eshop-webstatus                  1/1     1            1           30d
 ```
 
 Every public service is exposed through its own ingress resource, as you can see if using `kubectl get ing`:
@@ -144,12 +146,16 @@ eshop-apigwms        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80    
 eshop-apigwwm        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-apigwws        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-identity-api   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
+eshop-webhooks-api   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
+eshop-webhooks-web   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webmvc         eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webspa         eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webstatus      eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 ```
 
 Ingresses are automatically configured to use the public DNS of the AKS provided by the "https routing" addon.
+
+### Allow large headers (needed for login to work)
 
 One step more is needed: we need to configure the nginx ingress controller that AKS has to allow larger headers. This is because the headers sent by identity server exceed the size configured by default. Fortunately this is very easy to do. Just type (from the `/k8s/helm` folder):
 
@@ -165,7 +171,25 @@ Then you can restart the pod that runs the nginx controller. Its name is `addon-
 kubectl delete pod $(kubectl get pod -l app=addon-http-application-routing-nginx-ingress -n kube-system -o jsonpath="{.items[0].metadata.name}) -n kube-system
 ```
 
-You can view the MVC client at http://[dns]/webmvc and the SPA at the http://[dns]/
+You can view the MVC client at `http://[dns]/webmvc` and the SPA at the `http://[dns]/`
+
+## Using Linkerd as Service Mesh (Advanced Scenario)
+
+There is the possibility to install eShopOnContainers ready to run with [Linkerd](https://linkerd.io/) Service Mesh. To use Linkerd, you must follow the following steps:
+
+1. Install Linkerd on your cluster. We don't provide Linkerd installation scripts, but the process is described in the [Linkerd installation documentation](https://linkerd.io/2/getting-started/#step-0-setup). Steps 0 trough 3 needs to be completed.
+2. Then install eShopOnContainers using the procedure described above, but in the `deploy-all.ps1` pass the parameter `useMesh` to `$true`.
+
+Once eShop is installed you can check that all non-infrastructure pods have two containers:
+
+![Pods with two containers](./images/Mesh/pods.png)
+
+Now you can use the command `linkerd dashboard` to show the mesh and monitor all the connections between eShopOnContainer pods.
+
+The mesh monitors all HTTP connections (including gRPC), but do not monitor RabbitMq or any other connection (SQL, Mongo, ...)
+
+For more information read the [Resiliency and Service Meh](./Resiliency-and-mesh.md) page.
+
 
 ## Customizing the deployment
 

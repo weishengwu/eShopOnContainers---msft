@@ -28,6 +28,7 @@
 - Logging and Monitoring
   - [Serilog & Seq](Serilog-and-Seq)
   - [Using HealthChecks](Using-HealthChecks)
+  - [Resiliency and Service Mesh](Resiliency-and-mesh)
   - [ELK Stack](ELK-Stack)
   - [Application Insights](Application-Insights)
 - Tests
