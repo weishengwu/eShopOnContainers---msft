@@ -20,6 +20,8 @@ Most communications between microservices are decoupled using the EventBus and t
 
 For those explicit communications gRPC is used (instead of HTTP/JSON). gRPC is a RPC-based protocol that have great performance and low bandwidth usage, making it the best candidate for internal microservices communication.
 
+More information about gRPC and eShopOnContainers can be found [here](./gRPC.md)
+
 ## API Gateways
 
 The architecture also includes an implementation of the API Gateway pattern and Backend-For-Front-End (BFF), to publish simplified APIs and include additional security measures for hiding/securing the internal microservices from the client apps or outside consumers. 
