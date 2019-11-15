@@ -14,15 +14,36 @@ eShopOnContainers includes a simplified EventBus abstraction to handle integrati
 
 For a production-grade solutions you should use a more robust implementation based on a robust product such as [NServiceBus](https://github.com/Particular/NServiceBus). You can even see a (somewhat outdated) implementation of eShopOnContainers with NServiceBus here: https://github.com/Particular/eShopOnContainers.
 
+## gRPC
+
+Most communications between microservices are decoupled using the EventBus and the "pub/sub" pattern. But in some cases, we have explicit communications between microservices. Currently those communications are limited from the custom aggregators to internal microservices.
+
+For those explicit communications gRPC is used (instead of HTTP/JSON). gRPC is a RPC-based protocol that have great performance and low bandwidth usage, making it the best candidate for internal microservices communication.
+
 ## API Gateways
 
 The architecture also includes an implementation of the API Gateway pattern and Backend-For-Front-End (BFF), to publish simplified APIs and include additional security measures for hiding/securing the internal microservices from the client apps or outside consumers. 
 
-These sample API Gateways are based on [Ocelot](https://github.com/ThreeMammals/Ocelot), an OSS lightweight API Gateway solution. The API Gateways are deployed as autonomous microservices/containers, so you can test them in a simple development environment by just using Docker Desktop or even with orchestrators like Kubernetes in AKS or Service Fabric.
+These API Gateways are implemented using [Envoy](https://www.envoyproxy.io/), an OSS high-performant, production ready, proxy and API Gateway. Currently these API Gateways only perform request forwarding to internal microservices and custom aggregators, giving the clients then ilusion of a single base URL. In the future we plan to add specific features like:
 
-For a production-ready architecture you can either keep using Ocelot, which is simple and easy to use, and it's currently used in production by large companies. If you need additional functionality and a much richer set of features suitable for commercial APIs, you can also substitute those API Gateways and use Azure API Management or any other commercial API Gateway, as shown in the following diagram.
+* Automatic translation from/to grpc to/from HTTP/REST.
+* Authentication and Authorization management
+* Cache support
+
+If you need additional functionality and a much richer set of features suitable for commercial APIs, you can also add a full API Gateway product like Azure API Management on top of these API Gateways.
 
 ![](images/Architecture/azure-api-management-gateway.png)
+
+Alongside the API Gateways a set of "custom aggregators" are provided. Those aggregators provide a simple API to the clients for some operations.
+
+Currently two aggregators exists:
+
+1. Mobile Shopping: Aggregator for shopping operations called by Xamarin App
+2. Web Shopping: Aggregator for shopping operations called by Web clients (MVC & SPA)
+
+For more information about the relationship between API Gateways, aggregators, clients and microservices check the 
+
+>**Note** Previous versions of eShopOnContainers were using [Ocelot](https://github.com/ThreeMammals/Ocelot) instead of Envoy. Ocelot is a great netcore OSS open project, to create a API Gateway. Ocelot support a wide set of features, and it is a serious candidate to be used in every netcore based project. However the lack of support for gRPC was the main reason to change Ocelot for Envoy in eShop.
 
 ## Internal architectural patterns
 

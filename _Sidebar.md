@@ -19,6 +19,7 @@
 ## Explore
 
 - [Architecture](Architecture)
+  - [BFF implementation](BFFs)
 - [Application](Explore-the-application)
 - [Code](Explore-the-code)
   - [Simplified CQRS & DDD](Simplified-CQRS-and-DDD)
