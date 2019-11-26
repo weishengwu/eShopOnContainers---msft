@@ -104,3 +104,5 @@ These are candidate features to consider for the [roadmap](Roadmap).
 - Consider using Bash instead of PowerShell scripts, check [issue #228](https://github.com/dotnet-architecture/eShopOnContainers/issues/228) for details.
 
 - Fix naming inconsistency in EventBus projects and namespaces, they should be EventBus.RabbitMQ" and "EventBus.ServiceBus", check [issue #943](https://github.com/dotnet-architecture/eShopOnContainers/issues/943)
+
+- Keep in mind incompatibilities between RabbitMQ and AMQP 1.0 when considering migration. See [issue docs # 5672](https://github.com/dotnet/docs/issues/5672).
