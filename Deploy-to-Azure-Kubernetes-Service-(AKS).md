@@ -5,6 +5,8 @@
 - [Additional pre-requisites](#additional-pre-requisites)
   - [Install Helm](#install-helm)
 - [Install eShopOnContainers using Helm](#install-eshoponcontainers-using-helm)
+  - [Allow large headers (needed for login to work)](#allow-large-headers-needed-for-login-to-work)
+- [Using Linkerd as Service Mesh (Advanced Scenario)](#using-linkerd-as-service-mesh-advanced-scenario)
 - [Customizing the deployment](#customizing-the-deployment)
   - [Using your own images](#using-your-own-images)
   - [Using specific DNS](#using-specific-dns)
@@ -26,21 +28,21 @@ The following steps are using the Azure portal to create the AKS cluster:
 
 - Start the process by providing the general data, like in the following screenshot:
 
-![image](https://user-images.githubusercontent.com/1712635/45787360-c59ecd80-bc29-11e8-9565-c989ad6ad57b.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/create-kubernetes-cluster-basics.png)
 
 - Then, very important, in the next step, enable RBAC:
 
-![image](https://user-images.githubusercontent.com/1712635/45780917-8bc2cc80-bc13-11e8-87ac-2942b3c7496d.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/create-kubernetes-cluster-authentication.png)
 
 - **Enable http routing**. Make sure to check the checkbox "Http application routing" on "Networking" settings. For more info, read the [documentation](https://docs.microsoft.com/en-us/azure/aks/http-application-routing)
 
     You can use **basic network** settings since for a test you don't need integration into any existing VNET.
 
-![image](https://user-images.githubusercontent.com/1712635/45780991-b745b700-bc13-11e8-926b-afac57229d0a.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/create-kubernetes-cluster-networking.png)
 
 - You can also enable monitoring:
 
-![image](https://user-images.githubusercontent.com/1712635/45781148-1277a980-bc14-11e8-8614-f7a239731bec.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/create-kubernetes-cluster-monitoring.png)
 
 - Finally, create the cluster. It'll take a few minutes for it to be ready.
 
@@ -49,19 +51,19 @@ The following steps are using the Azure portal to create the AKS cluster:
 In order NOT to get errors in the Kubernetes dashboard, you'll need to set the following service-account steps.
 
 Here you can see the errors you might see:
-![image](https://user-images.githubusercontent.com/1712635/45784384-5622e100-bc1d-11e8-8d33-e22fd955150a.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/rbac-kubernetes-dashboard.png)
 
 - Because the cluster is using RBAC, you need to grant needed rights to the Service Account `kubernetes-dashboard` with this kubectl command:
 
 `kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard`
 
-![image](https://user-images.githubusercontent.com/1712635/45785562-a69c3d80-bc21-11e8-99fa-60298fc03fbe.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/command-to-kubernetes-dashboard.png)
 
 Now, just run the Azure CLI command to browse the Kubernetes Dashboard:
 
 `az aks browse --resource-group pro-eshop-aks-helm-linux-resgrp --name pro-eshop-aks-helm-linux`
 
-![image](https://user-images.githubusercontent.com/1712635/45786406-2d9ee500-bc25-11e8-83e9-bdfc302e80f1.png)
+![image](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/kubernetes-dashboard.png)
 
 ## Additional pre-requisites
 
@@ -73,25 +75,25 @@ You need to have helm installed on your machine, and Tiller must be installed on
 
 **Note**: If your ASK cluster is not RBAC-enabled (default option in portal) you may receive following error when running a helm command:
 
-```
+```console
 Error: Get http://localhost:8080/api/v1/namespaces/kube-system/configmaps?labelSelector=OWNER%!D(MISSING)TILLER: dial tcp [::1]:8080: connect: connection refused
 ```
 
 If so, type:
 
-```
+```powershell
 kubectl --namespace=kube-system edit deployment/tiller-deploy
 ```
 
 Your default text editor will popup with the YAML definition of the tiller deploy. Search for:
 
-```
+```yaml
 automountServiceAccountToken: false
 ```
 
 And change it to:
 
-```
+```yaml
 automountServiceAccountToken: true
 ```
 
@@ -99,51 +101,55 @@ Save the file and close the editor. This should reapply the deployment in the cl
 
 ## Install eShopOnContainers using Helm
 
-All steps need to be performed on `/k8s/helm` folder. The easiest way is to use the `deploy-all.ps1` script from a Powershell window:
+All steps need to be performed on `/k8s/helm` folder. The easiest way is to use the `deploy-all.ps1` script from a PowerShell window:
 
-```
-.\deploy-all.ps1 -externalDns aks -aksName eshoptest -aksRg eshoptest -imageTag dev
+```powershell
+.\deploy-all.ps1 -externalDns aks -aksName eshoptest -aksRg eshoptest -imageTag dev -useMesh $false
 ```
 
 This will install all the [eShopOnContainers public images](https://hub.docker.com/u/eshop/) with tag `dev` on the AKS named `eshoptest` in the resource group `eshoptest`. By default all infrastructure (sql, mongo, rabbit and redis) is installed also in the cluster.
 
 Once the script is run, you should see following output when using `kubectl get deployment`:
 
-```
-NAME                             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-eshop-apigwmm                    1         1         1            1           4d
-eshop-apigwms                    1         1         1            1           4d
-eshop-apigwwm                    1         1         1            1           4d
-eshop-apigwws                    1         1         1            1           4d
-eshop-basket-api                 1         1         1            1           4d
-eshop-basket-data                1         1         1            1           4d
-eshop-catalog-api                1         1         1            1           4d
-eshop-identity-api               1         1         1            1           4d
-eshop-keystore-data              1         1         1            1           4d
-eshop-locations-api              1         1         1            1           4d
-eshop-marketing-api              1         1         1            1           4d
-eshop-mobileshoppingagg          1         1         1            1           4d
-eshop-nosql-data                 1         1         1            1           4d
-eshop-ordering-api               1         1         1            1           4d
-eshop-ordering-backgroundtasks   1         1         1            1           4d
-eshop-ordering-signalrhub        1         1         1            1           4d
-eshop-payment-api                1         1         1            1           4d
-eshop-rabbitmq                   1         1         1            1           4d
-eshop-sql-data                   1         1         1            1           4d
-eshop-webmvc                     1         1         1            1           4d
-eshop-webshoppingagg             1         1         1            1           4d
-eshop-webspa                     1         1         1            1           4d
-eshop-webstatus                  1         1         1            1           4d
+```console
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+eshop-apigwmm                    1/1     1            1           29d
+eshop-apigwms                    1/1     1            1           29d
+eshop-apigwwm                    1/1     1            1           29d
+eshop-apigwws                    1/1     1            1           29d
+eshop-basket-api                 1/1     1            1           30d
+eshop-basket-data                1/1     1            1           30d
+eshop-catalog-api                1/1     1            1           30d
+eshop-identity-api               1/1     1            1           30d
+eshop-keystore-data              1/1     1            1           30d
+eshop-locations-api              1/1     1            1           30d
+eshop-marketing-api              1/1     1            1           30d
+eshop-mobileshoppingagg          1/1     1            1           30d
+eshop-nosql-data                 1/1     1            1           30d
+eshop-ordering-api               1/1     1            1           30d
+eshop-ordering-backgroundtasks   1/1     1            1           30d
+eshop-ordering-signalrhub        1/1     1            1           30d
+eshop-payment-api                1/1     1            1           30d
+eshop-rabbitmq                   1/1     1            1           30d
+eshop-sql-data                   1/1     1            1           30d
+eshop-webhooks-api               1/1     1            1           30d
+eshop-webhooks-web               1/1     1            1           30d
+eshop-webmvc                     1/1     1            1           30d
+eshop-webshoppingagg             1/1     1            1           30d
+eshop-webspa                     1/1     1            1           30d
+eshop-webstatus                  1/1     1            1           30d
 ```
 
 Every public service is exposed through its own ingress resource, as you can see if using `kubectl get ing`:
 
-```
+```console
 eshop-apigwmm        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-apigwms        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-apigwwm        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-apigwws        eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-identity-api   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
+eshop-webhooks-api   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
+eshop-webhooks-web   eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webmvc         eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webspa         eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
 eshop-webstatus      eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80        4d
@@ -151,21 +157,43 @@ eshop-webstatus      eshop.<your-guid>.<region>.aksapp.io   <public-ip>   80    
 
 Ingresses are automatically configured to use the public DNS of the AKS provided by the "https routing" addon.
 
+### Allow large headers (needed for login to work)
+
 One step more is needed: we need to configure the nginx ingress controller that AKS has to allow larger headers. This is because the headers sent by identity server exceed the size configured by default. Fortunately this is very easy to do. Just type (from the `/k8s/helm` folder):
 
-```
-kubectl apply -f aks-httpaddon-cfg.yaml 
+```powershell
+kubectl apply -f aks-httpaddon-cfg.yaml
 ```
 
 Then you can restart the pod that runs the nginx controller. Its name is `addon-http-application-routing-nginx-ingress-controller-<something>` and runs on `kube-system` namespace. So run a `kubectl get pods -n kube-system` find it and delete with `kubectl delete pod <pod-name> -n kube-system`.
 
 **Note:** If running in a bash shell you can type:
 
-```
+```powershell
 kubectl delete pod $(kubectl get pod -l app=addon-http-application-routing-nginx-ingress -n kube-system -o jsonpath="{.items[0].metadata.name}) -n kube-system
 ```
 
-You can view the MVC client at http://[dns]/webmvc and the SPA at the http://[dns]/
+You can view the MVC client at `http://[dns]/webmvc` and the SPA at the `http://[dns]/`
+
+## Using Linkerd as Service Mesh (Advanced Scenario)
+
+There is the possibility to install eShopOnContainers ready to run with the [Linkerd](https://linkerd.io/) [Service Mesh](./Resiliency-and-Service-Mesh.md). To use Linkerd, you must complete the following steps:
+
+1. Install Linkerd on your cluster. The process is described in the [Linkerd installation documentation](https://linkerd.io/2/getting-started/#step-0-setup). Steps 0 trough 3 need to be done.
+2. Then install eShopOnContainers as per the procedure described above, but using this command:
+    ```powershell
+    .\deploy-all.ps1 -externalDns aks -aksName eshoptest -aksRg eshoptest -imageTag dev -useMesh $true
+    ```
+
+Once eShop is installed you can check that all non-infrastructure pods have two containers:
+
+![Pods with two containers](./images/Deploy-to-Azure-Kubernetes-Service-(AKS)/pods.png)
+
+Now you can use the command `linkerd dashboard` to show the mesh and monitor all the connections between eShopOnContainer pods.
+
+The mesh monitors all HTTP connections (including gRPC), but don't monitor RabbitMQ or any other connection (SQL, Mongo, ...)
+
+For more information read the [Resiliency and Service Mesh](./Resiliency-and-Service-Mesh.md) page in the wiki.
 
 ## Customizing the deployment
 
