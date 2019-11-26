@@ -61,9 +61,8 @@ This configuration is necessary so you don't get the following error when trying
 
 ![](images/Mac-setup/signin-error-mac.png)
 
-
-That is because the by default IP used to redirect to the Identity service/app used by the application (based on IdentityServer4) is the IP 10.0.75.1.
-That IP is always set up when installing Docker for Windows in a Windows 10 machine. It is also used by Windows Server 2016 when using Windows Containers. 
+That is because the by default IP used to redirect to the Identity service/app used by the application (based on IdentityServer4) is the IP `10.0.75.1`.
+That IP is always set up when installing Docker for Windows in a Windows 10 machine. It is also used by Windows Server 2016 when using Windows Containers.
 
 eShopOnContainers uses that IP as the "by default choice" so anyone testing the app don't need to configure further settings. However, that IP is not used by "Docker for Mac", so you need to change the config.
 
@@ -71,47 +70,84 @@ If you were to access the Docker containers from remote machines or mobile phone
 
 ### Setting up the docker-compose environment variables and settings
 
-As explained [here by Docker](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds), 
-the Mac has a changing IP address (or none if you have no network access). From June 2017 onwards our recommendation is to connect to the special Mac-only DNS name docker.for.mac.localhost which will resolve to the internal IP address used by the host.
+As explained in the [networking page of Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds), 
+the Mac has a changing IP address (or none if you have no network access). So the recommendation now is to connect to the special Mac-only DNS name `docker.for.mac.localhost` which will resolve to the internal IP address used by the host.
 
 In the `docker-compose.override.yml` file, replace the IdentityUrl environment variable (or any place where the IP 10.0.75.1 is used) with:
 
- ```bash
-    IdentityUrl=http://docker.for.mac.localhost:5105
+ ```yaml
+IdentityUrl=http://docker.for.mac.localhost:5105
  ```
 
 You could also set your real IP at the Mac's network adapter. But that would be a worse solution as it'll depend on the network you are connecting your Mac development machine.. 
 
 Therefore, the WebMVC service definition at the `docker-compose.override.yml` should finally be configured as shown bellow:
 
- ```bash
-  webmvc:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:80
-      - CatalogUrl=http://catalog.api
-      - OrderingUrl=http://ordering.api
-      - BasketUrl=http://basket.api
-      - LocationsUrl=http://locations.api
-      - IdentityUrl=http://docker.for.mac.localhost:5105
-      - MarketingUrl=http://marketing.api
-      - CatalogUrlHC=http://catalog.api/hc
-      - OrderingUrlHC=http://ordering.api/hc
-      - IdentityUrlHC=http://identity.api/hc
-      - BasketUrlHC=http://basket.api/hc
-      - MarketingUrlHC=http://marketing.api/hc
-      - PaymentUrlHC=http://payment.api/hc
-      - UseCustomizationData=True
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-      - OrchestratorType=${ORCHESTRATOR_TYPE}
-      - UseLoadTest=${USE_LOADTEST:-False}
-    ports:
-      - "5100:80"
- ```
+```yaml
+webmvc:
+  environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:80
+    - CatalogUrl=http://catalog.api
+    - OrderingUrl=http://ordering.api
+    - BasketUrl=http://basket.api
+    - LocationsUrl=http://locations.api
+    - IdentityUrl=http://docker.for.mac.localhost:5105
+    - MarketingUrl=http://marketing.api
+    - CatalogUrlHC=http://catalog.api/hc
+    - OrderingUrlHC=http://ordering.api/hc
+    - IdentityUrlHC=http://identity.api/hc
+    - BasketUrlHC=http://basket.api/hc
+    - MarketingUrlHC=http://marketing.api/hc
+    - PaymentUrlHC=http://payment.api/hc
+    - UseCustomizationData=True
+    - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+    - OrchestratorType=${ORCHESTRATOR_TYPE}
+    - UseLoadTest=${USE_LOADTEST:-False}
+  ports:
+    - "5100:80"
+```
+
+You also have to update the `.env` file as follows:
+
+```yaml
+ESHOP_EXTERNAL_DNS_NAME_OR_IP=docker.for.mac.localhost
+```
+
+> **IMPORTANT**
+>
+> If you've already encountered the error shown above, when trying to sign in, then **you have to delete the `sqldata` microservice**, because the **IdentityServer** database would've already been seeded, allowing only connections from `localhost`.
+
+When starting up for the first time, the **IdentityServer** database is seeded with the allowed clients, taking the information from the environment variables below, in `docker-compose.override.yml`.
+
+```yaml
+identity-api:
+  environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:80
+    - SpaClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5104
+    - XamarinCallback=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5105/xamarincallback
+    - ConnectionString=${ESHOP_AZURE_IDENTITY_DB:-Server=sqldata;Database=Microsoft.eShopOnContainers.Service.IdentityDb;User Id=sa;Password=Pass@word}
+    - MvcClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5100
+    - LocationApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5109
+    - MarketingApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5110
+    - BasketApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5103
+    - OrderingApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5102
+    - MobileShoppingAggClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5120
+    - WebShoppingAggClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5121
+    - WebhooksApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5113
+    - WebhooksWebClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5114
+    - UseCustomizationData=True
+    - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+    - OrchestratorType=${ORCHESTRATOR_TYPE}
+  ports:
+    - "5105:80"
+
+```
 
 If you re-deploy with `docker-compose up`, now the login page should work properly, as in the screenshot below.
 
-NOTE: For some reason, if using SAFARI browser, it cannot reach docker.for.mac.localhost but using Chrome in Mac, it works with no issues. Since the usage of docker.for.mac.localhost is just for development purposes, just use Chrome for tests.
+NOTE: For some reason, if using SAFARI browser, it can't reach `docker.for.mac.localhost` but using Chrome in Mac, it works with no issues. Since the usage of `docker.for.mac.localhost` is just for development purposes, just use Chrome for tests.
 
 ![](images/Mac-setup/login-mac.png)
 
@@ -151,13 +187,6 @@ While building the docker images should take between 15 and 30 minutes to comple
 ![](images/Mac-setup/building-eshoponcontainers.png)
 
 The first time you run this command it'll take some more additional time as it needs to pull/download the dotnet/core/aspnet and SDK images, so it'll take its time.
-
-Later on you can try adding a parameter to speed up the image building process:
-
-```console
-cd eShopOnContainers
-docker-compose build --build-arg RESTORECMD=scripts/restore-packages
-```
 
 When the `docker-compose build` command finishes, you can check out with Docker CLI the images created with the following Docker command:
 
@@ -227,7 +256,7 @@ For running just the Docker containers and web apps, you'd just need the .NET Co
 
 But if you want to try the eShopOnContainers mobile app, that requires Xamarin and therefore, the iOS and Android platforms, too. Those mobile platforms are optional for this Wiki walkthrough, though.
 
-**Make sure you have the latest SDK 2.2 version from <https://dotnet.microsoft.com/download/dotnet-core/2.2> installed.**
+**Make sure you have the latest SDK 3.0 version from <https://dotnet.microsoft.com/download/dotnet-core/3.0> installed.**
 
 ### Open the solution with Visual Studio for Mac
 
@@ -235,7 +264,7 @@ Run Visual Studio for Mac and open the solution `eShopOnContainers-ServicesAndWe
 
 If you just want to run the containers/microservices and web apps, do NOT open the other solutions, like `eShopOnContainers.sln` as those solutions will also open the Xamarin projects and that might slow you down when testing due to additional dependencies in VS.
 
-After opening the `eShopOnContainers-ServicesAndWebApps.sln` solution for the first time, it is recommended to wait for a few minutes as VS will be restoring many NuGet packages and the solution won't be able to compile or run until it gets all the nuGet packages dependencies, in the first place (this time is only needed the first time you open the solution. Next times it is a lot faster).
+After opening the `eShopOnContainers-ServicesAndWebApps.sln` solution for the first time, it is recommended to wait for a few minutes as VS will be restoring many NuGet packages and the solution won't be able to compile or run until it gets all the nuGet packages dependencies, in the first place (this time is only needed the first time you open the solution. Next times it's a lot faster).
 
 This is VS for Mac with the `eShopOnContainers-ServicesAndWebApps.sln` solution. 
 

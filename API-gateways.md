@@ -1,15 +1,18 @@
-# API Gateways
+eShopOnContainer uses four API Gateways that implement the [Backend for Frontends (BFF) pattern](https://samnewman.io/patterns/architectural/bff/).
 
-eShopOnContainer use 4 API Gateways that implement the BFF pattern. Overall architecture is:
+Overall architecture is shown in the next diagram:
 
-![Overall architecture of eShop](./images/Architecture/eshop-arq.png)
+![Overall architecture of eShop](./images/API-gateways/eshop-overall-architecture.png)
 
-The image above is the architecture when running eShopOnContainers on Kubernetes with Service Mesh enabled. If Service Mesh is disabled all the "Linkerd" containers do not exist and if running outside Kubernetes the "Ingress controller" do not exists and you access directly to API Gateways.
+The image above is the architecture when running eShopOnContainers on Kubernetes with Service Mesh enabled. If Service Mesh is disabled all of the "Linkerd" containers don't exist and if running outside Kubernetes the "Ingress controller" doesn't exists and you access directly the API Gateways.
 
-In this architecture the 4 blue boxes in the column labelled as "eShop Ingress" are the four BFFs.
+In this architecture the four blue boxes in the column labelled as "eShop Ingress" are the four BFFs.
 
-Currently they are implemented using [Envoy](https://www.envoyproxy.io/). Each BFF provides a unique entrypoint for its clients and then forwards the call to the specific microservice or the custom aggregator.
+Currently they are implemented using [Envoy](https://www.envoyproxy.io/). Each BFF provides a unique endpoint for its clients and then forwards the call to the specific microservice or the custom aggregator.
 
-The communication between BFF and the microservices is always using HTTP/REST. This could change in the future by using gRPC from the BFF to the microservices, while mantaining a HTTP/REST façade from the BFFs to the clients.
+It's important to highlight that:
 
-**Note**: The communication between the aggregators and the microservices is using gRPC, but between the BFFs and the aggregators is still HTTP/REST.
+- The communication between BFF and the microservices plus aggregator is HTTP/REST.
+- The communication between the aggregators and the microservices is gRPC.
+
+This could change in the future by using gRPC from the BFF to the microservices plus aggregators, while maintaining an HTTP/REST façade from the BFFs to the clients.

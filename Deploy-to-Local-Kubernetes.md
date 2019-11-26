@@ -64,11 +64,15 @@ Then install Helm from the package manager:
 choco install kubernetes-helm
 ```
 
+```powershell
+Get-FileHash -Path .\helm-v2.16.1-windows-amd64.zip -Algorithm sha256
+```
+
 ### Install Helm server (Tiller)
 
 To install Tiller:
 
-- Go to the **k8s** folder in your local copy of the eShopOnContainers repo
+- Go to the **deploy/k8s** folder in your local copy of the eShopOnContainers repo
 
 - Create the Tiller service account by running:
 
@@ -97,7 +101,7 @@ To install the NGINX Ingress controller, run the following commands:
 
 ## Install eShopOnContainers using Helm
 
-- Go to the **k8s\helm** folder in your local copy of the eShopOnContainers repo.
+- Go to the **deploy/k8s/helm** folder in your local copy of the eShopOnContainers repo.
 
 At this point you have two options for installing eShopOnContainers:
 
@@ -106,13 +110,13 @@ At this point you have two options for installing eShopOnContainers:
 
 ### Deploy your local images
 
-The first task to deploy your local images is to create them, which you can achieve by just running this command from the CLI on the root folder of your local repo:
+The first task to deploy your local images is to create them, which you can achieve by just running the usual command from the CLI on the src folder of your local repo:
 
 ```powershell
 docker-compose build
 ```
 
-Then, just run this script from the `k8s\helm` folder, to deploy your local images:
+Then, just run this script from the `deploy\k8s\helm` folder, to deploy your local images:
 
 ```powershell
 .\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -imagePullPolicy Never
@@ -127,7 +131,7 @@ The parameter `useLocalk8s` to `$true`, forces the script to use `localhost` as 
 If you prefer to deploy the public images (built from the **dev** branch on each commit), just run this script:
 
 ```powershell
-.\deploy-all.ps1 -imageTag dev -useLocalk8s $true
+.\deploy-all.ps1 -imageTag dev
 ```
 
 ### Check deployment status
@@ -262,7 +266,13 @@ The reason is because MVC needs to access the Identity Server from both outside 
 
 Solving this requires some manual steps:
 
-From the `/k8s` folder run `kubectl apply -f .\nginx-ingress\local-dockerk8s\mvc-fix.yaml`. This will create two additional ingresses (for MVC and Identity API) to any valid DNS that points to your machine. This enable the use of 10.75.0.1 IP.
+From the `deploy/k8s` folder run the following command:
+
+```yaml
+kubectl apply -f .\nginx-ingress\local-dockerk8s\mvc-fix.yaml
+```
+
+This will create two additional ingresses (for MVC and Identity API) to any valid DNS that points to your machine. This enable the use of 10.75.0.1 IP.
 
 Update the `configmap` of Web MVC by typing (**line breaks are mandatory**):
 

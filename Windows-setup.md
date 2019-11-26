@@ -99,7 +99,7 @@ git clone https://github.com/dotnet-architecture/eShopOnContainers.git
 
 ```console
 cd eShopOnContainers
-docker-compose build --build-arg RESTORECMD=scripts/restore-packages
+docker-compose build
 ```
 
 While building the docker images, you should see something like the following image, and the process should take between 10 and 30 minutes to complete, depending on the system speed.
@@ -140,7 +140,7 @@ If you want to explore the code and debug the application to see it working, you
 
 You have to install at least VS 2017 (15.9) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
 
-**Make sure you have the latest SDK 2.2 version from <https://dotnet.microsoft.com/download/dotnet-core/2.2> installed.**
+**Make sure you have the latest SDK 3.0 version from <https://dotnet.microsoft.com/download/dotnet-core/3.0> installed.**
 
 Upon running the installer, select the following workloads depending on the apps you intend to test or work with:
 

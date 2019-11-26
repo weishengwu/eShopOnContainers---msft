@@ -19,7 +19,7 @@
 ## Explore
 
 - [Architecture](Architecture)
-  - [BFF implementation](BFFs)
+  - [BFF implementation](BFF-implementation)
 - [Application](Explore-the-application)
 - [Code](Explore-the-code)
   - [Simplified CQRS & DDD](Simplified-CQRS-and-DDD)
@@ -30,7 +30,7 @@
 - Logging and Monitoring
   - [Serilog & Seq](Serilog-and-Seq)
   - [Using HealthChecks](Using-HealthChecks)
-  - [Resiliency and Service Mesh](Resiliency-and-mesh)
+  - [Resiliency and Service Mesh](Resiliency-and-Service-Mesh)
   - [ELK Stack](ELK-Stack)
   - [Application Insights](Application-Insights)
 - Tests
