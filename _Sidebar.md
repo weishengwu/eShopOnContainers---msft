@@ -1,6 +1,7 @@
 ## eShopOnContainers
 
 - [Home](Home)
+- [Release notes](Release-notes)
 - [Roadmap](Roadmap)
 - [e-books](eBooks)
 - [Follow updates](https://github.com/dotnet-architecture/News/issues?q=is%3Aopen+is%3Aissue)
@@ -27,6 +28,7 @@
   - [API gateways](API-gateways)
   - [Webhooks](Webhooks)
   - [Azure Key Vault](Azure-Key-Vault)
+  - [Asynchronous messaging](Asynchronous-messaging)
 - Logging and Monitoring
   - [Serilog & Seq](Serilog-and-Seq)
   - [Using HealthChecks](Using-HealthChecks)
