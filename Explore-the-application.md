@@ -50,12 +50,17 @@ Then, after providing the size (i.e. 10) and the current page (i.e. 1) for the d
 
 ## Xamarin.Forms mobile apps for Android, iOS and Windows
 
+Xamarin Mobile App supports the most common mobile OS platforms (iOS, Android and Windows/UWP). In this case, the consumption of the microservices is done from C# but running on the client devices, so out of the Docker Host internal network (Like from your network or even the Internet).
+
 You can deploy the Xamarin app to real iOS, Android or Windows devices.
+
 You can also test it on an Android Emulator based on Hyper-V like the Visual Studio Android Emulator (Do NOT install the Google's Android emulator or it will break Docker and Hyper-V, as mentioned in the [Windows setup page](Windows-setup)).
+
+![](images/Explore-the-application/xamarin-mobile-app.png)
 
 By default, the Xamarin app shows fake data from mock-services. In order to really access the microservices/containers in Docker from the mobile app, you need to:
 
-- Disable mock-services in the Xamarin app by setting the <b>UseMockServices = false</b> in the App.xaml.cs and specify the host IP in  BaseEndpoint = "http://10.106.144.28" at the GlobalSettings.cs. Both files in the Xamarin.Forms project (PCL).
+- Disable mock-services in the Xamarin app by setting the **UseMockServices = false** in the `App.xaml.cs` and specify the host IP in `BaseEndpoint = http://<the-actual-server-ip-address>` at the `GlobalSettings.cs`. Both files in the Xamarin.Forms project (PCL).
 - Another alternative is to change that IP through the app UI, by modifying the IP address in the Settings page of the App as shown in the screenshot below. 
 - In addition, you need to make sure that the used TCP ports of the services are open in the local firewall. 
 

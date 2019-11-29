@@ -41,6 +41,7 @@ The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContain
       - Sidecar implementation with Envoy/Linkerd
       - Improved API Gateway and resilience
       - gRPC for microservice-to-microservice communications
+      - Dev Spaces support (only for containers that don't use gRPC)
 
 #### New folder structure
 
