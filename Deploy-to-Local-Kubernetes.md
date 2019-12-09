@@ -4,6 +4,7 @@
 - [Install/upgrade to the latest version of Docker for Desktop](#installupgrade-to-the-latest-version-of-docker-for-desktop)
 - [Enable Kubernetes](#enable-kubernetes)
   - [Disable / stop Kubernetes](#disable--stop-kubernetes)
+  - [Reset Kubernetes](#reset-kubernetes)
 - [Install Helm](#install-helm)
   - [Install Helm client](#install-helm-client)
   - [Install Helm server (Tiller)](#install-helm-server-tiller)
@@ -42,11 +43,23 @@ Your Docker Desktop Kubernetes installation already contains [kubectl](https://k
 
 ### Disable / stop Kubernetes
 
-If you ever want to remove Kubernetes from Docker Desktop, just disable Kubernetes in the **Settings > Kubernetes** page above and click "Apply".
+If you ever want to stop Kubernetes from Docker Desktop, just disable Kubernetes in the **Settings > Kubernetes** page above and click "Apply".
 
-You can stop/start the Kubernetes cluster from the Docker context menu, on the System tray:
+You can also stop/start the Kubernetes cluster from the Docker context menu, on the System tray:
 
 ![](images/Deploy-to-Local-Kubernetes/start-stop-kubernetes-cluster.png)
+
+### Reset Kubernetes
+
+To reset the Kubernetes cluster to the initial (new) state, you have to:
+
+1. Click the "**Reset**" tab on the Kubernetes settings dialog
+2. Click "**Reset Kubernetes Cluster...**"
+3. Click the "**Reset**" button on the "**Reset Kubernetes cluster**" confirmation dialog.
+
+As shown in the next image:
+
+![](images/Deploy-to-Local-Kubernetes/reset-kubernetes-cluster.png)
 
 ## Install Helm
 
@@ -56,13 +69,13 @@ You can stop/start the Kubernetes cluster from the Docker context menu, on the S
 
 You can see the installation details in the [documentation page](https://helm.sh/docs/using_helm/#installing-helm).
 
+It's probably best to install from the GitHub releases (2.16.1):
+
+- <https://github.com/helm/helm/releases/tag/v2.16.1>
+
 The easiest way is probably to use a package manager, like [Chocolatey for Windows](https://chocolatey.org/).
 
-Then install Helm from the package manager:
-
-```powershell
-choco install kubernetes-helm
-```
+You can use the following command to check the integrity of the download, comparing with the checksum in the release page:
 
 ```powershell
 Get-FileHash -Path .\helm-v2.16.1-windows-amd64.zip -Algorithm sha256
@@ -94,10 +107,14 @@ It's like a reverse proxy, that can handle load balancing, TLS, virtual hosting 
 
 [NGINX](https://github.com/kubernetes/ingress-nginx/blob/master/README.md) is the Ingress controller used for eShopOnContainers.
 
-To install the NGINX Ingress controller, run the following commands:
+To install the NGINX Ingress controller, run the following commands from the **deploy/k8s/nginx-ingress** folder:
 
-1. `.\deploy-ingress.ps1`
-2. `.\deploy-ingress-dockerlocal.ps1`
+
+```powershell
+kubectl apply -f mandatory.yaml
+kubectl apply -f local-cm.yaml
+kubectl apply -f local-svc.yaml
+```
 
 ## Install eShopOnContainers using Helm
 
@@ -266,7 +283,7 @@ The reason is because MVC needs to access the Identity Server from both outside 
 
 Solving this requires some manual steps:
 
-From the `deploy/k8s` folder run the following command:
+From the **deploy/k8s** folder run the following command:
 
 ```yaml
 kubectl apply -f .\nginx-ingress\local-dockerk8s\mvc-fix.yaml
@@ -296,7 +313,7 @@ data:
 Restart the SQL Server pod to ensure the database is recreated again:
 
 ```powershell
-kubectl delete pod --selector app=sql-data
+kubectl delete pod --selector="app=sql-data"
 ```
 
 Wait until SQL Server pod is ready to accept connections and then restart all other pods:
@@ -320,28 +337,22 @@ To enable the dashboard:
 2. Deploy the dashboard with this command:
 
     ```powershell
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta6/aio/deploy/recommended.yaml
     ```
 
-3. Create a sample admin user by running the script:
+3. Create a sample admin user and role binding by running the script:
 
     ```powershell
-    .\dashboard-adminuser.yaml
+    kubectl apply -f dashboard-adminuser.yaml
     ```
 
-4. Bind admin-user to admin role by running the script:
-
-    ```powershell
-    .\dashboard-bind-adminrole.yml
-    ```
-
-5. Execute the dashboard by running this command:
+4. Execute the dashboard by running this command:
 
     ```powershell
     kubectl proxy
     ```
 
-6. Get the bearer token to login to the dashboard by running this command:
+5. Get the bearer token to login to the dashboard by running this command:
 
     ```powershell
     kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
@@ -365,25 +376,21 @@ To enable the dashboard:
     token:      eyJhbGciOiJSUzI1NiIsImtpZCI...(800+ characters)...FkM_tAclj9o8T7ALdPZciaQ
     ````
 
-7. Copy the token and navigate to: http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+6. Copy the token and navigate to: <http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/>
 
-8. Select "Token" and paste the copied the token in the "Enter token" filed: \
+7. Select "Token" and paste the copied the token in the "Enter token" filed: \
    \
    ![](images/Deploy-to-Local-Kubernetes/kubernetes-dashboard-login.png)
 
-You should see something like this:
+    You should see something like this:
 
-![](images/Deploy-to-Local-Kubernetes/kubernetes-dashboard-web-ui.png)
+    ![](images/Deploy-to-Local-Kubernetes/kubernetes-dashboard-web-ui.png)
 
-From there you can explore all components of your cluster.
+From there you can explore all the components of your cluster.
 
 ### IMPORTANT
 
-You have to manually start the dashboard every time you restart the cluster, with the command:
-
-```powershell
-kubectl proxy
-```
+**You have to manually start the dashboard and get a new login token every time you restart the cluster**.
 
 ## Explore eShopOnContainers
 
