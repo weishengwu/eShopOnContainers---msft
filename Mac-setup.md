@@ -70,7 +70,7 @@ If you were to access the Docker containers from remote machines or mobile phone
 
 ### Setting up the docker-compose environment variables and settings
 
-As explained in the [networking page of Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds), 
+As explained in the [networking page of Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds),
 the Mac has a changing IP address (or none if you have no network access). So the recommendation now is to connect to the special Mac-only DNS name `docker.for.mac.localhost` which will resolve to the internal IP address used by the host.
 
 In the `docker-compose.override.yml` file, replace the IdentityUrl environment variable (or any place where the IP 10.0.75.1 is used) with:
@@ -79,7 +79,7 @@ In the `docker-compose.override.yml` file, replace the IdentityUrl environment v
 IdentityUrl=http://docker.for.mac.localhost:5105
  ```
 
-You could also set your real IP at the Mac's network adapter. But that would be a worse solution as it'll depend on the network you are connecting your Mac development machine.. 
+You could also set your real IP at the Mac's network adapter. But that would be a worse solution as it'll depend on the network you are connecting your Mac development machine..
 
 Therefore, the WebMVC service definition at the `docker-compose.override.yml` should finally be configured as shown bellow:
 
@@ -178,7 +178,7 @@ git clone https://github.com/dotnet-architecture/eShopOnContainers.git
 ### 3. Build the application
 
 ```console
-cd eShopOnContainers
+cd eShopOnContainers\src
 docker-compose build
 ```
 
@@ -186,7 +186,7 @@ While building the docker images should take between 15 and 30 minutes to comple
 
 ![](images/Mac-setup/building-eshoponcontainers.png)
 
-The first time you run this command it'll take some more additional time as it needs to pull/download the dotnet/core/aspnet and SDK images, so it'll take its time.
+The first time you run this command it'll take some more additional time as it needs to pull/download the `dotnet/core/aspnet` and SDK images, so it'll take its time.
 
 When the `docker-compose build` command finishes, you can check out with Docker CLI the images created with the following Docker command:
 
@@ -198,9 +198,9 @@ docker images
 
 Those are the Docker images available in your local image repository.
 
-You might have additional images, but you should see, at least, the the custom images starting with the prefix "eshop/" which is the name of the eShopOnContainers images repo. 
+You might have additional images, but you should see, at least, the the custom images starting with the prefix `eshop/` which is the name of the eShopOnContainers images repo.
 
-The images starting with `<none>` haven't been tagged with a name and are intermediate images of the build process. Other named images that don't start with "eshop/" are official base-images like the microsoft/aspnetcore or the SQL Server for Linux images.
+The images starting with `<none>` haven't been tagged with a name and are intermediate images of the build process. Other named images that don't start with `eshop/` are official base-images like the `mcr.microsoft.com/dotnet` or the SQL Server for Linux images.
 
 ### 4. Deploy to the local Docker host
 
@@ -266,7 +266,7 @@ If you just want to run the containers/microservices and web apps, do NOT open t
 
 After opening the `eShopOnContainers-ServicesAndWebApps.sln` solution for the first time, it is recommended to wait for a few minutes as VS will be restoring many NuGet packages and the solution won't be able to compile or run until it gets all the nuGet packages dependencies, in the first place (this time is only needed the first time you open the solution. Next times it's a lot faster).
 
-This is VS for Mac with the `eShopOnContainers-ServicesAndWebApps.sln` solution. 
+This is VS for Mac with the `eShopOnContainers-ServicesAndWebApps.sln` solution.
 
 ![](images/Mac-setup/eshoponcontainers-solution.png)
 
@@ -278,7 +278,7 @@ Hit Ctrl+F5 or press the "play" button in VS for Mac.
 
 IMPORTANT: The first time you run eShopOnContainers, it will take longer than the next time you launch it. Under the covers, Docker is pulling quite a few "heavy" images from Docker Hub (the public image registry), like the SQL Server image, Redis image, RabbitMQ image and the base ASP.NET Core images. That pull/download process will take a few minutes. Then, VS will launch the application custom containers plus the infrastructure containers (SQL, Redis, RabbitMQ and MongoDB), populate sample data in the databases and finally run the microservices and web apps on custom containers.
 
-Note that you will see normal/controlled Http exceptions caused by our retries with exponential backoff, as the web apps have to wait until the microservices are ready for the first time which need first to run SQL sentences populating sample data, etc. 
+Note that you will see normal/controlled Http exceptions caused by our retries with exponential backoff, as the web apps have to wait until the microservices are ready for the first time which need first to run SQL sentences populating sample data, etc.
 
 Once the solution is up and running, you should be able to see it in the browser at:
 
@@ -303,7 +303,7 @@ You should be now ready to begin learning by [exploring the code](Explore-the-co
 ## Configuring the app for external access from remote client apps
 
 If using the services from remote apps, like the a phone with the Xamarin mobile app in the same Wifi network, or the web apps accessing remotely to the Docker Host, you need to change a few by-default URLs.
- 
+
 eShopOnContainers app uses the .env file to set certain by-default environment variables used by the multiple docker-compose.override you can have.
 
 Therefore, the following change must be done in the .env file at the root of the eShopOnContainers folder.

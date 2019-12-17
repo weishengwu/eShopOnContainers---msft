@@ -2,14 +2,14 @@ These are the most frequent errors encountered when running eShopOnContainers fo
 
 > **CONTENT**
 
-- [When trying to log in from the MVC app I get an error](#When-trying-to-log-in-from-the-MVC-app-I-get-an-error)
-  - [Deploying in Windows with Docker for Windows](#Deploying-in-Windows-with-Docker-for-Windows)
-  - [Deploying in a Mac with Docker for Mac](#Deploying-in-a-Mac-with-Docker-for-Mac)
-  - [Additional resources](#Additional-resources)
-- [The SQL Server container is not running](#The-SQL-Server-container-is-not-running)
-- [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#When-I-run-the-solution-using-Visual-Studio-or-the-CLI-I-get-warnings-like-The-ESHOPAZUREXXXX-variable-is-not-set)
-- [When I run 'docker-compose up' I get an error like ERROR: Service 'xxxxx' failed to build: COPY failed: stat ...: no such file or directory](#When-I-run-docker-compose-up-I-get-an-error-like-ERROR-Service-xxxxx-failed-to-build-COPY-failed-stat--no-such-file-or-directory)
-- [When I try to run the solution in 'Docker for Windows' (on the Linux VM) I get the error: 'Did you mean to run dotnet SDK commands?'](#When-I-try-to-run-the-solution-in-Docker-for-Windows-on-the-Linux-VM-I-get-the-error-Did-you-mean-to-run-dotnet-SDK-commands)
+- [When trying to log in from the MVC app I get an error](#when-trying-to-log-in-from-the-mvc-app-i-get-an-error)
+  - [Deploying in Windows with Docker for Windows](#deploying-in-windows-with-docker-for-windows)
+  - [Deploying in a Mac with Docker for Mac](#deploying-in-a-mac-with-docker-for-mac)
+  - [Additional resources](#additional-resources)
+- [The SQL Server container is not running](#the-sql-server-container-is-not-running)
+- [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#when-i-run-the-solution-using-visual-studio-or-the-cli-i-get-warnings-like-the-eshopazurexxxx-variable-is-not-set)
+- [When I run 'docker-compose up' I get an error like ERROR: Service 'xxxxx' failed to build: COPY failed: stat ...: no such file or directory](#when-i-run-docker-compose-up-i-get-an-error-like-error-service-xxxxx-failed-to-build-copy-failed-stat--no-such-file-or-directory)
+- [When I try to run the solution in 'Docker for Windows' (on the Linux VM) I get the error: 'Did you mean to run dotnet SDK commands?'](#when-i-try-to-run-the-solution-in-docker-for-windows-on-the-linux-vm-i-get-the-error-did-you-mean-to-run-dotnet-sdk-commands)
 
 ## When trying to log in from the MVC app I get an error
 
@@ -24,7 +24,7 @@ First open a browser and navigate to <http://10.0.75.1:5105/.well-known/openid-c
 
 If response is received the problem is that the request from a container cannot reach the `10.0.75.1` (which is the IP of the host machine inside the DockerNAT). Be sure that:
 
-- You have opened the ports of the firewall (run the script `cli-windows\add-firewall-rules-for-sts-auth-thru-docker.ps1`
+- You have opened the ports of the firewall (run the script **`deploy\windows\add-firewall-rules-for-sts-auth-thru-docker.ps1`**)
 
 If this do not solved your problem ensure that the `vpnkit` of the firewall is disabled. For more info refer to @huangmaoyixxx's comment in [issue #295](https://github.com/dotnet-architecture/eShopOnContainers/issues/295)
 

@@ -26,7 +26,7 @@ The approach followed is to have the app running from the CLI first, since it's 
   - [Build and run the application with F5 or Ctrl+F5](#build-and-run-the-application-with-f5-or-ctrlf5)
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with "Visual Studio 2017 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2017-tools-for-docker%22-and-network-proxiesfirewalls)
+  - [Issue with &quot;Visual Studio 2017 Tools for Docker&quot; and network proxies/firewalls](#issue-with-quotvisual-studio-2017-tools-for-dockerquot-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Low memory configuration](#low-memory-configuration)
@@ -67,7 +67,7 @@ The drive you'll need to share depends on where you place your source code.
 
 IMPORTANT: Ports 5100 to 5105 must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
 
-You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **cli-windows** folder.
+You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **`deploy\windows\`** folder.
 
 ![](images/Windows-setup/firewall-rule-for-eshop.png)
 
@@ -98,7 +98,7 @@ git clone https://github.com/dotnet-architecture/eShopOnContainers.git
 ### 3. Build the application
 
 ```console
-cd eShopOnContainers
+cd eShopOnContainers\src
 docker-compose build
 ```
 
