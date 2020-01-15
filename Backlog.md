@@ -19,9 +19,6 @@ These are candidate features to consider for the [roadmap](Roadmap).
 
 - Create a new "ServerProblemDetails" response that conforms with RFC 7807, check [issue #602](https://github.com/dotnet-architecture/eShopOnContainers/issues/602) for details.
 
-## Orchestrators
-
-- Service Fabric Stateful Service implementation in the SF branch
 
 ## Front-end
 
