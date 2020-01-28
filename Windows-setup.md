@@ -52,8 +52,6 @@ This amount of memory is the recommended minimum to run the app, and that's why 
 ![]
 ![](images/Docker-setup/eshoponcontainers-docker-configuration-memory-cpu.png)
 
-[What can I do if my computer has only 8 GB RAM?](#low-memory-configuration)
-
 ### Shared drives
 
 This step is optional but recommended, as Docker sometimes needs to access the shared drives when building, depending on the build actions.
