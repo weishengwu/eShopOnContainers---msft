@@ -12,6 +12,7 @@ The approach followed is to have the app running from the CLI first, since it's 
   - [Memory and CPU](#memory-and-cpu)
   - [Shared drives](#shared-drives)
 - [Configure local networking](#configure-local-networking)
+- [WARNING on Docker Desktop 2.2.0.0!](#warning-on-docker-desktop-2200)
 - [Build and deploy eShopOnContainers](#build-and-deploy-eshoponcontainers)
   - [1. Create a folder for your repositories](#1-create-a-folder-for-your-repositories)
   - [2. Clone eShopOnContainer's GitHub repo](#2-clone-eshoponcontainers-github-repo)
@@ -29,7 +30,6 @@ The approach followed is to have the app running from the CLI first, since it's 
   - [Issue with "Visual Studio 2017 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2017-tools-for-docker%22-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
-- [Low memory configuration](#low-memory-configuration)
 - [Additional resources](#additional-resources)
 
 ## Configure Docker
@@ -44,11 +44,12 @@ So it's important to configure enough memory RAM and CPU to Docker.
 
 Once Docker for Windows is installed, go to the **Settings > Advanced** option, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
 
-- Memory: 4096 MB
+- Memory: 6144 MB
 - CPU: 2
 
-This amount of memory is the absolute minimum to have the app running, and that's why you need a 16GB RAM machine for optimal configuration.
+This amount of memory is the recommended minimum to run the app, and that's why you need a 16GB RAM machine for optimal configuration.
 
+![]
 ![](images/Docker-setup/eshoponcontainers-docker-configuration-memory-cpu.png)
 
 [What can I do if my computer has only 8 GB RAM?](#low-memory-configuration)
@@ -79,6 +80,14 @@ If you are working within a corporate VPN you might need to run this power shell
 Get-NetConnectionProfile | Where-Object { $_.InterfaceAlias -match "(DockerNAT)" } | ForEach-Object { Set-NetConnectionProfile -InterfaceIndex $_.InterfaceIndex -NetworkCategory Private }
 ```
 Or just run the **set-dockernat-networkategory-to-private.ps1** script available in the solution's **deploy/windows** folder.
+
+## WARNING on Docker Desktop 2.2.0.0!
+
+> **Docker Desktop 2.2.0.0 doesn't use `DokerNAT` so the above solution will not work.**
+>
+>**According to [issue 5538 in the Docker Desktop for Windows repo](https://github.com/docker/for-win/issues/5538) this was by-design.**
+>
+>**While it gets solved or a workaround devised, it's recommended that you use the `WebSPA` client.**
 
 ## Build and deploy eShopOnContainers
 
@@ -257,24 +266,6 @@ It is also recommended to install the C# extension and the Docker extension for 
 ## Explore the code
 
 You should be now ready to begin learning by [exploring the code](Explore-the-code) and debugging eShopOnContainers.
-
-## Low memory configuration
-
-If your computer has only 8 GB RAM, you **might** still get eShopOnContainers up and running, but it's not sure and you will not be able to run Visual Studio. You might be able to run VS Code and you'll be limited to the CLI. You might even need to run Chromium or any other bare browser, Chrome will most probably not do. You'll also need to close any other program running in your machine.
-
-The easiest way to get Chromium binaries directly from Google is to install the [node-chromium package](https://www.npmjs.com/package/chromium) in a folder and then look for the `chrome.exe` program, as follows:
-
-1. Install node.
-
-2. Create a folder wherever best suits you.
-
-3. Run `npm install --save chromium`
-
-4. After installation finishes go to folder `node_modules\chromium\lib\chromium\chrome-win` (in Windows) to find `chrome.exe`
-
-The installation process should look something like this:
-
-![](images/Windows-setup/install-chromium-browser.png)
 
 ## Additional resources
 
