@@ -67,7 +67,7 @@ The drive you'll need to share depends on where you place your source code.
 
 IMPORTANT: Ports 5100 to 5105 must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
 
-You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **cli-windows** folder.
+You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **deploy/windows** folder.
 
 ![](images/Windows-setup/firewall-rule-for-eshop.png)
 
@@ -78,6 +78,7 @@ If you are working within a corporate VPN you might need to run this power shell
 ```powershell
 Get-NetConnectionProfile | Where-Object { $_.InterfaceAlias -match "(DockerNAT)" } | ForEach-Object { Set-NetConnectionProfile -InterfaceIndex $_.InterfaceIndex -NetworkCategory Private }
 ```
+Or just run the **set-dockernat-networkategory-to-private.ps1** script available in the solution's **deploy/windows** folder.
 
 ## Build and deploy eShopOnContainers
 
