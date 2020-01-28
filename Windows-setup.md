@@ -26,7 +26,7 @@ The approach followed is to have the app running from the CLI first, since it's 
   - [Build and run the application with F5 or Ctrl+F5](#build-and-run-the-application-with-f5-or-ctrlf5)
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with &quot;Visual Studio 2017 Tools for Docker&quot; and network proxies/firewalls](#issue-with-quotvisual-studio-2017-tools-for-dockerquot-and-network-proxiesfirewalls)
+  - [Issue with "Visual Studio 2017 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2017-tools-for-docker%22-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Low memory configuration](#low-memory-configuration)
@@ -78,6 +78,7 @@ If you are working within a corporate VPN you might need to run this power shell
 ```powershell
 Get-NetConnectionProfile | Where-Object { $_.InterfaceAlias -match "(DockerNAT)" } | ForEach-Object { Set-NetConnectionProfile -InterfaceIndex $_.InterfaceIndex -NetworkCategory Private }
 ```
+Or just run the **set-dockernat-networkategory-to-private.ps1** script available in the solution's **deploy/windows** folder.
 
 ## Build and deploy eShopOnContainers
 
