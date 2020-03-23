@@ -14,7 +14,7 @@ These are the most frequent errors encountered when running eShopOnContainers.
 
 ## Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages
 
-See details and the solution in the [unauthorized_client error on login](unauthorized_client-error-on-login.md) wiki page.
+See details and the solution in the [unauthorized_client error on login](unauthorized_client-error-on-login) wiki page.
 
 ## When trying to log in from the MVC app I get an error
 
