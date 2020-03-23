@@ -1,7 +1,8 @@
-These are the most frequent errors encountered when running eShopOnContainers for the first time.
+These are the most frequent errors encountered when running eShopOnContainers.
 
 > **CONTENT**
 
+- [Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages](#unauthorizedclient-when-trying-to-log-in-from-the-mvc-the-spa-application-or-the-swagger-ui-api-pages)
 - [When trying to log in from the MVC app I get an error](#when-trying-to-log-in-from-the-mvc-app-i-get-an-error)
   - [Deploying in Windows with Docker for Windows](#deploying-in-windows-with-docker-for-windows)
   - [Deploying in a Mac with Docker for Mac](#deploying-in-a-mac-with-docker-for-mac)
@@ -10,6 +11,10 @@ These are the most frequent errors encountered when running eShopOnContainers fo
 - [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#when-i-run-the-solution-using-visual-studio-or-the-cli-i-get-warnings-like-the-eshopazurexxxx-variable-is-not-set)
 - [When I run 'docker-compose up' I get an error like ERROR: Service 'xxxxx' failed to build: COPY failed: stat ...: no such file or directory](#when-i-run-docker-compose-up-i-get-an-error-like-error-service-xxxxx-failed-to-build-copy-failed-stat--no-such-file-or-directory)
 - [When I try to run the solution in 'Docker for Windows' (on the Linux VM) I get the error: 'Did you mean to run dotnet SDK commands?'](#when-i-try-to-run-the-solution-in-docker-for-windows-on-the-linux-vm-i-get-the-error-did-you-mean-to-run-dotnet-sdk-commands)
+
+## Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages
+
+See details and the solution in the [unauthorized_client error on login](unauthorized_client-error-on-login.md) wiki page.
 
 ## When trying to log in from the MVC app I get an error
 
@@ -52,7 +57,7 @@ You should receive json response. If not, ensure that Identity.API and Docker ar
 It looks like the SQL container tried to start but then it exited?
 If I do a "docker ps -a", the STATUS column for the SQL container does NOT show a status of "Up" but shows the STATUS as "Exited".
 Workaround: Usually this is due to not enough memory assigned to the Docker Host Linux VM. 
-IMPORTANT: Note that sometimes after installing a "Docker for Windows" update it might have reset the assigned memory value and it might be 2GB again (see Docker issue https://github.com/docker/for-win/issues/1169), which is not enough for the SQL container. Set, at least, 4GB of memory to the Docker Host in "Docker for Windows" settings.
+IMPORTANT: Note that sometimes after installing a "Docker for Windows" update it might have reset the assigned memory value and it might be 2GB again (see Docker issue <https://github.com/docker/for-win/issues/1169>), which is not enough for the SQL container. Set, at least, 6GB of memory to the Docker Host in "Docker for Windows" settings.
 
 For further information see the [Windows setup](Windows-setup) and [Mac setup](Mac-setup) pages.
 
