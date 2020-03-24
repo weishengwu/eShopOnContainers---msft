@@ -15,7 +15,7 @@
   - [Xamarin](Xamarin-setup)
 - [Databases & containers](Databases-and-containers)
 
-### [FREQUENT ERRORS](Frecuent-errors)
+### [FREQUENT ERRORS](Frequent-errors)
 
 ## Explore
 
