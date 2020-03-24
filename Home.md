@@ -8,7 +8,7 @@ These are the main sections in the wiki that you can always access from the side
 
 Information about setting up your development environment, including:
 
-- System requirements and setup steps for
+- [System requirements](System-requirements) and setup steps for
 
   - [Windows](Windows-setup) and
   - [Mac](Mac-setup)
