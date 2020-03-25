@@ -69,6 +69,10 @@ The startup address is defined in the `.env` file and used in `docker-compose.ov
 
 ![](images/unauthorized_client-error-on-Login/docker-compose-override-file.png)
 
+> **IMPORTANT**
+>
+> You **MUST** run the **docker-compose up** command from the folder where the **.env** file is, otherwise the values defined in the file won't be used.
+
 ## Solutions
 
 So the possible solution could be one or a combination of:
