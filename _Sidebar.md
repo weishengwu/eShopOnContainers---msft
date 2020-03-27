@@ -1,4 +1,4 @@
-## eShopOnContainers
+### eShopOnContainers
 
 - [Home](Home)
 - [Release notes](Release-notes)
@@ -6,7 +6,7 @@
 - [e-books](eBooks)
 - [Follow updates](https://github.com/dotnet-architecture/News/issues?q=is%3Aopen+is%3Aissue)
 
-## Getting started
+### Getting started
 
 - [System requirements](System-requirements)
 - Development setup
@@ -15,9 +15,9 @@
   - [Xamarin](Xamarin-setup)
 - [Databases & containers](Databases-and-containers)
 
-### [FREQUENT ERRORS](Frequent-errors)
+#### [FREQUENT ERRORS](Frequent-errors)
 
-## Explore
+### Explore
 
 - [Architecture](Architecture)
   - [BFF implementation](BFF-implementation)
@@ -39,20 +39,20 @@
   - [Unit & Integration](Unit-and-integration-testing)
   - [Load](Load-testing)
 
-## Deployment
+### Deployment
 
 - [Docker-compose files](Docker-compose-deployment-files)
 
-### Local
+#### Local
 
 - [Kubernetes](Deploy-to-Local-Kubernetes)
 - [Windows containers](Deploy-to-Windows-containers)
 
-### Production (generic)
+#### Production (generic)
 
 - [Docker host](Docker-host)
 
-### Cloud
+#### Cloud
 
 - [Azure Kubernetes Service (AKS)](Deploy-to-Azure-Kubernetes-Service-(AKS))
   - [Enabling TLS](AKS-TLS)
@@ -60,8 +60,8 @@
 - [Using Azure resources](Using-Azure-resources)
 - [Deploying Azure resources](Deploying-Azure-resources)
 
-### [OTHER](Other-Deployment-Scenarios)
+#### [OTHER](Other-Deployment-Scenarios)
 
-## DevOps
+### DevOps
 
 - [Azure DevOps pipelines](Azure-DevOps-pipelines)
