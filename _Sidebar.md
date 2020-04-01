@@ -60,7 +60,7 @@
 - [Using Azure resources](Using-Azure-resources)
 - [Deploying Azure resources](Deploying-Azure-resources)
 
-#### [Community](Other-Deployment-Scenarios)
+#### [Other Deployment Scenarios](Other-Deployment-Scenarios)
 
 ### DevOps
 
