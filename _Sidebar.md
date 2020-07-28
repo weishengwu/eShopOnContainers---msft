@@ -46,6 +46,7 @@
 #### Local
 
 - [Kubernetes](Deploy-to-Local-Kubernetes)
+- [Kubernetes - Archived](Deploy-to-Local-Kubernetes-Archived)
 - [Windows containers](Deploy-to-Windows-containers)
 
 #### Production (generic)
@@ -56,6 +57,7 @@
 
 - [Azure Kubernetes Service (AKS)](Deploy-to-Azure-Kubernetes-Service-(AKS))
   - [Enabling TLS](AKS-TLS)
+- [Azure Kubernetes Service (AKS) - Archived](Deploy-to-Azure-Kubernetes-Service-(AKS))
 - [Azure Dev Spaces](Azure-Dev-Spaces)
 - [Using Azure resources](Using-Azure-resources)
 - [Deploying Azure resources](Deploying-Azure-resources)
