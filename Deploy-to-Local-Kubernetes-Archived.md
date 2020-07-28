@@ -1,90 +1,123 @@
 
 > **CONTENT**
 
-- [Specifications](#Specifications)
-- [Previous Versions](#Previous-Versions)
-- [Install Docker Desktop](#Install-Docker-Desktop)
+- [Disclaimer !!](#disclaimer)
+- [Install Docker for Desktop](#installupgrade-to-the-latest-version-of-docker-for-desktop)
 - [Enable Kubernetes](#enable-kubernetes)
-- [Install Helm](#install-helm)  
-- [Install NGINX Ingress Controller](#Install-NGINX-Ingress-Controller)
-- [Install eShopOnContainers Using Helm](#Install-eShopOnContainers-Using-Helm)
-  - [Deploy Public Images From DockerHub](#Deploy-Public-Images-From-DockerHub)
-  - [Deploy Your Local Images](#deploy-your-local-images)  
-  - [Check Deployment Status](#Check-Deployment-Status)  
-- [Known Behaviours](#Known-Behaviours)
-- [Explore eShopOnContainers](#explore-eshoponcontainers)
-- [Optional](#optional)
-  - [Delete deployments](#delete-deployments)
-  - [Explore Internal Services](#Explore-Internal-Services)
-  - [Install Kubernetes Dashboard UI](#Install-Kubernetes-Dashboard-UI)  
+  - [Disable / stop Kubernetes](#disable--stop-kubernetes)
   - [Reset Kubernetes](#reset-kubernetes)
-  - [Disable / Stop Kubernetes](#disable--stop-kubernetes)
-- [Additional Resources](#additional-resources)
+- [Refer older version of k8s related scripts](#)
+- [Install Helm](#install-helm)
+  - [Install Helm client](#install-helm-client)
+  - [Install Helm server (Tiller)](#install-helm-server-tiller)
+- [Install the NGINX Ingress controller](#install-the-nginx-ingress-controller)
+- [Install eShopOnContainers using Helm](#install-eshoponcontainers-using-helm)
+  - [Deploy your local images](#deploy-your-local-images)
+  - [Deploy the public official eShopOnContainer images from DockerHub](#deploy-the-public-official-eshoponcontainer-images-from-dockerhub)
+  - [Check deployment status](#check-deployment-status)
+  - [Delete deployments](#delete-deployments)
+- [Explore internal services](#explore-internal-services)
+- [Known issues](#known-issues)
+- [Optional - Install Kubernetes Dashboard UI](#optional---install-kubernetes-dashboard-ui)
+  - [IMPORTANT](#important)
+- [Explore eShopOnContainers](#explore-eshoponcontainers)
+- [Additional resources](#additional-resources)
 
-## Specifications
+## Disclaimer !!
 
-We have upgraded K8s scripts to work on the latest stable version of *Docker Desktop* and *Kubernetes*. Current `dev` branch has been tested with the following specifications :
+This is the archived wiki page for local kubernetes related deployment.
+If you are planning to use the latest versions, you can refer to [latest wiki page](Deploy-to-Local-Kubernetes)
 
-| Component                | Versions                |
-|--------------------------|-------------------------|
-| OS                       | Windows 10/ Mac / Linux |
-| Docker Desktop           | 2.3.0.3                 |
-| Docker Engine            | 19.03.8                 |
-| kubectl                  | 1.16                    |
-| Kubernetes               | 1.16.5                  |
-| Kubernetes-Dashboard     | 2.0                     |
-| Helm                     | 3.2.4                   |
-| Nginx Ingress controller | 0.20                    |
-| Nginx                    | 1.15                    |
+All older scripts, applicable for this page are kept under `k8s/archived` directory. It will not be supported in the future.
 
+## Install Docker for Desktop
 
-## Previous Versions
-
-You can still refer the older version of scripts under **k8s/archived** directory. For more details, please visit [archived page](Deploy-to-Local-Kubernetes-Archived).
-
-**IMPORTANT:** Directory `k8s/archived` will not be supported in the future.
-
-## Install Docker Desktop
-
-You can install `Docker Desktop` following :
-
-- Install [Docker Desktop Of Windows](https://docs.docker.com/docker-for-windows/install/)
-- Install [Docker Desktop On Mac](https://docs.docker.com/docker-for-mac/install/)
-
-
-![](images/Deploy-to-Local-Kubernetes/docker-desktop.png)
+ You can install any old versions of `Docker for Desktop` whichever is needed for you.
 
 ## Enable Kubernetes
 
-To enable Kubernetes (k8s) click the **Enable Kubernetes** checkbox in the **Kubernetes** tab in **Docker Settings** and then click the **"Apply"** button.
+To enable Kubernetes (k8s) click the **Enable Kubernetes** checkbox in the **Kubernetes** tab in **Docker Settings** and then click the "Apply" button.
 
-![](images/Deploy-to-Local-Kubernetes/enable-kubernetes-docker-desktop-updated.png)
+![](images/Deploy-to-Local-Kubernetes-Archived/enable-kubernetes-docker-desktop.png)
 
 If you also enable the "Show system containers" checkbox, you can see Kubernetes system containers running by using `docker ps`
 
-![](images/Deploy-to-Local-Kubernetes/kubernetes-system-containers.png)
+![](images/Deploy-to-Local-Kubernetes-Archived/kubernetes-system-containers.png)
 
+This will start 11 containers in your Docker installation.
 
 Your Docker Desktop Kubernetes installation already contains [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), which is the CLI to run Kubernetes commands and you'll need for the rest of steps here.
 
 **IMPORTANT:** You'll also have to increase the memory allocated to Docker to at least **6144 MB**, because you'll have 70+ containers running after deploying eShopOnContainers.
 
+### Disable / stop Kubernetes
+
+If you ever want to stop Kubernetes from Docker Desktop, just disable Kubernetes in the **Settings > Kubernetes** page above and click "Apply".
+
+You can also stop/start the Kubernetes cluster from the Docker context menu, on the System tray:
+
+![](images/Deploy-to-Local-Kubernetes-Archived/start-stop-kubernetes-cluster.png)
+
+### Reset Kubernetes
+
+To reset the Kubernetes cluster to the initial (new) state, you have to:
+
+1. Click the "**Reset**" tab on the Kubernetes settings dialog
+2. Click "**Reset Kubernetes Cluster...**"
+3. Click the "**Reset**" button on the "**Reset Kubernetes cluster**" confirmation dialog.
+
+As shown in the next image:
+
+![](images/Deploy-to-Local-Kubernetes-Archived/reset-kubernetes-cluster.png)
+
+## Refer older version of k8s related scripts
+
+All older versions of K8s related scripts have been moved under **k8s/archived**. If you want to use those scripts you would require to copy all the content from **k8s/archived** and replace all the directory under **k8s** with that.
+
+
 ## Install Helm
 
 [Helm](https://helm.sh/) is the package manager for Kubernetes.
 
-- For detailed installation steps, please refer [official documentation page](https://helm.sh/docs/intro/install/).
+### Install Helm client
 
-- After successful installation, `helm` version can be seen as per below :
+You can see the installation details in the [documentation page](https://helm.sh/docs/using_helm/#installing-helm).
 
-  ![](images/Deploy-to-Local-Kubernetes/helm-version-output.png)
+It's probably best to install from the GitHub releases (2.16.1):
 
-Please note, `helm 3` onwards **Tiller Server** component has been removed. So you wouldn't need to install client and server separately.
+- <https://github.com/helm/helm/releases/tag/v2.16.1>
 
+The easiest way is probably to use a package manager, like [Chocolatey for Windows](https://chocolatey.org/).
 
-## Install NGINX Ingress Controller
+You can use the following command to check the integrity of the download, comparing with the checksum in the release page:
 
-[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is an API object that allows access to your clustered services from the outside. It's like a reverse proxy, that can handle load balancing, TLS, virtual hosting and the like.
+```powershell
+Get-FileHash -Path .\helm-v2.16.1-windows-amd64.zip -Algorithm sha256
+```
+
+### Install Helm server (Tiller)
+
+To install Tiller:
+
+- Go to the **deploy/k8s** folder in your local copy of the eShopOnContainers repo
+
+- Create the Tiller service account by running:
+
+    ```powershell
+    kubectl apply -f helm-rbac.yaml
+    ```
+
+- Install tiller and configure it to use the tiller service account with the command:
+
+    ```powershell
+    helm init --service-account tiller
+    ```
+
+## Install the NGINX Ingress controller
+
+[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is an API object that allows access to your clustered services from the outside.
+
+It's like a reverse proxy, that can handle load balancing, TLS, virtual hosting and the like.
 
 [NGINX](https://github.com/kubernetes/ingress-nginx/blob/master/README.md) is the Ingress controller used for eShopOnContainers.
 
@@ -97,64 +130,42 @@ kubectl apply -f local-cm.yaml
 kubectl apply -f local-svc.yaml
 ```
 
-## Install eShopOnContainers Using Helm
+## Install eShopOnContainers using Helm
 
-Go to the **deploy/k8s/helm** folder in your local copy of the eShopOnContainers repo.
+- Go to the **deploy/k8s/helm** folder in your local copy of the eShopOnContainers repo.
 
 At this point you have two options for installing eShopOnContainers:
 
-1. Use the [public images from DockerHub (eshop)](https://hub.docker.com/u/eshop/) with tag `linux-dev` 
-2. **Or** Use your local images with tag `linux-latest`  
+1. Use your local images with tag `linux-latest` or
+2. Use the [public images from DockerHub (eshop)](https://hub.docker.com/u/eshop/) with tag `dev`
 
-### Deploy Public Images From DockerHub
+### Deploy your local images
 
-The easiest way to setup *eshop* on k8s is to use public images. For that you would require to run below scripts:
-  
-  - For Windows :
+The first task to deploy your local images is to create them, which you can achieve by just running the usual command from the CLI on the src folder of your local repo:
 
-    ```powershell
-    .\deploy-all.ps1 -imageTag linux-dev -useLocalk8s $true
-    ```
+```powershell
+docker-compose build
+```
 
-  - For Mac :
+Then, just run this script from the `deploy\k8s\helm` folder, to deploy your local images:
 
-    ```powershell
-    .\deploy-all-mac.ps1 -imageTag linux-dev -useLocalk8s $true
-    ```
-
-### Deploy Your Local Images
-
-If you have done some local changes in the *eshop* application and want to deploy that to the cluster you can do that by building your local docker images. 
-
-- Go to the `src` directory of your local repo and below command :
-
-  ```powershell
-  docker-compose build
-  ```
-
-- Then, you can go to `deploy\k8s\helm` directory and run below command to deploy your local images :
-
-  For Windows :
-
-  ```powershell
-  .\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -imagePullPolicy Never
-  ```
-
-  For Mac :
-
-  - [Install PowerShell on Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-7)
-  - Run the below script.
-
-  ```powershell
-  .\deploy-all-mac.ps1 -imageTag linux-latest -useLocalk8s $true -imagePullPolicy Never
-  ```
+```powershell
+.\deploy-all.ps1 -imageTag linux-latest -useLocalk8s $true -imagePullPolicy Never
+```
 
 The parameter `useLocalk8s` to `$true`, forces the script to use `localhost` as the DNS for all Helm charts and also creates the ingress with the correct ingress class.
 
 **Note**: When using the parameter `imagePullPolicy` to `Never` only local images will be used (_pods_ will enter in error state if local images do not exist. If `imagePullPolicy` is set to `IfNotPresent` then local images will be used if present, and if not Kubernetes will try to download them from a docker registry. If the `imagePullPolicy` is set to `Always` then Kubernetes will never use the local images and will try to download them all from a docker registry. If the images are not found _pods_ will enter in error state.
 
+### Deploy the public official eShopOnContainer images from DockerHub
 
-### Check Deployment Status
+If you prefer to deploy the public images (built from the **dev** branch on each commit), just run this script:
+
+```powershell
+.\deploy-all.ps1 -imageTag dev
+```
+
+### Check deployment status
 
 After running the deployment script you can check the deployment status with the command:
 
@@ -251,11 +262,36 @@ aae88fd2d810        d69a5113ceae                     "docker-entrypoint.s…"   
 090e0dde2ec4        bbe2822dfe38                     "/opt/mssql/bin/sqls…"   2 hours ago         Up 2 hours                              k8s_sql-data_eshop-sql-data-5c4fdcccf4-bscdb_default_3afd29b8-e67f-11e8-b4b6-00155d016146_0
 ```
 
+### Delete deployments
 
+To delete eShop deployments you can use this command:
 
-## Known Behaviours
+```powershell
+helm delete --purge $(helm ls --all --short eshop)
+```
 
-***``Login from the webmvc results in following error: HttpRequestException: Response status code does not indicate success: 404 (Not Found).``***
+## Explore internal services
+
+You can expose internal services by using [NodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) (among some other options)
+
+To expose the SQL Server service and the RabbitMQ admin port, when deploying to local Kubernetes, you can run the following script, from the `k8s` folder:
+
+```powershell
+.\deploy-nodeports.ps1
+```
+
+This will expose the following infrastructure services:
+- SQL Server (connect with [SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) to `tcp:localhost,31433` with `User Id=sa;Password=Pass@word;` and explore databases:
+  - Identity: `Microsoft.eShopOnContainers.Service.IdentityDb`
+  - Catalog: `Microsoft.eShopOnContainers.Services.CatalogDb`
+  - Marketing: `Microsoft.eShopOnContainers.Services.MarketingDb`
+  - Ordering: `Microsoft.eShopOnContainers.Services.OrdeingDb`
+  - Webhooks: `Microsoft.eShopOnContainers.Services.WebhooksDb`
+- RabbitMQ (Queue management): <http://localhost:31672/> (login with username=guest, password=guest)
+
+## Known issues
+
+Login from the webmvc results in following error: HttpRequestException: Response status code does not indicate success: 404 (Not Found).
 
 The reason is because MVC needs to access the Identity Server from both outside the container (browser) and inside the container (C# code). Thus, the configuration uses always the *external url* of the Identity Server, which in this case is just `http://localhost/identity-api`. But this external url is incorrect when used from C# code, and the web mvc can't access the identity api. This is the only case when this issue happens (and is the reason why we use 10.0.75.1 for local address in web mvc in local development mode)
 
@@ -300,82 +336,11 @@ Wait until SQL Server pod is ready to accept connections and then restart all ot
 kubectl delete pod --selector="app!=sql-data"
 ```
 
-**Note:** Pods are deleted to ensure the databases are recreated again, as identity api stores its client names and urls in the database. If client name doesn't get updated properly you may run into [***``Sorry, there was an error : unauthorized_client``***](unauthorized_client-error-on-Login)
+**Note:** Pods are deleted to ensure the databases are recreated again, as identity api stores its client names and urls in the database.
 
 Now, you can access the MVC app using: `http://10.0.75.1/webmvc`. All other services (like SPA) must be accessed using `http://localhost`
 
-Few environments, do have issues with Ip **10.0.75.1**. This could be happening because of following reasons :
-
-  - Firewall configuration - https://github.com/docker/for-win/issues/334#issuecomment-297030101
-  - Docker subnet is using a different Ip segment for communication.
-  - The host has a changing IP address.   
-
-In such scenarios, if either docker special DNS name or host machine IP is working fine then you could use any of that rather using `10.0.75.1`. For e.g - `host.docker.internal` or `docker.for.win.localhost` or `192.168.10.20`. But you would need to repeat above steps again.
-
-  - Update the `configmap` of `Web MVC`, by typing :
-
-  ```yml
-    kubectl patch cm cfg-eshop-webmvc --type strategic --patch @'
-    data:
-      urls__IdentityUrl: http://<dns or ip>/identity
-      urls__mvc: http://<dns or ip>/webmvc
-    '@
-
-  ```  
-  - Update the `configmap` of `Identity API` like above.
-  - Clean up and restart the SQL Server pod again to update client information.
-  - After that, you should be able to browse the app using below urls.
-    - Identity Server : http://\<dns or ip>/identity
-    - Web MVC : http://\<dns or ip>/webmvc
-    - Web SPA : http://localhost/
-    - Web Status: http://localhost/webstatus 
-
-## Explore eShopOnContainers
-
-After a while, when all services are running OK, you should get to see something like this:
-
-![](images/Deploy-to-Local-Kubernetes/kubernetes-webstatus.png)
-
-- WebStatus: <http://localhost/webstatus>
-- WebMVC: <http://10.0.75.1/webmvc>
-- WebSPA: <http://10.0.75.1/webspa>
-
-## Optional :
-
-### Delete Deployments
-
-To delete eShop related deployments you can use this command:
-
-```powershell
-helm uninstall $(helm ls --filter eshop -q)
-```
-
-Before performing actual delete if you want to perform a dry run, below command is useful. 
-
-```powershell
-helm uninstall $(helm ls --filter eshop -q) --dry-run
-```
-
-### Explore Internal Services
-
-You can expose internal services by using [NodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) (among some other options)
-
-To expose the SQL Server service and the RabbitMQ admin port, when deploying to local Kubernetes, you can run the following script, from the `k8s` folder:
-
-```powershell
-.\deploy-nodeports.ps1
-```
-
-This will expose the following infrastructure services:
-- SQL Server (connect with [SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) to `tcp:localhost,31433` with `User Id=sa;Password=Pass@word;` and explore databases:
-  - Identity: `Microsoft.eShopOnContainers.Service.IdentityDb`
-  - Catalog: `Microsoft.eShopOnContainers.Services.CatalogDb`
-  - Marketing: `Microsoft.eShopOnContainers.Services.MarketingDb`
-  - Ordering: `Microsoft.eShopOnContainers.Services.OrdeingDb`
-  - Webhooks: `Microsoft.eShopOnContainers.Services.WebhooksDb`
-- RabbitMQ (Queue management): <http://localhost:31672/> (login with username=guest, password=guest)
-
-### Install Kubernetes Dashboard UI
+## Optional - Install Kubernetes Dashboard UI
 
 You can deploy Kubernetes Web UI (Dashboard) to monitor the cluster locally.
 
@@ -425,45 +390,33 @@ To enable the dashboard:
     token:      eyJhbGciOiJSUzI1NiIsImtpZCI...(800+ characters)...FkM_tAclj9o8T7ALdPZciaQ
     ````
 
-6. Copy the token and navigate to: <http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login>
+6. Copy the token and navigate to: <http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/>
 
 7. Select "Token" and paste the copied the token in the "Enter token" filed: \
    \
-   ![](images/Deploy-to-Local-Kubernetes/kubernetes-dashboard-login.png)
+   ![](images/Deploy-to-Local-Kubernetes-Archived/kubernetes-dashboard-login.png)
 
     You should see something like this:
 
-    ![](images/Deploy-to-Local-Kubernetes/kubernetes-dashboard-web-ui.png)
+    ![](images/Deploy-to-Local-Kubernetes-Archived/kubernetes-dashboard-web-ui.png)
 
-    From there you can explore all the components of your cluster.
+From there you can explore all the components of your cluster.
 
-    **IMPORTANT** You have to manually start the dashboard and get a new login token every time you restart the cluster.
+### IMPORTANT
 
-### Reset Kubernetes
+**You have to manually start the dashboard and get a new login token every time you restart the cluster**.
 
-To reset the Kubernetes cluster to the initial (new) state, you have to:
+## Explore eShopOnContainers
 
-1. Click the "**Reset**" tab on the Kubernetes settings dialog
-2. Click "**Reset Kubernetes Cluster...**"
-3. Click the "**Reset**" button on the "**Reset Kubernetes cluster**" confirmation dialog.
+After a while, when all services are running OK, you should get something like this:
 
-As shown in the next image:
+![](images/Deploy-to-Local-Kubernetes-Archived/kubernetes-webstatus.png)
 
-![](images/Deploy-to-Local-Kubernetes/reset-kubernetes-cluster-updated.png)
+- WebStatus: <http://localhost/webstatus>
+- WebMVC: <http://10.0.75.1/webmvc>
+- WebSPA: <http://10.0.75.1/webspa>
 
-### Disable / Stop Kubernetes
-
-If you ever want to stop Kubernetes from Docker Desktop, just disable Kubernetes in the **Settings > Kubernetes** page above and click *"Apply & Restart"*.
-
-![](images/Deploy-to-Local-Kubernetes/disable-kubernetes-docker-desktop-latest.png)
-
-## Additional Resources
+## Additional resources
 
 - **Kubernetes Web UI setup** \
   <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>
-
-- **Kubernetes Dashboard** \
-<https://github.com/kubernetes/dashboard>
-
-- **Kubernetes Port Forwarding** \
-<https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/>
