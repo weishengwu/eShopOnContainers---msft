@@ -14,8 +14,8 @@ To run Hyper-V you also need:
 
 ### Software requirements for Windows
 
-- Docker Community Edition (aka. Docker for Windows) - Requires Windows 10 Pro 64 bits and Hyper-V enabled.
-- Latest **.NET Core 2.2 SDK** from: https://www.microsoft.com/net/download
+- Docker Desktop Community Edition (aka. Docker for Windows) - Requires Windows 10 Pro 64 bits and Hyper-V enabled.
+- Latest **.NET Core 3.1 SDK** from: https://www.microsoft.com/net/download
 - (Optional) Visual Studio 2017 **15.8** or later (Visual Studio 2019 recommended) – Much better for debugging multi-containers apps
 - (Optional) Visual Studio Code.
 
@@ -36,8 +36,8 @@ If your system is OK with the Docker requirements above, you'll be fine for VS t
 
 ### Software requirements for Mac
 
-- Docker Community Edition (a.k.a. Docker for Mac) - Requires OS X El Capitan 10.11 or newer macOS.
-- Latest **.NET Core 2.2 SDK** from: https://www.microsoft.com/net/download
+- Docker Desktop Community Edition (a.k.a. Docker for Mac) - Requires OS X El Capitan 10.11 or newer macOS.
+- Latest **.NET Core 3.1 SDK** from: https://www.microsoft.com/net/download
 - (Optional) Visual Studio for Mac.
 - (Optional) Visual Studio Code.
 

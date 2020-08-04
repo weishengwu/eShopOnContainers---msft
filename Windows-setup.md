@@ -44,13 +44,12 @@ So it's important to configure enough memory RAM and CPU to Docker.
 
 Once Docker for Windows is installed, go to the **Settings > Advanced** option, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
 
-- Memory: 6144 MB
+- Memory: 6.25 GB
 - CPU: 2
 
 This amount of memory is the recommended minimum to run the app, and that's why you need a 16GB RAM machine for optimal configuration.
 
-![]
-![](images/Docker-setup/eshoponcontainers-docker-configuration-memory-cpu.png)
+![](images/Docker-setup/eshoponcontainers-docker-configuration-memory-cpu-latest.png)
 
 ### Shared drives
 
@@ -58,13 +57,13 @@ This step is optional but recommended, as Docker sometimes needs to access the s
 
 This is not really necessary when building from the CLI, but it's mandatory when building from Visual Studio to access the code to build.
 
-The drive you'll need to share depends on where you place your source code.
+The drive you'll need to share depends on where you place your source code. For e.g :
 
-![](images/Docker-setup/eshoponcontainers-docker-configuration-shared-drives.png)
+![](images/Docker-setup/eshoponcontainers-docker-configuration-shared-drives-latest.png)
 
 ## Configure local networking
 
-IMPORTANT: Ports 5100 to 5105 must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
+IMPORTANT: Ports **5100** to **5105** must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
 
 You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **`deploy\windows\`** folder.
 
