@@ -21,6 +21,7 @@
 
 - [Architecture](Architecture)
   - [BFF implementation](BFF-implementation)
+  - [Code Flow](Code-Flow)
 - [Application](Explore-the-application)
 - [Code](Explore-the-code)
   - [Simplified CQRS & DDD](Simplified-CQRS-and-DDD)
@@ -28,7 +29,7 @@
   - [API gateways](API-gateways)
   - [Webhooks](Webhooks)
   - [Azure Key Vault](Azure-Key-Vault)
-  - [Asynchronous messaging](Asynchronous-messaging)
+  - [Asynchronous messaging](Asynchronous-messaging)  
 - Logging and Monitoring
   - [Serilog & Seq](Serilog-and-Seq)
   - [Using HealthChecks](Using-HealthChecks)
