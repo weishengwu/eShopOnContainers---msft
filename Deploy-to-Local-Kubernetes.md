@@ -67,7 +67,7 @@ If you also enable the "Show system containers" checkbox, you can see Kubernetes
 
 Your Docker Desktop Kubernetes installation already contains [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), which is the CLI to run Kubernetes commands and you'll need for the rest of steps here.
 
-**IMPORTANT:** You'll also have to increase the memory allocated to Docker to at least **6.25 GB**, because you'll have 70+ containers running after deploying eShopOnContainers.
+>**IMPORTANT:** You'll also have to increase the memory allocated to Docker to at least **6.25 GB**, because you'll have 70+ containers running after deploying eShopOnContainers. But for Windows operating system, if you are using *Docker Desktop WSL 2 backend* then you don't need to do any manual configuration. It automatically uses the required CPU and memory resources while building and running containers. For more details refer : [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/)
 
 ## Install Helm
 
