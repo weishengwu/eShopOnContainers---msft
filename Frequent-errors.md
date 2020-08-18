@@ -11,6 +11,7 @@ These are the most frequent errors encountered when running eShopOnContainers.
 - [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#when-i-run-the-solution-using-visual-studio-or-the-cli-i-get-warnings-like-the-eshopazurexxxx-variable-is-not-set)
 - [When I run 'docker-compose up' I get an error like ERROR: Service 'xxxxx' failed to build: COPY failed: stat ...: no such file or directory](#when-i-run-docker-compose-up-i-get-an-error-like-error-service-xxxxx-failed-to-build-copy-failed-stat--no-such-file-or-directory)
 - [When I try to run the solution in 'Docker for Windows' (on the Linux VM) I get the error: 'Did you mean to run dotnet SDK commands?'](#when-i-try-to-run-the-solution-in-docker-for-windows-on-the-linux-vm-i-get-the-error-did-you-mean-to-run-dotnet-sdk-commands)
+- [Login page - Exception: Correlation failed](#Login-page---Exception:-Correlation-failed)
 
 ## Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages
 
@@ -83,3 +84,16 @@ Did you mean to run dotnet SDK commands? Please install dotnet SDK from:
 That usually happens when you just switched from Windows Containers to Linux Containers in "Docker for Windows".
 This might be a temporal bug in "Docker for Windows" environment.
 Workaround: Reboot your machine and you should be able to deploy to Linux Containers without these issues.
+
+
+## Login page - Exception: Correlation failed
+
+During login if you get this below error :
+
+![](images/Correlation-failed-error-on-login/correlation-failed.png)
+
+That happens because of the updated version of Chrome Browser. For more details see article related to [samesite cookie changes](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/).
+
+You can `disable` the `SameSite by default cookies` setting :
+
+![](images/Correlation-failed-error-on-login/same-site-setting-chrome-browser.png)
