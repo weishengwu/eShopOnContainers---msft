@@ -18,3 +18,17 @@ While developing this reference application, we also created the following compa
 | App patterns with Xamarin.Forms |   |
 |---------------------------------|---|
 | <a href='https://aka.ms/xamarinpatternsebook'> <img src="images/eBooks/xamarin.png"></a> | <ul><li><a href='https://aka.ms/xamarinpatternsebook'>**Download PDF** </a></li><li><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/">Read online</a></li></ul> |
+
+
+</br>
+
+###  Additional Resources
+
+- [eshopOnContainers - Wiki](https://github.com/dotnet-architecture/eShopOnContainers/wiki)
+
+- [.NET application architecture guide](https://docs.microsoft.com/dotnet/architecture/)
+
+- [Create and deploy a cloud-native ASP.NET Core microservice](https://docs.microsoft.com/learn/modules/microservices-aspnet-core/)
+
+- [Implement resiliency in a cloud-native ASP.NET Core microservice](https://docs.microsoft.com/learn/modules/microservices-resiliency-aspnet-core/)
+
