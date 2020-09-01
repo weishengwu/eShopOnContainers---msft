@@ -1,7 +1,7 @@
 ## eBook -  .NET Microservices: Architecture for Containerized .NET Applications
 
 
-### Release 3.1.1 (2020-09-01)
+### Release 3.1.2 (2020-09-01)
 
 Reference commits : [6317237](https://github.com/dotnet/docs/pull/19901/commits/63172377dfad02406ff73dd83bf4c709ee2985c6), [add8374](https://github.com/dotnet/docs/pull/20332/commits/add8374835f7dff4569ddd8301261b727e54b839), [05f6d3f](https://github.com/dotnet/docs/pull/20359/commits/05f6d3f4240684c53ae4ddabded2fae1c1aaed52), [540ff78](https://github.com/dotnet/docs/pull/19315/commits/540ff78fe7e94aad24eae90d2e14acf9176bb94a), [0e1e2bb](https://github.com/dotnet/docs/pull/20006/commits/0e1e2bb0f48b469deaba882fb695e9d86f812c8f), [b0f28cb](https://github.com/dotnet/docs/pull/20131/commits/b0f28cb9204ba982b1b022359946edc80b042daf), [ce794ce](https://github.com/dotnet/docs/pull/19980/commits/ce794ce5f18592a5f5a3e8b8f4d475b7c4fb6b7b)
 
