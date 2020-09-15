@@ -8,7 +8,7 @@ While developing this reference application, we also created the following compa
 
 | Microservices Architecture |   |
 |---------------------------|---|
-| <a href='https://aka.ms/microservicesebook'><img src="images/eBooks/microservices-architecture.png"></a> | <ul><li><a href='https://aka.ms/microservicesebook'>**Download PDF** (v3.2 Edition)</a></li><li><a href="https://docs.microsoft.com/dotnet/standard/microservices-architecture/">Read online</a></li><li><a href="Microservices-Architecture-eBook-changelog">Changelog</a></li></ul> |
+| <a href='https://aka.ms/microservicesebook'><img src="images/eBooks/microservices-architecture.png"></a> | <ul><li><a href='https://aka.ms/microservicesebook'>**Download PDF** (v3.1.2 Edition)</a></li><li><a href="https://docs.microsoft.com/dotnet/standard/microservices-architecture/">Read online</a></li><li><a href="Microservices-Architecture-eBook-changelog">Changelog</a></li></ul> |
 
 
 | Containers Lifecycle & CI/CD |   |
