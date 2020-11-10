@@ -1,5 +1,25 @@
 ## eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
+### Release 3.1.1 (2020-11-12)
+
+Reference commits : [b77b615](https://github.com/dotnet/docs/commit/153df0eaf4f6acd340e77818c6b617d9e554f004), [153df0e](https://github.com/dotnet/docs/commit/153df0eaf4f6acd340e77818c6b617d9e554f004), [b77b615](https://github.com/dotnet/docs/commit/b77b615d4b45334905c6e9dfa6b165abbcabc7d5), [fb43117](https://github.com/dotnet/docs/commit/fb431175564955b9beb6706de19a5ed9639995ee), [cc64143](https://github.com/dotnet/docs/commit/cc64143cb9e691d7668621429a96a167cf022214), [fcfbb09](https://github.com/dotnet/docs/commit/fcfbb094392830ef47d37a5c72fabef04bf34449), [a8bc0a6](https://github.com/dotnet/docs/commit/a8bc0a6478e569f2a8dca6a69bf5b2e4c2302d4e)
+
+- Fixes the code block annotation in the following pages :
+    - `Inner-loop development workflow for Docker apps`
+    - `Using Windows PowerShell commands in a DockerFile to set up Windows Containers (Docker standard based)`
+- Fixes broken link in the following pages :
+    - `Visual Studio Tools for Docker on Windows`
+- Removes orphaned images. 
+- Changes docs prefix (https://docs.microsoft.com) in the following pages :
+    - `Containerized Docker Application Lifecycle with Microsoft Platform and Tools`
+    - `Manage production Docker environments`
+    - `What is Docker?`    
+- Updated ACR creation section in page `Build ASP.NET Core applications deployed as Linux containers into AKS/Kubernetes clusters`
+- Updates docker file content in page ` Using Windows PowerShell commands in a DockerFile to set up Windows Containers (Docker standard based)`
+
+Contributors : @nschonni, @gewarren, @DCtheGeek, @stackoverjoe
+
+
 ### Release 3.1 (2019-08-07)
 
 Reference commit [b3d6542](https://github.com/dotnet/docs/pull/19798/commits/b3d6542eeeffa6819b51c80712f51026dea94714) ([PR #19798](https://github.com/dotnet/docs/pull/19798))
