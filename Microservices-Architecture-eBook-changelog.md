@@ -1,5 +1,61 @@
 ## eBook -  .NET Microservices: Architecture for Containerized .NET Applications
 
+### Release 3.1.3 (2020-11-12)
+
+Reference commits : [182fe95](https://github.com/dotnet/docs/commit/182fe95571393d39e0ad212c1e46acfacd7db8db), [a3789be](https://github.com/dotnet/docs/commit/a3789bebfb63217822a6ad795b6cdd3bb2f7f16e), [153df0e](https://github.com/dotnet/docs/commit/153df0eaf4f6acd340e77818c6b617d9e554f004), [a7dfe75](https://github.com/dotnet/docs/commit/a7dfe75ff89818f789a975435ccc5f0070c9e802), [9eb4479](https://github.com/dotnet/docs/commit/9eb44793999083daad6984cb37600c48e441b33d), [1d89b18](https://github.com/dotnet/docs/commit/1d89b18e15c33be746ba917485c1f53f8cf43c5a), [5f89393](https://github.com/dotnet/docs/commit/5f89393b25287a945033197474ac0a9540013853), [b77b615](https://github.com/dotnet/docs/commit/b77b615d4b45334905c6e9dfa6b165abbcabc7d5), [7fb1d2a](https://github.com/dotnet/docs/commit/7fb1d2a37828076c628607c43a7cabb58de9c343), [500c1d9](https://github.com/dotnet/docs/commit/500c1d90ffa18783bb0ab9f0494922a36bdfc1b8), [c81b647](https://github.com/dotnet/docs/commit/c81b647359dc9dd42b6a1d71b0ccf1caf113bb77), [6d4ae6b](https://github.com/dotnet/docs/commit/6d4ae6bd7055b3fe2ba3fe975db922c42a0c0c93), [26ac253](https://github.com/dotnet/docs/commit/26ac25314bfa8e2dc478484d6fbe7d44034e3672), [cc64143](https://github.com/dotnet/docs/commit/cc64143cb9e691d7668621429a96a167cf022214), [74844f0](https://github.com/dotnet/docs/commit/74844f077d685edd64a62ff8b6046f0cdb0299be), [47c1701](https://github.com/dotnet/docs/commit/47c17014d387be519cb5ab261b5db479263b7c0a), [d686801](https://github.com/dotnet/docs/commit/d68680132dade062859e052c4841ac422139c82f)
+
+- Fixes typo in the following pages : 
+    - `Containerizing monolithic applications`
+    - `Development workflow for Docker apps`
+    - `Implementing event-based communication between microservices (integration events)`
+    - `Implementing reads/queries in a CQRS microservice`
+    - `Implementing API Gateways with Ocelot`
+    - `Creating a simple data-driven CRUD microservice`
+    - ` Implementing a microservice domain model with .NET Core`
+    - `Domain events. design and implementation`
+    - `Using NoSQL databases as a persistence infrastructure`
+    - `Handling partial failure`
+    - `Testing ASP.NET Core services and web apps`
+    - `Securing .NET Microservices and Web Applications`
+
+
+- Fixes the code block annotation in the following pages :
+    - `dockerfile` code block in `Development workflow for Docker apps`
+    - `csharp` code block in `Use a database server running as a container`
+    - `csharp` code block in `Defining your multi-container application with docker-compose.yml`
+    - `dockerfile` code block in `Implementing API Gateways with Ocelot`
+    - `dockerfile` code block in `Defining your multi-container application with docker-compose.yml`
+
+- Fixes broken link in the following pages :
+    - `Asynchronous message-based communication`
+    - `Development workflow for Docker apps`
+    - `Using Azure Key Vault to protect secrets at production time`
+    - `Use IHttpClientFactory to implement resilient HTTP requests`
+    - `Testing ASP.NET Core services and web apps`
+
+- Changes docs prefix (https://docs.microsoft.com) in the following pages :
+    - `Asynchronous message-based communication`
+    - `Communication in a microservice architecture`
+    - `The API gateway pattern versus the direct client-to-microservice communication`
+    - `Challenges and solutions for distributed data management`
+    - `State and data in Docker applications`
+    - `Resiliency and high availability in microservices`
+    - `Orchestrate microservices and multi-container applications for high scalability and availability`    
+    - `Development workflow for Docker apps`
+    - `Use IHttpClientFactory to implement resilient HTTP requests`
+    - `Domain events. design and implementation`
+    - `Implementing value objects`
+    - `Implementing the infrastructure persistence layer with Entity Framework Core`
+    - `Designing the microservice application layer and Web API`
+    - `Implementing a microservice domain model with .NET Core`
+    - `Using NoSQL databases as a persistence infrastructure`
+    - `Creating a simple data-driven CRUD microservice`
+    - `Implementing event-based communication between microservices (integration events)`
+    - `Designing a microservice-oriented application`
+
+    
+
+Contributors : @zakaria-c, @nschonni , @DCtheGeek, @gewarren, @Youssef1313
 
 ### Release 3.1.2 (2020-09-02)
 
