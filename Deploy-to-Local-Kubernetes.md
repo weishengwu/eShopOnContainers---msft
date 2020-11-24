@@ -403,8 +403,15 @@ To enable the dashboard:
 
 5. Get the bearer token to login to the dashboard by running this command:
 
+    In PowerShell :
+
     ```powershell
-    kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+    kubectl -n kubernetes-dashboard describe secret $(((kubectl -n kubernetes-dashboard get secret | Select-String 'admin-user') -split " ")[0])
+    ```    
+    Or in other Shell :
+
+    ```bash
+    kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
     ```
 
     You should get something like this:
