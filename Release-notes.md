@@ -7,8 +7,8 @@
     - [Bug Fixes](#Bug-Fixes)
   - [Contributions](#Contributions)
 - [2019-11-26 - Release 3.0.0](#2019-11-26---release-300)
-  - [Highlights](#highlights-3.0.0)
-  - [Details](#details-3.0.0)
+  - [Highlights](#Highlights---3.0.0)
+  - [Details](#details---3.0.0)
     - [New folder structure](#new-folder-structure)
     - [Retired deployment scenarios](#retired-deployment-scenarios)
 
@@ -60,7 +60,7 @@ We’d like to acknowledge and thank the following community members for their v
 
 The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContainers/releases/tag/3.0.0) contains a **LOT** of changes and new features:
 
-### Highlights-3.0.0
+### Highlights - 3.0.0
 
 1. Update to .NET Core 3.0
 2. Use of gRPC for microservice-to-microservice communication
@@ -69,7 +69,7 @@ The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContain
 5. Initial Service Mesh support
 6. Revise deployment scenarios
 
-### Details-3.0.0
+### Details - 3.0.0
 
 - Migrate solution from ASP.NET Core 2.2 to 3.0 and update all projects to use the latest .NET Core 3.0 templates.
 
