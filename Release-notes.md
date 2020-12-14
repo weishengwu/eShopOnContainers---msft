@@ -1,8 +1,8 @@
 > **CONTENT**
 
 - [2020-12-14 - Release 3.1.0](#2019-11-26---release-300)
-  - [Highlights](#highlights-)
-  - [Details](#details-)
+  - [Highlights](#highlights)
+  - [Details](#details)
     - [Changes](#Changes)
     - [Bug Fixes](#Bug-Fixes)
   - [Contributions](#Contributions)
