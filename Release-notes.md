@@ -1,16 +1,66 @@
 > **CONTENT**
 
+- [2020-12-14 - Release 3.1.0](#2019-11-26---release-300)
+  - [Highlights](#highlights-)
+  - [Details](#details-)
+    - [Changes](#Changes)
+    - [Bug Fixes](#Bug-Fixes)
+  - [Contributions](#Contributions)
 - [2019-11-26 - Release 3.0.0](#2019-11-26---release-300)
-  - [Highlights](#highlights)
-  - [Details](#details)
+  - [Highlights](#highlights-3.0.0)
+  - [Details](#details-3.0.0)
     - [New folder structure](#new-folder-structure)
     - [Retired deployment scenarios](#retired-deployment-scenarios)
+
+## 2020-12-14 - Release 3.1.0
+
+The latest [3.1.0 release](https://github.com/dotnet-architecture/eShopOnContainers/releases/tag/3.1.0) contains multiple changes and bug fixes:
+
+### Highlights
+
+1. Updates to .NET Core 3.1.0
+2. Refactors code for few of the code modules
+3. Fixes few important bugs
+
+### Details
+
+  #### Changes
+
+  - Removes unused using from different classes.
+  - Updates Readme with relevant information.  
+  - Updates app manifest to support helm 3.x+ and Kubernetes version 1.16.x+
+  - Updates different npm package versions in WebSPA
+  - Changes docker host DNS default value to `host.docker.internal`
+  - Changes `OpenIdConnect` string literal to `OpenIdConnectDefaults.AuthenticationScheme`
+  - Changes ReadAllBytes to ReadAllBytesAsync in PicController
+  - Updates Solution file 
+
+  #### Bug Fixes
+
+  - Fixes SignalR 401 Unauthorized error.
+  - Fixes different `typo` in the main `Readme` file.
+  - Fixes Firewall specific rule check in the script.
+  - Fixes disposing of direct instantiated objects in calalog service
+  - Fixes typo in `Readme` and `appsetting.json` file. 
+  - Fixes unit test cases
+  - Fixes parameter error in multiarch job
+  - Fixes WebSPA build error after updating sha hashes in `packages-lock.json`
+  - Fixes missing claimsType for load testing
+  - Fixes PurchaseUrl port in WebSPA `appsettings.json`
+  - Fixes spelling mistake in code comment.
+  - Fixes k8s manifest deployment error `invalid type for io.k8s.api.core.v1.ConfigMap.data` from macOS environment.
+
+### Contributions
+
+We’d like to acknowledge and thank the following community members for their valuable contributions !
+
+@vishipayyallore, @markharwood101, @hfz-r, @smholvoet, @InstanceFactory, @EdmondShtogu, @nsedoud, @H3RSKO, @MajidAliKhanQuaid, @fjvela, @jeremiahflaga, @zakaria-c, @wojciechrak , @anjoy8, @m-knet, @n-stefan, @synercoder , @Rosenberg96
 
 ## 2019-11-26 - Release 3.0.0
 
 The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContainers/releases/tag/3.0.0) contains a **LOT** of changes and new features:
 
-### Highlights
+### Highlights-3.0.0
 
 1. Update to .NET Core 3.0
 2. Use of gRPC for microservice-to-microservice communication
@@ -19,7 +69,7 @@ The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContain
 5. Initial Service Mesh support
 6. Revise deployment scenarios
 
-### Details
+### Details-3.0.0
 
 - Migrate solution from ASP.NET Core 2.2 to 3.0 and update all projects to use the latest .NET Core 3.0 templates.
 
@@ -31,9 +81,9 @@ The latest [3.0.0 release](https://github.com/dotnet-architecture/eShopOnContain
 
 - Handle two deployment scenarios
   - Basic deployment, better for learning:
-    - [CLI or Visual Studio Code](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup)
     - [Visual Studio (F5 experience)](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup#optional---use-visual-studio)
-    - [Docker compose](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Docker-compose-deployment-files)
+    - [Docker compose on windows](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup)
+    - [Docker compose on macOS](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Mac-setup)
     - [Local Kubernetes](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Local-Kubernetes)
 
   - Advanced deployment, complex but more real-life:
