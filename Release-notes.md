@@ -7,8 +7,8 @@
     - [Bug Fixes](#Bug-Fixes)
   - [Contributions](#Contributions)
 - [2019-11-26 - Release 3.0.0](#2019-11-26---release-300)
-  - [Highlights](#Highlights---3.0.0)
-  - [Details](#details---3.0.0)
+  - [Highlights](#highlights---300)
+  - [Details](#details---300)
     - [New folder structure](#new-folder-structure)
     - [Retired deployment scenarios](#retired-deployment-scenarios)
 
