@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Code Flow](#Code-Flow)
     - [User Registration](#User-Registration)
-    - [User Login](#grpc)
-    - [Add Item To Cart](#api-gateways)
-    - [Order Creation](#internal-architectural-patterns)
+    - [User Login](#User-Login)
+    - [Add Item To Cart](#Add-Item-To-Cart)
+    - [Order Creation](#Order-Creation)
 
 ## Overview
 
