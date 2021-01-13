@@ -364,7 +364,7 @@ To expose the SQL Server service and the RabbitMQ admin port, when deploying to 
 
 ```powershell
 kubectl apply -f .\nodeports\rabbitmq-admin.yaml
-kubectl apply -f .\nodeports\sql-services.yaml
+kubectl apply -f .\nodeports\sql-service.yaml
 ```
 
 This will expose the following infrastructure services:
