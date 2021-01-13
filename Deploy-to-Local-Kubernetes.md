@@ -360,10 +360,11 @@ helm uninstall $(helm ls --filter eshop -q) --dry-run
 
 You can expose internal services by using [NodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport) (among some other options)
 
-To expose the SQL Server service and the RabbitMQ admin port, when deploying to local Kubernetes, you can run the following script, from the `k8s` folder:
+To expose the SQL Server service and the RabbitMQ admin port, when deploying to local Kubernetes, you can run the following commands, from the `k8s` folder:
 
 ```powershell
-.\deploy-nodeports.ps1
+kubectl apply -f .\nodeports\rabbitmq-admin.yaml
+kubectl apply -f .\nodeports\sql-services.yaml
 ```
 
 This will expose the following infrastructure services:
