@@ -3,7 +3,7 @@ While developing this reference application, we also created the following compa
 
 | Architecting Cloud-Native |   |
 |---------------------------|---|
-|<a href='https://dotnet.microsoft.com/download/e-book/cloud-native-azure/pdf'><img src="images/eBooks/cloud-native-azure.png"></a> | <ul><li><a href='https://dotnet.microsoft.com/download/e-book/cloud-native-azure/pdf'>**Download PDF** (v1.0.1 Edition)</a></li><li><a href="https://docs.microsoft.com/dotnet/architecture/cloud-native/">Read online</a></li><li><a href="Cloud-Native-eBook-changelog">Changelog</a></li></ul> |
+|<a href='https://dotnet.microsoft.com/download/e-book/cloud-native-azure/pdf'><img src="images/eBooks/cloud-native-azure.png"></a> | <ul><li><a href='https://dotnet.microsoft.com/download/e-book/cloud-native-azure/pdf'>**Download PDF** (v1.0.2 Edition)</a></li><li><a href="https://docs.microsoft.com/dotnet/architecture/cloud-native/">Read online</a></li><li><a href="Cloud-Native-eBook-changelog">Changelog</a></li></ul> |
 
 
 | Microservices Architecture |   |

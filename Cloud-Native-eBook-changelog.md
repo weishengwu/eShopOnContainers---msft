@@ -1,5 +1,37 @@
 ## eBook -  Architecting Cloud Native .NET Applications for Azure
 
+### Release 1.0.2 (2021-01-19)
+
+*Reference commits :* [f1bc316](https://github.com/dotnet/docs/pull/22407/commits/f1bc31657acb702fc5e7e8f6c1f743751736a8dc), [d64e2dc](https://github.com/dotnet/docs/pull/22407/commits/d64e2dc90747657325304bd0584d2a72ec6983dc)
+
+- Updates specific content in the following pages :
+
+    - `Index`
+    - `Introduction to cloud-native applications`
+    - `Candidate apps for cloud native`
+    - `Introducing eShopOnContainers reference app`
+    - `Mapping eShopOnContainers to Azure Services`
+    - `Deploying eShopOnContainers to Azure`
+    - `Centralized configuration`
+    - `Defining Cloud Native`
+    - `Introducing eShopOnContainers reference app`
+    - `Mapping eShopOnContainers to Azure Services`
+    - `Leveraging containers and orchestrators`
+    - `Front-end client communication`
+    - `Service-to-service communication`
+    - `Distributed data`
+    - `Relational vs. NoSQL data`
+    - `Application resiliency patterns`
+    - `Observability patterns`
+    - `Logging with Elastic Stack`
+    - `Monitoring in Azure Kubernetes Services`
+    - `Azure Monitor`
+    - `Identity`
+    - `Azure security for cloud-native apps`
+    - `DevOps`
+    - `Cloud Native Application Bundles`
+
+
 ### Release 1.0.1 (2020-11-10)
 
 *Reference commits :* [19435cc](https://github.com/dotnet/docs/commit/19435cc115c316573a036f2c78d8032064ac9321), [153df0e](https://github.com/dotnet/docs/commit/153df0eaf4f6acd340e77818c6b617d9e554f004), [cc64143](https://github.com/dotnet/docs/commit/cc64143cb9e691d7668621429a96a167cf022214), [891eeac](https://github.com/dotnet/docs/commit/891eeac17df20ab1ddf7a6cfaa753bb180c90b88), [03479bd](https://github.com/dotnet/docs/commit/03479bdfb3f4c70854d025d7811213f93b4439fc), [a5e5037](https://github.com/dotnet/docs/commit/a5e5037d9ca566cdd9024b313874da53993cbd9e), [9440064](https://github.com/dotnet/docs/commit/94400642eb02ec5a7c76815898e5d6c853277005)
