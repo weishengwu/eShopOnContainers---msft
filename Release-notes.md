@@ -1,12 +1,12 @@
 > **CONTENT**
 
-- [2021-01-21 - Release 3.1.1](#2019-11-26---release-311)
+- [2021-01-21 - Release 3.1.1](#2021-01-21---release-311)
   - [Highlights](#highlights)
   - [Details](#details)
     - [Changes](#Changes)
     - [Bug Fixes](#Bug-Fixes)
   - [Contributions](#Contributions)
-- [2020-12-14 - Release 3.1.0](#2019-11-26---release-310)
+- [2020-12-14 - Release 3.1.0](#2020-12-14---release-310)
   - [Highlights](#highlights)
   - [Details](#details)
     - [Changes](#Changes)
