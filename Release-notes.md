@@ -1,6 +1,12 @@
 > **CONTENT**
 
-- [2020-12-14 - Release 3.1.0](#2019-11-26---release-300)
+- [2021-01-21 - Release 3.1.1](#2019-11-26---release-311)
+  - [Highlights](#highlights)
+  - [Details](#details)
+    - [Changes](#Changes)
+    - [Bug Fixes](#Bug-Fixes)
+  - [Contributions](#Contributions)
+- [2020-12-14 - Release 3.1.0](#2019-11-26---release-310)
   - [Highlights](#highlights)
   - [Details](#details)
     - [Changes](#Changes)
@@ -11,6 +17,36 @@
   - [Details](#details---300)
     - [New folder structure](#new-folder-structure)
     - [Retired deployment scenarios](#retired-deployment-scenarios)
+
+## 2021-01-21 - Release 3.1.1
+
+The latest [3.1.1 release](https://github.com/dotnet-architecture/eShopOnContainers/releases/tag/3.1.1) contains multiple changes and bug fixes:
+
+### Highlights
+
+1. Refactors code for few of the code modules
+2. Fixes few important bugs
+
+### Details
+
+  #### Changes
+    
+  - Removed unused using and refactored spacing in many classes.
+  - Removes `dotnet.myget.org` NuGet package feed dependency from the `NuGet.config` file.
+  - Removes unnecessary  await from `Ordering.BackgroundTasks`
+  - Updates packages in `package-lock.json` file in WebSPA project. 
+
+  #### Bug Fixes
+    
+  - Fixes total decimal place and drop-down menu hover issue in Web MVC app. 
+  - Fixes Ordering Functional Test case.
+
+### Contributions
+
+We’d like to acknowledge and thank the following community members for their valuable contributions !
+
+@vishipayyallore, @william-keller, @hetal-kapadia , @InstanceFactory
+
 
 ## 2020-12-14 - Release 3.1.0
 
