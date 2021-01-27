@@ -5,7 +5,7 @@ The root folder of the repo contains all docker-compose files (`docker-compose*.
 - [Run eShopOnContainers locally](#run-eshoponcontainers-locally)
 - [Run eShopOnContainers on a remote docker host](#run-eshoponcontainers-on-a-remote-docker-host)
 - [Run eShopOnContainers on Windows containers](#run-eshoponcontainers-on-windows-containers)
-- [Run "infrastructure" containers](#run-%22infrastructure%22-containers)
+- [Run "infrastructure" containers](#run-infrastructure-containers)
 - [Other files](#other-files)
 
 ## Run eShopOnContainers locally
