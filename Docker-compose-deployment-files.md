@@ -5,7 +5,7 @@ The root folder of the repo contains all docker-compose files (`docker-compose*.
 - [Run eShopOnContainers locally](#run-eshoponcontainers-locally)
 - [Run eShopOnContainers on a remote docker host](#run-eshoponcontainers-on-a-remote-docker-host)
 - [Run eShopOnContainers on Windows containers](#run-eshoponcontainers-on-windows-containers)
-- [Run "infrastructure" containers](#run-infrastructure-containers)
+- [Run infrastructure containers](#run-infrastructure-containers)
 - [Other files](#other-files)
 
 ## Run eShopOnContainers locally
@@ -60,7 +60,7 @@ All `docker-compose-windows*.yml` files have a 1:1 relationship with the same fi
 
 * `docker-compose-windows.prod.yml` is the equivalent of `docker-compose.prod.yml` for containers windows. As happens with `docker-compose-windows.override.yml` this file will be deleted in a near future, so you should use `docker-compose.prod.yml` instead.
 
-## Run "infrastructure" containers
+## Run infrastructure containers
 
 These files were intended to provide a fast way to start only "infrastructure" containers (SQL Server, Redis, etc). *This files are deprecated and will be deleted in a near future**:
 
