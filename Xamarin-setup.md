@@ -1,4 +1,4 @@
-_IMPORTANT: This section is in early draft state. Will be evolving, eventually_
+>!IMPORTANT: Mobile client related codebase has been moved under a different repository [eShop Mobile Client](https://github.com/dotnet-architecture/eshop-mobile-client)
 
 ## Important Notes for the Xamarin app
 
@@ -8,9 +8,9 @@ _IMPORTANT: This section is in early draft state. Will be evolving, eventually_
 
 ## Guidance on Architecture patterns of Xamarin.Forms apps
 
-The following book (early draft state) is being created aligned with this sample/reference Xamarin app.
+The following book is being created aligned with this sample/reference Xamarin app.
 You can download it here:
 
 <a href='https://aka.ms/xamarinpatternsebook'> <img src="images/eBooks/xamarinpatternsebook-cover.png"></a>
 
-[**Download** (Early DRAFT, still work in progress)](https://aka.ms/xamarinpatternsebook)
+[**Download**](https://aka.ms/xamarinpatternsebook)
