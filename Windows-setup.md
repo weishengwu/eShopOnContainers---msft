@@ -21,7 +21,7 @@ This page covers the setup of your Windows development computer.
   - [Build and run the application with F5 or Ctrl+F5](#build-and-run-the-application-with-f5-or-ctrlf5)
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2019-tools-for-docker%22-and-network-proxiesfirewalls)
+  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-visual-studio-2019-tools-for-docker-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Additional resources](#additional-resources)
