@@ -1,18 +1,12 @@
-This page covers the setup of your Windows development computer and assumes you've already:
-
-- Ensured your system meets the [system requirements](System-requirements#Windows) and
-- Installed Docker Desktop for Windows as directed in \
-  <https://docs.docker.com/docker-for-windows/install/>.
-
-The approach followed is to have the app running from the CLI first, since it's usually easier to deploy, and then go on to the option of using Visual Studio.
+This page covers the setup of your Windows development computer.
 
 > **CONTENT**
 
-- [Configure Docker](#configure-docker)
+- [Install Docker Desktop](#install-docker-desktop)
+- [Configure Docker](#configure-docker-desktop)
   - [Memory and CPU](#memory-and-cpu)
   - [Shared drives](#shared-drives)
 - [Configure local networking](#configure-local-networking)
-- [WARNING on Docker Desktop 2.2.0.0!](#warning-on-docker-desktop-2200)
 - [Build and deploy eShopOnContainers](#build-and-deploy-eshoponcontainers)
   - [1. Create a folder for your repositories](#1-create-a-folder-for-your-repositories)
   - [2. Clone eShopOnContainer's GitHub repo](#2-clone-eshoponcontainers-github-repo)
@@ -27,12 +21,22 @@ The approach followed is to have the app running from the CLI first, since it's 
   - [Build and run the application with F5 or Ctrl+F5](#build-and-run-the-application-with-f5-or-ctrlf5)
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with "Visual Studio 2017 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2017-tools-for-docker%22-and-network-proxiesfirewalls)
+  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-%22visual-studio-2019-tools-for-docker%22-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Additional resources](#additional-resources)
 
-## Configure Docker
+## Install Docker Desktop
+
+You can install Docker Desktop following :
+
+Install [Docker Desktop Of Windows](https://docs.docker.com/docker-for-windows/install/)
+
+![](images/Deploy-to-Local-Kubernetes/docker-desktop.png)
+
+>**NOTE** You can ensure your system meets the [System-requirements](https://github.com/dotnet-architecture/eShopOnContainers/wiki/System-requirements#windows)
+
+## Configure Docker Desktop
 
 The initial Docker for Desktop configuration is not suitable to run eShopOnContainers because the app uses a total of 25 Linux containers.
 
@@ -63,6 +67,8 @@ The drive you'll need to share depends on where you place your source code. For 
 
 ![](images/Docker-setup/eshoponcontainers-docker-configuration-shared-drives-latest.png)
 
+>**IMPORTANT:** If you are using *Docker Desktop WSL 2 backend*, then this step is optional.
+
 ## Configure local networking
 
 IMPORTANT: Ports **5100** to **5105** must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
@@ -79,8 +85,6 @@ If you are working within a corporate VPN you might need to run this power shell
 Get-NetConnectionProfile | Where-Object { $_.InterfaceAlias -match "(DockerNAT)" } | ForEach-Object { Set-NetConnectionProfile -InterfaceIndex $_.InterfaceIndex -NetworkCategory Private }
 ```
 Or just run the **set-dockernat-networkategory-to-private.ps1** script available in the solution's **deploy/windows** folder.
-
-## WARNING on Docker Desktop 2.2.0.0!
 
 > **Docker Desktop 2.2.0.0 doesn't use `DokerNAT` so the above solution will not work.**
 >
@@ -147,15 +151,15 @@ You can now [explore the application](Explore-the-application) or continue with 
 
 If you want to explore the code and debug the application to see it working, you have to install Visual Studio.
 
-You have to install at least VS 2017 (15.9) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
+You have to install at least VS 2019 (16.8 or later) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
 
-**Make sure you have the latest SDK 3.0 version from <https://dotnet.microsoft.com/download/dotnet-core/3.0> installed.**
+**Make sure you have the latest .NET 5 SDK from <https://dotnet.microsoft.com/download/dotnet/5.0> installed.**
 
 Upon running the installer, select the following workloads depending on the apps you intend to test or work with:
 
 ### Server side (Microservices and web applications) - Workloads
 
-- .NET Core cross-platform development
+- .NET cross-platform development
 - Azure development (Optional) - It is optional but recommended in case you want to deploy to Docker hosts in Azure or use any other infrastructure in Azure.
 
 ![](images/Windows-setup/vs-2019-server-workload.png)
@@ -188,11 +192,11 @@ VS runs some docker related tasks when opening a project with Docker support, to
 
 - If testing/working either with the server-side applications and services plus the Xamarin mobile apps, open the solution: **eShopOnContainers.sln**
 
-Below you can see the full **eShopOnContainers-ServicesAndWebApps.sln** solution (server side) opened in Visual Studio 2017:
+Below you can see the full **eShopOnContainers-ServicesAndWebApps.sln** solution (server side) opened in Visual Studio 2019:
 
 ![](images/Windows-setup/vs-2017-eshoponcontainers-servicesandwebapps-solution.png)
 
-Note how VS 2017 loads the docker-compose.yml files in a special node-tree so it uses that configuration to deploy/debug all the containers configured, at the same time into your Docker host.
+Note how VS 2019 loads the `docker-compose.yml` files in a special node-tree so it uses that configuration to deploy/debug all the containers configured, at the same time into your Docker host.
 
 ### Build and run the application with F5 or Ctrl+F5
 
@@ -225,7 +229,7 @@ You can see the 8 containers are running and what ports are being exposed, etc.
 
 #### Debug with several breakpoints across the multiple containers/projects
 
-Something very compelling and productive in VS 2017 is the capability to debug several breakpoints across the multiple containers/projects.
+Something very compelling and productive in VS 2019 is the capability to debug several breakpoints across the multiple containers/projects.
 For instance, you could set a breakpoint in a controller within the MVC web app plus a second breakpoint in a second controller within the Catalog Web API microservice, then refresh the browser if you were still running the app or F5 again, and VS will be stopping within your microservices running in Docker as shown below! :)
 
 Breakpoint at the MVC app running as Docker container in the Docker host:
@@ -238,11 +242,11 @@ Breakpoint at the Catalog microservice running as Docker container in the Docker
 
 ![](images/Windows-setup/debugging-webapi-microservice.png)
 
-And that's it! Super simple! Visual Studio is handling all the complexities under the covers and you can directly do F5 and debug a multi-container application! 
+And that's it! Super simple! Visual Studio is handling all the complexities under the covers and you can directly do F5 and debug a multi-container application!
 
-### Issue with "Visual Studio 2017 Tools for Docker" and network proxies/firewalls
+### Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls
 
-After installing VS2017 with docker support, if you cannot debug properly and you are trying from a corporate network behind a proxy, consider  the following issue and workarounds, until this issue is fixed in Visual Studio:
+After installing VS2019 with docker support, if you cannot debug properly and you are trying from a corporate network behind a proxy, consider  the following issue and workarounds, until this issue is fixed in Visual Studio:
 
 - https://github.com/dotnet-architecture/eShopOnContainers/issues/224#issuecomment-319462344
 
