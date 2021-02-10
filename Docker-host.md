@@ -2,7 +2,7 @@
 
 _IMPORTANT: This instructions section is in early draft state because the current version of eShopOnContainers has been tested mostly on plain Docker engine and just smoke tests on some orchestrators like AKS and Kubernetes._
 
-However, since there are a few folks testing it in "production" environments, out of the dev PC machine (VS2017+Docker) but in a prod. environment like Azure or a regular Docker Host, here's some important information to consider, in addition to the [CLI setup procedure detailed for Windows](Windows-setup).
+However, since there are a few folks testing it in "production" environments, out of the dev PC machine (VS2019+Docker) but in a prod. environment like Azure or a regular Docker Host, here's some important information to consider, in addition to the [CLI setup procedure detailed for Windows](Windows-setup).
 
 The "by default configuration" in the `docker-compose.override.yml` file is set with specific config so it makes it very straightforward to test the solution in a Windows PC with Visual Studio or the CLI, almost just F5 after the first configuration. But, for instance, it is using the "**10.0.75.1**" IP used by default in all "Docker for Windows" installations, so it can be used by the Identity Container for the login page when being redirected from the client apps **without you having to change any specific external IP**, etc.
 
