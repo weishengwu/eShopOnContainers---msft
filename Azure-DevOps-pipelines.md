@@ -1,4 +1,4 @@
-This page contains a brief setup description for CI/CD pipelines in Azure DevOps
+This page contains a brief setup description for CI/CD pipelines in Azure DevOps. `main` branch uses that.
 
 > **CONTENT**
 

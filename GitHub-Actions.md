@@ -1,4 +1,4 @@
-> This page contains a brief setup description for CI/CD pipelines in GitHub Actions workflows.
+> This page contains a brief setup description for CI/CD pipelines in GitHub Actions workflows. `dev` branch uses that.
 
 > **CONTENT**
 
