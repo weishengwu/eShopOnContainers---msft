@@ -1,13 +1,10 @@
-This page covers the setup of your Mac development computer and assumes you've already:
+This page covers the setup of your Mac development computer.
 
-- Ensured your system meets the [system requirements](System-requirements#Mac) and
-- Installed Docker Desktop for Mac as directed in \
-  <https://docs.docker.com/docker-for-mac/install/>.
-
-The approach followed is to have the app running from the CLI first, since it's usually easier to deploy, and then go on to the option of using Visual Studio.
+>The approach followed is to have the app running from the CLI first, since it's usually easier to deploy, and then go on to the option of using Visual Studio.
 
 > **CONTENT**
 
+- [Install Docker Desktop](#install-docker-desktop)
 - [Configure Docker](#configure-docker)
   - [Memory and CPU](#memory-and-cpu)
   - [Shared folders](#shared-folders)
@@ -26,6 +23,16 @@ The approach followed is to have the app running from the CLI first, since it's 
 - [Explore the code](#explore-the-code)
 - [Configuring the app for external access from remote client apps](#configuring-the-app-for-external-access-from-remote-client-apps)
 
+## Install Docker Desktop
+
+You can install Docker Desktop following :
+
+Install [Docker Desktop Of Mac](https://docs.docker.com/docker-for-mac/install/)
+
+![](images/Deploy-to-Local-Kubernetes/docker-desktop.png)
+
+>**NOTE** You can ensure your system meets the [System-requirements](https://github.com/dotnet-architecture/eShopOnContainers/wiki/System-requirements#mac)
+
 ## Configure Docker
 
 The initial Docker for Desktop configuration is not suitable to run eShopOnContainers because the app uses a total of 25 Linux containers.
@@ -38,14 +45,14 @@ So it's important to configure enough memory RAM and CPU to Docker.
 
 Once Docker for Mac is installed, configure the minimum amount of memory and CPU like so:
 
-- Memory: 4096 MB
+- Memory: 6GB
 - CPU: 2
 
 This amount of memory is the absolute minimum to have the app running, and that's why you need a 16GB RAM machine for optimal configuration.
 
 ![](images/Docker-setup/mac-docker-configuration-memory-cpu.png)
 
-Depending on how many apps you are running in your Mac you might need to assign more memory to Docker in the Mac. Usually, 4GB should suffice, but we've got feedback from developers who've needed to assign up to 8GB of RAM to Docker in the Mac.
+Depending on how many apps you are running in your Mac you might need to assign more memory to Docker in the Mac. Usually, 6GB should suffice, but we've got feedback from developers who've needed to assign up to 8GB of RAM to Docker in the Mac.
 
 ### Shared folders
 
@@ -244,7 +251,7 @@ If you want to explore the code and debug the application to see it working, you
 
 When installing [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/), you can select between multiple workloads or platforms.
 
-Make sure you select the .NET Core platform:
+Make sure you select the .NET 5 platform:
 
 ![](images/Mac-setup/dotnetcore-workload-vs-mac.png)
 
@@ -252,11 +259,11 @@ Before completing the VS for Mac installation, it will demand you to install XCo
 
 If you install Android as a target platform, Java will also be installed as a dependency for building mobile apps for Android.
 
-For running just the Docker containers and web apps, you'd just need the .NET Core platform.
+For running just the Docker containers and web apps, you'd just need the .NET 5 platform.
 
 But if you want to try the eShopOnContainers mobile app, that requires Xamarin and therefore, the iOS and Android platforms, too. Those mobile platforms are optional for this Wiki walkthrough, though.
 
-**Make sure you have the latest SDK 3.0 version from <https://dotnet.microsoft.com/download/dotnet-core/3.0> installed.**
+**Make sure you have the latest .NET 5 SDK from <https://dotnet.microsoft.com/download/dotnet/5.0> installed.**
 
 ### Open the solution with Visual Studio for Mac
 
