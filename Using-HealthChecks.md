@@ -1,15 +1,15 @@
-ASP.NET Core 2.2 HealthChecks package is used in all APIs and applications of eShopOnContainers.
+ASP.NET Core 5.0 HealthChecks package is used in all APIs and applications of eShopOnContainers.
 
 All applications and APIs expose two endpoints (`/liveness` and `/hc`) to check the current application and all their dependencies. The `liveness` endpoint is intended to be used as a liveness probe in Kubernetes and the `hc` is intended to be used as a readiness probe in Kubernetes.
 
 ## Implementing health checks in ASP.NET Core services
 
-Here is the documentation about how implement HealthChecks in ASP.NET Core 2.2:
+Here is the documentation about how implement HealthChecks in ASP.NET Core 5.0:
 
-https://docs.microsoft.com/dotnet/standard/microservices-architecture/implement-resilient-applications/monitor-app-health 
+https://docs.microsoft.com/dotnet/standard/microservices-architecture/implement-resilient-applications/monitor-app-health
 
 Also, there's a **nice blog post** on HealthChecks by @scottsauber
-https://scottsauber.com/2017/05/22/using-the-microsoft-aspnetcore-healthchecks-package/ 
+https://scottsauber.com/2017/05/22/using-the-microsoft-aspnetcore-healthchecks-package/
 
 ## Implementation in eShopOnContainers
 
