@@ -2,11 +2,33 @@ The root folder of the repo contains all docker-compose files (`docker-compose*.
 
 > **CONTENT**
 
+- [Getting Started](#getting-started)
 - [Run eShopOnContainers locally](#run-eshoponcontainers-locally)
 - [Run eShopOnContainers on a remote docker host](#run-eshoponcontainers-on-a-remote-docker-host)
 - [Run eShopOnContainers on Windows containers](#run-eshoponcontainers-on-windows-containers)
 - [Run infrastructure containers](#run-infrastructure-containers)
 - [Other files](#other-files)
+
+## Getting Started
+
+Make sure you have [installed](https://docs.docker.com/docker-for-windows/install/) and [configured](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Windows-setup#configure-docker) docker in your environment. After that, you can run the below commands from the **/src/** directory and get started with the `eShopOnContainers` immediately.
+
+```powershell
+docker-compose build
+docker-compose up
+```
+
+You should be able to browse different components of the application by using the below URLs :
+
+```powershell
+Web Status : http://host.docker.internal:5107/
+Web MVC :  http://host.docker.internal:5100/
+Web SPA :  http://host.docker.internal:5104/
+```
+
+> Note: If you are running this application in macOS then use docker.for.mac.localhost as DNS name in .env file and the above URLs instead of host.docker.internal.
+
+Below are the other avenues to setup `eShopOnContainers`.
 
 ## Run eShopOnContainers locally
 
