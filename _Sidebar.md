@@ -67,4 +67,5 @@
 
 ### DevOps
 
+- [GitHub Actions](GitHub-Actions)
 - [Azure DevOps pipelines](Azure-DevOps-pipelines)

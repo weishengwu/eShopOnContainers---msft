@@ -32,7 +32,7 @@ Information about deploying to local Kubernetes, on-premises, and Azure environm
 
 ## DevOps
 
-Information about setting up CI/CD pipelines for eShopOnContainers in the Azure DevOps service.
+Information about setting up CI/CD pipelines for eShopOnContainers using GitHub Actions workflow.
 
 # NEWS / ANNOUNCEMENTS
 
