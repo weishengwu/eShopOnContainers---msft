@@ -30,9 +30,15 @@ In the [Explore the code page](Explore-the-code) you'll find links to relevant i
 
 Information about deploying to local Kubernetes, on-premises, and Azure environments.
 
+- [Deploy To Local Kubernetes](Deploy-to-Local-Kubernetes)
+- [Deploy To Azure Kubernetes Service (AKS)](Deploy-to-Azure-Kubernetes-Service-(AKS))
+
 ## DevOps
 
-Information about setting up CI/CD pipelines for eShopOnContainers using GitHub Actions workflow.
+Information about setting up CI/CD pipelines for eShopOnContainers using GitHub Actions workflow. For more details explore :
+
+- [GitHub Actions](GitHub-Actions)
+- [Azure DevOps Pipelines](Azure-DevOps-pipelines)
 
 # NEWS / ANNOUNCEMENTS
 
