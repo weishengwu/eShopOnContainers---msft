@@ -359,7 +359,7 @@ Now, just run the Azure CLI command to browse the Kubernetes Dashboard:
 
 ### Using Linkerd as Service Mesh (Advanced Scenario)
 
-There is the possibility to install eShopOnContainers ready to run with the [Linkerd](https://linkerd.io/) [Service Mesh](./Resiliency-and-Service-Mesh.md). To use Linkerd, you must complete the following steps:
+There is the possibility to install eShopOnContainers ready to run with the [Linkerd](https://linkerd.io/) [Service Mesh](Resiliency-and-Service-Mesh). To use Linkerd, you must complete the following steps:
 
 1. Install Linkerd on your cluster. The process is described in the [Linkerd installation documentation](https://linkerd.io/2/getting-started/#step-0-setup). Steps 0 trough 3 need to be done.
 2. Then install eShopOnContainers as per the procedure described above, but using this command:
@@ -375,7 +375,7 @@ Now you can use the command `linkerd dashboard` to show the mesh and monitor all
 
 The mesh monitors all HTTP connections (including gRPC), but don't monitor RabbitMQ or any other connection (SQL, Mongo, ...)
 
-For more information read the [Resiliency and Service Mesh](./Resiliency-and-Service-Mesh.md) page in the wiki.
+For more information read the [Resiliency and Service Mesh](Resiliency-and-Service-Mesh) page in the wiki.
 
 ### Using Specific DNS
 
