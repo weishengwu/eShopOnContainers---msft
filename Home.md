@@ -37,7 +37,8 @@ Information about deploying to local Kubernetes, on-premises, and Azure environm
 
 Information about setting up CI/CD pipelines for eShopOnContainers using GitHub Actions workflow. For more details explore :
 
-- [GitHub Actions](GitHub-Actions)
+- [Build Code with GitHub Actions](GitHub-Actions)
+- [Deploy Code with GitHub Actions](Deploy-With-GitHub-Actions)
 - [Azure DevOps Pipelines](Azure-DevOps-pipelines)
 
 # NEWS / ANNOUNCEMENTS
