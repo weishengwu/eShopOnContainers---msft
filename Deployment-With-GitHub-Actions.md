@@ -173,7 +173,7 @@ Secret Name|Description|Example
 
 When you are done, the secrets should look something like this:
 
-![Repository secrets](./media/repo-secrets.jpg)
+![Repository secrets](./images/Deployment-With-GitHub-Actions/repo-secrets.jpg)
 **Figure 1**: Repository secrets.
 
 ### Check workflows for the Catalog API
@@ -184,20 +184,20 @@ Ensure that you see `catalog-api` and `Deploy catalog-api` in the list of workfl
 
 You can test that the workflow is working correctly by selecting the `catalog-api` workflow. Next, select **Run workflow** to manually trigger the workflow. Select the `dev` branch.
 
-![Triggering the catalog-api workflow manually](./media/trigger-catalog-api.jpg)
+![Triggering the catalog-api workflow manually](./images/Deployment-With-GitHub-Actions/trigger-catalog-api.jpg)
 **Figure 2**: Triggering the catalog-api workflow manually.
 
 Make sure that the `catalog-api` workflow completes successfully, which should in turn trigger the `Deploy catalog-api` workflow. Ensure that this workflow completes successfully too.
 
-![Catalog-api successful run](./media/catalog-api-success.jpg)
+![Catalog-api successful run](./images/Deployment-With-GitHub-Actions/catalog-api-success.jpg)
 **Figure 3**: Catalog-api successful run.
 
-![Deploy catalog-api successful run](./media/deploy-catalog-api-success.jpg)
+![Deploy catalog-api successful run](./images/Deployment-With-GitHub-Actions/deploy-catalog-api-success.jpg)
 **Figure 4**: Deploy catalog-api successful run.
 
 Ensure that you can [navigate to the store front](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Azure-Kubernetes-Service-(AKS)#explore-eshoponcontainers) using the ingress URLs. Take note of the names of the first few items:
 
-![Store front displaying items](./media/store-before.jpg)
+![Store front displaying items](./images/Deployment-With-GitHub-Actions/store-before.jpg)
 **Figure 5**: Store front displaying items.
 
 ## Release a code change
@@ -208,25 +208,25 @@ Now that you have verified that the build and deploy workflows are working, you 
 
 Navigate to `src/Services/Catalog/Catalog.API/Controllers/CatalogController.cs` on the `dev` branch. Scroll down to around line 63. Remove the comments `/*` and `*/` above and below the `foreach` loop:
 
-![Uncomment the for loop](./media/uncomment-for.jpg)
+![Uncomment the for loop](./images/Deployment-With-GitHub-Actions/uncomment-for.jpg)
 **Figure 6**: Uncomment the for loop.
 
 Scroll to the bottom of the page and commit the change directly to the `dev` branch, entering a commit message:
 
-![Commit the code change](./media/code-commit.jpg)
+![Commit the code change](./images/Deployment-With-GitHub-Actions/code-commit.jpg)
 **Figure 7**: Commit the code change.
 
 Select the **Actions** tab and ensure that a new workflow has triggered.
 
-![Workflow triggered by pushing to dev](./media/workflow-triggered.jpg)
+![Workflow triggered by pushing to dev](./images/Deployment-With-GitHub-Actions/workflow-triggered.jpg)
 **Figure 8**: Workflow triggered by pushing to `dev`.
 
 Once that workflow completes, you should see the deploy workflow trigger immediately:
 
-![Deploy workflow triggered after building completes](./media/deploy-workflow-triggered.jpg)
+![Deploy workflow triggered after building completes](./images/Deployment-With-GitHub-Actions/deploy-workflow-triggered.jpg)
 **Figure 9**: Deploy workflow triggered after building completes.
 
 After about a minute, navigate back to the store front and verify that the word `Awesome` appears in front of each catalog item:
 
-![New code is running successfully](./media/awesome-items.jpg)
+![New code is running successfully](./images/Deployment-With-GitHub-Actions/awesome-items.jpg)
 **Figure 10**: ew code is running successfully.
