@@ -67,6 +67,6 @@
 
 ### DevOps
 
-- [CI with GitHub Actions](GitHub-Actions)
-- [CD with GitHub Actions](Deployment-With-GitHub-Actions)
+- [Building Code with GitHub Actions](GitHub-Actions)
+- [Deploying Code with GitHub Actions](Deployment-With-GitHub-Actions)
 - [Azure DevOps pipelines](Azure-DevOps-pipelines)
