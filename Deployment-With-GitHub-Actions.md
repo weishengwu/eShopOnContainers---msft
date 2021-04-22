@@ -164,13 +164,15 @@ The workflows require a number of secrets in order to work. Select the **Setting
 
 Secret Name|Description|Example
 ---|-------|---
-`AZURE_CREDENTIALS`|`JSON` with credentials for a Service Principle with access to the container registry and AKS cluster|`{ 'clientId': "<app ID of SPN>", "clientSecret": "<SPN Key>", "tenantId": "<Azure tenant GUID>", "subscriptionId": "<Azure subscription ID>" }`
+`AZURE_CREDENTIALS`|`JSON` with credentials for a Service Principle with access to the container registry and AKS cluster. Further instructions can be found[here](https://github.com/marketplace/actions/azure-login#configure-deployment-credentials)|`{ 'clientId': "<app ID of SPN>", "clientSecret": "<SPN Key>", "tenantId": "<Azure tenant GUID>", "subscriptionId": "<Azure subscription ID>" }`
 `CLUSTER_NAME`|Name of the AKS cluster|`myeshop`
 `PASSWORD`|Admin password for ACR|Retrieve this from the container registry blade in the Azure portal
 `REGISTRY_ENDPOINT`|Endpoint for container registry|FQDN of registry and container|`myeshopacr.azurecr.io/eshop`
 `REGISTRY_HOST`|FQDN of registry|`myeshopacr.azurecr.io`
 `RESOURCE_GROUP`|Name of resource group containing AKS cluster|`myeshop-rg`
 `USERNAME`|Admin username for ACR (typically name of ACR)|`myeshopacr`
+
+> **Note**: To fetch the `AZURE_CREDENTIALS`, follow . 
 
 When you are done, the secrets should look something like this:
 
