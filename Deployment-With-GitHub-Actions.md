@@ -143,7 +143,7 @@ Note the following:
 - The name of the workflow is `Deploy catalog-api`.
 - This workflow has three triggers:.
     1. `workflow_dispatch` is for manually triggering a deployment.
-    1. `repository_dispatch` is for triggering this workflow via the REST API.
+    1. `repository_dispatch` is for triggering this workflow via the [REST API](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event).
     1. `workflow_run` triggers this workflow when runs of the `catalog-api` workflow run on `dev` and are `completed`.
 - Some variables are defined inline under the `env` section.
 - There is a single job called `deploy-to-k8s`.
