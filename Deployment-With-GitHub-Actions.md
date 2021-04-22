@@ -14,11 +14,11 @@ You will need the following:
 - Have [deployed eShopOnContainers](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Azure-Kubernetes-Service-(AKS)#Deploy-Public-Images-From-DockerHub)
 - Optionally [configured allowing large headers](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Azure-Kubernetes-Service-(AKS)#allow-large-headers-needed-for-login-to-work)
 
-> NOTE: You can deploy the AKS cluster and go through all the above steps by following the instructions in this [wiki](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Azure-Kubernetes-Service-(AKS)).
+> NOTE: You can deploy the AKS cluster and go through all the above steps by following the instructions in this [page](https://github.com/dotnet-architecture/eShopOnContainers/wiki/Deploy-to-Azure-Kubernetes-Service-(AKS)).
 
 ### Quickstart Script
 
-If you do not have any infrastructure configured, you can create everything needed for this walkthrough by running the following script from the root of the `eShopOnContainers` repo:
+If you do not have any infrastructure configured, you can create everything needed for this walkthrough by running the following script from the root of the `eShopOnContainers` repo. The script can be run locally if you install the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) or you can open an instance of the [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) and select `bash`.
 
 ```bash
 export rg="<name of your resource group to create>"
