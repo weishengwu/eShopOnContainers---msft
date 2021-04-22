@@ -232,4 +232,4 @@ Once that workflow completes, you should see the deploy workflow trigger immedia
 After about a minute, navigate back to the store front and verify that the word `Awesome` appears in front of each catalog item:
 
 ![New code is running successfully](./images/Deployment-With-GitHub-Actions/awesome-items.jpg)
-**Figure 10**: ew code is running successfully.
+**Figure 10**: New code is running successfully.
