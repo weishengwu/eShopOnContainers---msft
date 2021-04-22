@@ -44,6 +44,7 @@ spnId=$(az ad sp show --id http://$spnName --query appId --output tsv)
 # create AKS cluster
 az aks create -g $rg -n $aks --node-count 1 --enable-addons monitoring,http_application_routing --enable-rbac --generate-ssh-keys --attach-acr $acr
 
+# set the k8s context locally
 az get-credentials -g $rg -n $aks
 
 # deploy nginx controller
