@@ -1,4 +1,4 @@
-# Deploying to Azure Kubernetes Services using GitHub Actions
+# Deploy to Azure Kubernetes Services using GitHub Actions
 
 The [build page](https://github.com/dotnet-architecture/eShopOnContainers/wiki/GitHub-Actions) describes how Github Actions are used to build code for each of the `eShopOnContainers` microservices. These YAML files compile the code and create new container images which are pushed to a container registry. However, this does not deploy the container images to the Kubernetes cluster.
 
