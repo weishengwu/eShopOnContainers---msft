@@ -106,7 +106,8 @@ env:
 
 jobs:
   deploy-to-k8s:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    #if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -147,7 +148,7 @@ Note the following:
     1. `workflow_run` triggers this workflow when runs of the `catalog-api` workflow run on `dev` and are `completed`.
 - Some variables are defined inline under the `env` section.
 - There is a single job called `deploy-to-k8s`.
-- The job only executes if the trigger was manual or via the REST API or if it was a workflow run trigger, if the workflow run completed with a `success` status.
+- The job is set to never run via the `if: false` condition. This line should be commented out and the other `if` condition should be uncommented (remove the `#`) so that it only executes if the trigger was manual or via the REST API or if it was a workflow run trigger, if the workflow run completed with a `success` status.
 - The job checks out the repo.
 - The job then logs into Azure using secret `AZURE_CREDENTIALS`.
 - The job then sets the AKS context.
@@ -184,6 +185,20 @@ When you are done, the secrets should look something like this:
 If you select the **Actions** tab on your repository, you may already have some Actions. If you forked the main repo, you will be prompted to enable the Actions - you can do so now.
 
 Ensure that you see `catalog-api` and `Deploy catalog-api` in the list of workflows.
+
+### Enable deploy jobs
+
+The deploy jobs will fail if the infrastructure is not created. To prevent this, the `if` condition in the deploy jobs is hard-coded to `if: false`. To enable the jobs, simply comment out this `if` condition and uncomment the other `if` condition. The first couple lines of the job code should look as follows when you are done:
+
+```yml
+jobs:
+  deploy-to-k8s:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    #if: false
+    runs-on: ubuntu-latest
+```
+
+### Testing the workflows
 
 You can test that the workflow is working correctly by selecting the `catalog-api` workflow. Next, select **Run workflow** to manually trigger the workflow. Select the `dev` branch.
 
