@@ -1,5 +1,18 @@
 ## eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
+### Release 5.0.1 (2021-04-27)
+
+*Reference commits :* [f03583f](https://github.com/dotnet/docs/pull/23895/commits/f03583f9ce85c4067c3946c7249192885d8612d6)
+
+Includes GitHub related content in the following pages :
+
+- `index.md`
+- Under module `Microsoft-platform-tools-containerized-apps`
+    - `index.md`
+- Under module `docker-devops-workflow`
+    - `index.md`
+    - `docker-application-outer-loop-devops-workflow.md `
+
 ### Release 5.0 (2021-01-06)
 
 *Reference commits :* [5ada0ba](https://github.com/dotnet/docs/pull/22242/commits/5ada0ba94f8e267993c6f2cba7db1237acfe8ce2), [c08d046](https://github.com/dotnet/docs/pull/22242/commits/c08d046f893d946a70163abc729aeeedcf88fdb3)
