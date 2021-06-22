@@ -3,7 +3,7 @@ This page covers the setup of your Windows development computer.
 > **CONTENT**
 
 - [Install Docker Desktop](#install-docker-desktop)
-- [Configure Docker](#configure-docker-desktop)
+- [Configure Docker Desktop](#configure-docker-desktop)
   - [Memory and CPU](#memory-and-cpu)
   - [Shared drives](#shared-drives)
 - [Configure local networking](#configure-local-networking)
@@ -135,13 +135,17 @@ After a few more seconds you should see something like this:
 
 ![](images/Windows-setup/running-2-eshoponcontainers.png)
 
-At this point you should be able to navigate to <http://localhost:5107/> and see the WebStatus microservice:
+At this point you should be able to navigate to <http://host.docker.internal:5107/> and see the WebStatus microservice:
 
 ![](images/Windows-setup/webstatus-eshoponcontainers.png)
 
-When all microservices are up (green checks) you should be able to navigate to <http://localhost:5100/> and see the Home Page of eShopOnContainers:
+When all microservices are up (green checks) you should be able to navigate to <http://host.docker.internal:5100/> and see the Home Page of eShopOnContainers:
 
 ![](images/Windows-setup/eshoponcontainers-homepage.png)
+
+You should also be able to navigate to <http://host.docker.internal:5104/> and see the Home Page of eShopOnContainers on the SPA application:
+
+![](images/Windows-setup/eshoponcontainers-spa-homepage.png)
 
 ## Explore the application
 
@@ -214,6 +218,8 @@ VS 2019 should compile the .NET projects, then create the Docker images and fina
 Note that the first time you hit F5 it'll take more time, a few minutes at least, because in addition to compile your bits, it needs to pull/download the base images (SQL for Linux Docker Image, Redis Image, ASPNET image, etc.) and register them in the local image repo of your PC. The next time you hit F5 it'll be much faster.
 
 Finally, because the docker-compose configuration project is configured to open the MVC application, it should open your by default browser and show the MVC application with data coming from the microservices/containers:
+
+**NOTE: Depending on your system configuration, starting up all containers and applying database migrations might take some time. If you get a 503 error (service unavailable) in the browser, just give it some more time and refresh, after little while you should get to see the home page.**
 
 ![](images/Windows-setup/vs2017-f5-with-eshoponcontainers-web-mvc-in-browser.png)
 
