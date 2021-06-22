@@ -3,7 +3,7 @@ This page covers the setup of your Windows development computer.
 > **CONTENT**
 
 - [Install Docker Desktop](#install-docker-desktop)
-- [Configure Docker](#configure-docker-desktop)
+- [Configure Docker Desktop](#configure-docker-desktop)
   - [Memory and CPU](#memory-and-cpu)
   - [Shared drives](#shared-drives)
 - [Configure local networking](#configure-local-networking)
@@ -135,13 +135,17 @@ After a few more seconds you should see something like this:
 
 ![](images/Windows-setup/running-2-eshoponcontainers.png)
 
-At this point you should be able to navigate to <http://localhost:5107/> and see the WebStatus microservice:
+At this point you should be able to navigate to <http://host.docker.internal:5107/> and see the WebStatus microservice:
 
 ![](images/Windows-setup/webstatus-eshoponcontainers.png)
 
-When all microservices are up (green checks) you should be able to navigate to <http://localhost:5100/> and see the Home Page of eShopOnContainers:
+When all microservices are up (green checks) you should be able to navigate to <http://host.docker.internal:5100/> and see the Home Page of eShopOnContainers:
 
 ![](images/Windows-setup/eshoponcontainers-homepage.png)
+
+You should also be able to navigate to <http://host.docker.internal:5104/> and see the Home Page of eShopOnContainers on the SPA application:
+
+![](images/Windows-setup/eshoponcontainers-spa-homepage.png)
 
 ## Explore the application
 
