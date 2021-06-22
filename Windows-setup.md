@@ -219,6 +219,8 @@ Note that the first time you hit F5 it'll take more time, a few minutes at least
 
 Finally, because the docker-compose configuration project is configured to open the MVC application, it should open your by default browser and show the MVC application with data coming from the microservices/containers:
 
+**NOTE: Depending on your system configuration, starting up all containers and applying database migrations might take some time. If you get a 503 error (service unavailable) in the browser, just give it some more time and refresh, after little while you should get to see the home page.**
+
 ![](images/Windows-setup/vs2017-f5-with-eshoponcontainers-web-mvc-in-browser.png)
 
 Here's how the docker-compose configuration project is configured to open the MVC application:
