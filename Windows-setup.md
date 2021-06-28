@@ -71,7 +71,7 @@ The drive you'll need to share depends on where you place your source code. For 
 
 ## Configure local networking
 
-IMPORTANT: Ports **5100** to **5105** must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
+IMPORTANT: Ports **5100** to **5205** must be open in the local Firewall, so authentication to the STS (Security Token Service container, based on IdentityServer) can be done through the 10.0.75.1 IP, which should be available and already setup by Docker. These ports are also needed for client remote apps like Xamarin app or SPA app in a remote browser.
 
 You can manually create a rule in your local firewall in your development machine or you can just run the **add-firewall-rules-for-sts-auth-thru-docker.ps1** script available in the solution's **`deploy\windows\`** folder.
 
