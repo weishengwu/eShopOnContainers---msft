@@ -13,38 +13,48 @@ This page covers the exploration of the eShopOnContainers application and assume
 
 ## MVC Web app
 
-Open a browser and type <http://localhost:5100> and hit enter.
+Open a browser and type <http://host.docker.internal:5100> and hit enter.
 You should see the MVC application like in the following screenshot:
 
 ![](images/Explore-the-application/eshop-webmvc-app-screenshot.png)
 
 ### Authenticating and creating an order on the Web MVC app
 
-When you try the Web MVC application by using the url <http://localhost:5100>, you'll be able to test the home page which is also the catalog page. But if you want to add articles to the basket you need to login first at the login page which is handled by the STS microservice/container (Security Token Service). At this point, you could register your own user/customer or you can also use a convenient default user/customer named **demoUser@microsoft.com** so you don't need to register your own user and it'll be easier to explore.
+When you try the Web MVC application by using the url <http://host.docker.internal:5100>, you'll be able to test the home page which is also the catalog page. But if you want to add articles to the basket you need to login first at the login page which is handled by the STS microservice/container (Security Token Service). At this point, you could register your own user/customer or you can also use a convenient default user/customer named **demoUser@microsoft.com** so you don't need to register your own user and it'll be easier to explore.
 The credentials for this demo user are:
 
 - User: **demouser@microsoft.com**
 - Password: **Pass@word1**
 
-Below you can see the login page when providing those credentials.
+Below you can see the login page to provide those credentials from the MVC application.
 
 ![](images/Explore-the-application/login-demo-user.png)
 
 ## SPA Web app
 
-While having the containers running, open a browser and type `http://localhost:5104/` and hit enter.
+While having the containers running, open a browser and type `http://host.docker.internal:5104/` and hit enter.
 You should see the SPA application like in the following screenshot:
 
 ![](images/Explore-the-application/eshop-webspa-app-screenshot.png)
 
+When logging in from the SPA application the view has a different "branding" but the credentials are just the same as before.
+
+![](images/Explore-the-application/login-demo-user-spa.png)
+
 ## Swagger UI - REST API microservices - Catalog
 
-While having the containers running, open a browser and type `http://localhost:5101` and hit enter.
+While having the containers running, open a browser and type `http://host.docker.internal:5101` and hit enter.
 You should see the Swagger UI page for that microservice that allows you to test the Web API, like in the following screenshot:
 
 ![](images/Explore-the-application/swagger-catalog-1.png)
 
-Then, after providing the size (i.e. 10) and the current page (i.e. 1) for the data of the catalog, you can run the service hitting the "Try it out!" button and see the returned JSON Data:
+To explore the Swagger UI:
+
+1. Click on the `/api/v1/Catalog/items` endpoint
+2. Click on the `Try it out` button
+3. Click on the blue `Execute` button
+
+The you should see a view similar to the following, where you can see the JSON returned from the API:
 
 ![](images/Explore-the-application/swagger-catalog-2.png)
 

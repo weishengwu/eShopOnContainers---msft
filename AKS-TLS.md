@@ -60,4 +60,4 @@ Once the secret is installed you can install eShopOnContainers adding following 
 
 ## Notes on TLS support
 
-TLS support can't be enabled on the local Kuberneted provided by Docker Desktop.
+TLS support can't be enabled on the local Kubernetes provided by Docker Desktop.

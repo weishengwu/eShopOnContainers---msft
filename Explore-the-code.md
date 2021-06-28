@@ -4,11 +4,11 @@ This page covers the exploration of eShopOnContainers' code base assumes you've 
 
 > **CONTENT**
 
-- [Overview of the application code](#Overview-of-the-application-code)
-- [MVC Application (ASP.NET Core)](#MVC-Application-ASPNET-Core)
-- [SPA (Single Page Application)](#SPA-Single-Page-Application)
-- [Xamarin Mobile App (For iOS, Android and Windows/UWP)](#Xamarin-Mobile-App-For-iOS-Android-and-WindowsUWP)
-- [Additional resources](#Additional-resources)
+- [Overview of the application code](#overview-of-the-application-code)
+- [MVC Application (ASP.NET Core)](#mvc-application-aspnet-core)
+- [SPA (Single Page Application)](#spa-single-page-application)
+- [Xamarin Mobile App (For iOS, Android and Windows/UWP)](#xamarin-mobile-app-for-ios-android-and-windowsuwp)
+- [Additional resources](#additional-resources)
 
 ## Overview of the application code
 
@@ -23,7 +23,25 @@ The screenshot below shows the VS Solution structure for those microservices/con
 
 ![](images/Explore-the-code/vs-solution-structure.png)
 
-Finally, those microservices are consumed by multiple client web and mobile apps, as described below.
+In the image above you can see:
+
+1. The `src/ApiGateways/Envoy` folder, that contains the configuration `.yaml` file for the Envoy-implemented gateway.
+2. The `src/ApiGateways/Mobile.Bff.Shopping` and `src/ApiGateways/Web.Bff.Shopping` folders, with the HTTP aggregators.
+3. The `src/BuildingBlocks/EventBus` folder, that contains a simplified messaging abstraction, and implementations for **RabbitMQ** and for **Azure Service Bus**.
+4. The `src/Services/Basket` folder, with the Basket microservice. A simple CRUD data-driven microservice that uses Redis for persistence.
+5. The `src/Services/Catalog` folder, with the Catalog microservice. A simple CRUD data-driven microservice, that uses EF Core and SQL Server.
+6. The `src/Services/Identity` folder, with the Identity microservice. A Security Token Service (STS), based on [Identity Server 4](https://github.com/IdentityServer/IdentityServer4), that also uses SQL Server for persistence.
+7. The `src/Services/Ordering` folder, that's the home for several microservices:
+
+   - The core Ordering microservice, an advanced Domain Driven Design (DDD) microservice, that uses several DDD patterns and SQL Server for persistence.
+   - The Ordering Background Tasks microservice, that uses a `BackgroundService` for processing asynchronous tasks.
+   - The SignalR hub microservice, that works a as centralized hub, based on SignalR, to enable real-time notifications about the order process.
+
+8. The `src/Services/Payment` folder, with the Payment microservice, that simulates a simple payment gateway.
+9. The `src/Services/WebMVC` folder, with the MVC UI microservice, a traditional MVC web application.
+10. The `src/Services/WebSPA` folder, with the SPA UI microservice, an Angular-based SPA application.
+11. The `src/Services/WebStatus` folder, with the Web Status microservice, a health monitoring application, based on the open source [Xabaril/AspNetCore.DiagnosticsHealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) project.
+12. The `tests/ServiceTests` folder, with some inter-services integration tests.
 
 ## MVC Application (ASP.NET Core)
 
