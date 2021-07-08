@@ -1,5 +1,14 @@
 ## eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
+### Release 5.0.2 (2021-07-08)
+
+*Reference commits :* [4cf773e](https://github.com/dotnet/docs/commit/4cf773e03f02dee55d5910b52babc84ab6514faf#diff-206aeac23eb3b58cd12ac0589d98395adca4dc488432db00ee7d774146950ffb),[c88e5aa](https://github.com/dotnet/docs/commit/c88e5aa50d2f87bd09433ce5b1d64205fd7d5d89#diff-206aeac23eb3b58cd12ac0589d98395adca4dc488432db00ee7d774146950ffb)
+
+Includes GitHub related content in the following pages :
+
+- Updates multiple diagram.
+- Fixes the container support step in Visual Studio tool.
+
 ### Release 5.0.1 (2021-04-27)
 
 *Reference commits :* [f03583f](https://github.com/dotnet/docs/pull/23895/commits/f03583f9ce85c4067c3946c7249192885d8612d6)
