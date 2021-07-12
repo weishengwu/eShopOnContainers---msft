@@ -25,7 +25,7 @@ With the steps explained in the next section, you will be able to run the applic
 
 # Azure Service Bus service
 
-To enable the service bus of Azure in eShop solution it is necessary having created previously the service bus service through ARM file or manually through Azure portal. You can use the [ARM files](deploy/az/servicebus/readme.md) already created in eShop. Finally, it is necessary to get the Shared access policy named "Root" (if you generated the service through ARM file) from eshop_event_bus topic. This policy must be declared on .env file located in the solution root folder with `ESHOP_AZURE_SERVICE_BUS` name.
+To enable the service bus of Azure in eShop solution it is necessary having created previously the service bus service through ARM file or manually through Azure portal. You can use the [ARM files](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/deploy/azure/az/servicebus/readme.md) already created in eShop. Finally, it is necessary to get the Shared access policy named "Root" (if you generated the service through ARM file) from eshop_event_bus topic. This policy must be declared on .env file located in the solution root folder with `ESHOP_AZURE_SERVICE_BUS` name.
 
 For example:
 >ESHOP_AZURE_SERVICE_BUS=Endpoint=sb://yourservicebusservice.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=yourtopicpolicykey=;EntityPath=eshop_event_bus
