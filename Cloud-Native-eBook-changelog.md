@@ -1,5 +1,23 @@
 ## eBook -  Architecting Cloud Native .NET Applications for Azure
 
+### Release 1.0.3 (2021-07-12)
+
+*Reference commits :* [438e8bb](https://github.com/sughosneo/docs/commit/bd5ee250c6b69784704a590b961df2cc1673579b#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [0670f93](https://github.com/sughosneo/docs/commit/0670f93040fd486e835031a687f0c52c32195843#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [3db0f67](https://github.com/sughosneo/docs/commit/3db0f679968a91989aef367dba79eeec6ac11b6c#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [e6195b2](https://github.com/sughosneo/docs/commit/e6195b2a979fd25254542afca77257563aae7d86#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[6236ad3](https://github.com/sughosneo/docs/commit/6236ad3aacec028fd3f2bd27df064e9eb6acc9a1#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[4dab6c6](https://github.com/sughosneo/docs/commit/4dab6c62edd8c6b381174cf671bf25f4d2891b82#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[4fc1ea7](https://github.com/sughosneo/docs/commit/4fc1ea72e228e28bd1984119e81f82e87ed24681#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[97248bf](https://github.com/sughosneo/docs/commit/97248bf3405b5dd45fd09c4f3ad59fbe27fad2a0#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [f47aa43](https://github.com/sughosneo/docs/commit/f47aa43c0990cd75d7d2eacd21dc168954787152#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744)
+
+- Fixes broken link in few pages.
+- Updates typo and grammar in few pages.
+- Corrects the terraform related specification.
+- Updates IdentityServer4 licensing term.
+- Updates the relation vs nosql relation data comparison page.
+- Updates the scale containers serverless page.
+- Updates the WebSPA page theme.
+
+*Contributions :*
+
+We’d like to acknowledge and thank the following community members for their valuable contributions !
+
+[@diegohi](https://github.com/diegohi), [@markwragg](https://github.com/markwragg), [@BartoszKlonowski](https://github.com/BartoszKlonowski),[@hyoshioka0128](https://github.com/hyoshioka0128), [@melkor54248](https://github.com/melkor54248), [@Naidile-P-N](https://github.com/Naidile-P-N)
+
 ### Release 1.0.2 (2021-01-19)
 
 *Reference commits :* [f1bc316](https://github.com/dotnet/docs/pull/22407/commits/f1bc31657acb702fc5e7e8f6c1f743751736a8dc), [d64e2dc](https://github.com/dotnet/docs/pull/22407/commits/d64e2dc90747657325304bd0584d2a72ec6983dc)
@@ -77,7 +95,7 @@
 - Fixes typo in page `Relational vs. NoSQL data`
 - Fixes multi AKS cluster statement in page `Mapping eShopOnContainers to Azure Services`
 
-*Contributions :* 
+*Contributions :*
 
 We’d like to acknowledge and thank the following community members for their valuable contributions !
 
