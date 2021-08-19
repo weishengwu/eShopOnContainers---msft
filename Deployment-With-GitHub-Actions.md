@@ -35,7 +35,7 @@ export acrId=$(az acr show -g $rg -n $acr --query "id" -o tsv)
 
 # assign push/pull role to SPN
 spnPassword=$(az ad sp create-for-rbac --name http://$spnName --scopes $acrId --role acrpush --query password --output tsv)
-spnId=$(az ad sp show --id http://$spnName --query appId --output tsv)
+spnId=$(az ad sp list --display-name http://$spnName --query [0].appId) # Ref : https://github.com/Azure/azure-cli/issues/19179
 
 # for an existing SPN
 # export spnId="<id of an existing service principle>"
@@ -45,7 +45,7 @@ spnId=$(az ad sp show --id http://$spnName --query appId --output tsv)
 az aks create -g $rg -n $aks --node-count 1 --enable-addons monitoring,http_application_routing --enable-rbac --generate-ssh-keys --attach-acr $acr
 
 # set the k8s context locally
-az get-credentials -g $rg -n $aks
+az aks get-credentials -g $rg -n $aks
 
 # deploy nginx controller
 cd deploy/k8s/nginx-ingress
