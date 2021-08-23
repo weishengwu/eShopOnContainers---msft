@@ -35,7 +35,7 @@ export acrId=$(az acr show -g $rg -n $acr --query "id" -o tsv)
 
 # assign push/pull role to SPN
 spnPassword=$(az ad sp create-for-rbac --name http://$spnName --scopes $acrId --role acrpush --query password --output tsv)
-spnId=$(az ad sp list --display-name http://$spnName --query [0].appId) # Ref : https://github.com/Azure/azure-cli/issues/19179
+spnId=$(az ad sp list --display-name http://$spnName --query [0].appId  --output tsv) # Ref : https://github.com/Azure/azure-cli/issues/19179
 
 # for an existing SPN
 # export spnId="<id of an existing service principle>"
