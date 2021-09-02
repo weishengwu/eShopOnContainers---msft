@@ -2,16 +2,17 @@ These are the most frequent errors encountered when running eShopOnContainers.
 
 > **CONTENT**
 
-- [Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages](#unauthorizedclient-when-trying-to-log-in-from-the-mvc-the-spa-application-or-the-swagger-ui-api-pages)
+- [Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages](#unauthorized_client-when-trying-to-log-in-from-the-mvc-the-spa-application-or-the-swagger-ui-api-pages)
 - [When trying to log in from the MVC app I get an error](#when-trying-to-log-in-from-the-mvc-app-i-get-an-error)
   - [Deploying in Windows with Docker for Windows](#deploying-in-windows-with-docker-for-windows)
   - [Deploying in a Mac with Docker for Mac](#deploying-in-a-mac-with-docker-for-mac)
   - [Additional resources](#additional-resources)
 - [The SQL Server container is not running](#the-sql-server-container-is-not-running)
-- [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#when-i-run-the-solution-using-visual-studio-or-the-cli-i-get-warnings-like-the-eshopazurexxxx-variable-is-not-set)
+- [When I run the solution (using Visual Studio or the CLI) I get warnings like 'The ESHOP_AZURE_XXXX variable is not set...'](#when-i-run-the-solution-using-visual-studio-or-the-cli-i-get-warnings-like-the-eshop_azure_xxxx-variable-is-not-set)
 - [When I run 'docker-compose up' I get an error like ERROR: Service 'xxxxx' failed to build: COPY failed: stat ...: no such file or directory](#when-i-run-docker-compose-up-i-get-an-error-like-error-service-xxxxx-failed-to-build-copy-failed-stat--no-such-file-or-directory)
 - [When I try to run the solution in 'Docker for Windows' (on the Linux VM) I get the error: 'Did you mean to run dotnet SDK commands?'](#when-i-try-to-run-the-solution-in-docker-for-windows-on-the-linux-vm-i-get-the-error-did-you-mean-to-run-dotnet-sdk-commands)
-- [Login page - Exception: Correlation failed](#Login-page---Exception:-Correlation-failed)
+- [Login page - Exception: Correlation failed](#login-page---exception-correlation-failed)
+- [WebSPA project doesn't come up on debug mode in Visual Studio 2019](#webspa-project-doesnt-come-up-on-debug-mode-in-visual-studio-2019)
 
 ## Unauthorized_client when trying to log in from the MVC, the SPA application, or the Swagger UI API pages
 
@@ -97,3 +98,35 @@ That happens because of the updated version of Chrome Browser. For more details 
 You can `disable` the `SameSite by default cookies` setting :
 
 ![](images/Correlation-failed-error-on-login/same-site-setting-chrome-browser.png)
+
+
+## WebSPA project doesn't come up on debug mode in Visual Studio 2019
+
+Scenario: If you hit F5 to debug the `WebSPA` project of `eShopOnContainers` app, you'll notice that the `WebSPA` application is not reachable when you try to browse the app using `http://<url>:5104/`. It can be worked around by following the below steps:
+
+1. Update Docker file:
+
+- Go to the *eShopOnContainers\src\Web\WebSPA\Dockerfile*
+- Add the below commands just after the line `WORKDIR /app`
+  
+  ```bash  
+  RUN apt-get update
+  RUN apt-get -y install curl gnupg
+  RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+  RUN apt-get -y install nodejs
+  RUN npm install
+  RUN npm -v
+  ```
+
+  ![](img/spa/docker-file-changes.png)
+  
+
+1. Update environment variable in the *docker-compose.override.yml* file.
+   
+- For the `webspa` service, change the value of `ASPNETCORE_ENVIRONMENT` variable from `Production` to `Development` just like as per below:
+
+  ```bash
+  - ASPNETCORE_ENVIRONMENT=Development
+  ```
+
+  ![](img/spa/docker-compose-override-file.png)
