@@ -121,7 +121,7 @@ Scenario: If you hit F5 to debug the `WebSPA` project of `eShopOnContainers` app
   ![](img/spa/docker-file-changes.png)
   
 
-1. Update environment variable in the *docker-compose.override.yml* file.
+2. Update environment variable in the *docker-compose.override.yml* file.
    
 - For the `webspa` service, change the value of `ASPNETCORE_ENVIRONMENT` variable from `Production` to `Development` just like as per below:
 
