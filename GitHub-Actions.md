@@ -2,10 +2,12 @@
 
 > **CONTENT**
 
-- [Build workflows YAML definitions](#Build-workflows-YAML-definitions)
+- [Build workflows YAML definitions](#build-workflows-yaml-definitions)
   - [GitHub Actions Build workflows](#github-actions-build-workflows)
 - [On Pull Request Builds](#on-pull-request-builds)
-- [On Push Builds](#pull-request-builds)
+- [On Push Builds](#on-push-builds)
+- [GitHub Composite Actions](#github-composite-actions)
+- [Additional References](#additional-references)
 
 ## Build workflows YAML definitions
 
@@ -49,3 +51,15 @@ We have enabled the build workflows for `push` event on `dev` branch.
 For that each workflow has `BuildLinux` job. Each push event builds the docker image and push it to the dockerhub.
 
 ![Build On PUSH](./images/GitHub-Actions/github-actions-build-push.png)
+
+## GitHub Composite Actions
+
+Recently, all the GitHub workflows have been refactored with the help of [GitHub Composite Actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action). You can find the PR and discussions in [here](https://github.com/dotnet-architecture/eShopOnContainers/pull/1753). 
+
+If you want to know more about it, please refer to [GitHub Composite Actions](https://colinsalmcorner.com/github-composite-actions/)
+
+## Additional References
+
+- [eShopOnContainers docker image scanning with GitHub Actions](
+https://faun.pub/eshoponcontainers-experiment-with-image-scanning-21b73ac5c4b7)
+
