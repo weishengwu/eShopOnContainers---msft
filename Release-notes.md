@@ -1,22 +1,99 @@
 > **CONTENT**
 
+- [2021-11-08 - Release 5.0.0](#2021-11-08---release-500)
+  - [Highlights](#highlights)
+  - [Details](#details)
+    - [Changes](#changes)
+    - [Bug Fixes](#bug-fixes)
+  - [Contributions](#contributions)
 - [2021-01-21 - Release 3.1.1](#2021-01-21---release-311)
-  - [Highlights](#highlights)
-  - [Details](#details)
-    - [Changes](#Changes)
-    - [Bug Fixes](#Bug-Fixes)
-  - [Contributions](#Contributions)
+  - [Highlights](#highlights-1)
+  - [Details](#details-1)
+    - [Changes](#changes-1)
+    - [Bug Fixes](#bug-fixes-1)
+  - [Contributions](#contributions-1)
 - [2020-12-14 - Release 3.1.0](#2020-12-14---release-310)
-  - [Highlights](#highlights)
-  - [Details](#details)
-    - [Changes](#Changes)
-    - [Bug Fixes](#Bug-Fixes)
-  - [Contributions](#Contributions)
+  - [Highlights](#highlights-2)
+  - [Details](#details-2)
+    - [Changes](#changes-2)
+    - [Bug Fixes](#bug-fixes-2)
+  - [Contributions](#contributions-2)
 - [2019-11-26 - Release 3.0.0](#2019-11-26---release-300)
-  - [Highlights](#highlights---300)
-  - [Details](#details---300)
+  - [Highlights - 3.0.0](#highlights---300)
+  - [Details - 3.0.0](#details---300)
     - [New folder structure](#new-folder-structure)
     - [Retired deployment scenarios](#retired-deployment-scenarios)
+
+## 2021-11-08 - Release 5.0.0
+
+### Highlights
+
+1. Updates the code to .NET 5.0
+
+### Details
+
+  #### Changes
+  
+  - Updates the code to .NET 5.0
+  - Includes `C# 9.0` features.
+  - Removes unused using from different classes.
+  - Removes mobile project from `eShopOnContainers` to [eshop-mobile-client](https://github.com/dotnet-architecture/eshop-mobile-client)
+  - Renames `GracePeriodManagerTask` in `GracePeriodManagerService`
+  - Updates `CardType` and `Enumeration` class.
+  - Updates the dotnet sdk tag in Dockerfiles
+  - Migrates `Newtonsoft.Json` to `System.Text.Json`
+  - `WebSPA` project related changes:
+    - Updates the `WebSPA` UI theme.
+    - Updates `WebSPA` Angular Version to `11.2`
+    - Updates the `Catalog Item` specific images.
+    - Updates packages in `package-lock.json` file in WebSPA project.
+  - `GitHub` Actions specific changes:
+    - Includes first version of GitHub actions as part of CI/CD pipelines
+    - Updates Job steps to accomodate latest action packages.
+    - Refactors GitHub Actions workflows to use composite.
+  - Updates Azure Service Bus ARM Templates in `deploy/azure/az/servicebus/sbusdeploy.json `
+  - Updates the Azure Service Bus SDK version and changes the namespace from `Microsoft.Azure.ServiceBus` to `Azure.Messaging.ServiceBus`
+  - Uses the `Microsoft.AspNetCore.DataProtection.StackExchangeRedis` package instead of `Microsoft.AspNetCore.DataProtection.Redis`
+  - Downgrades `Microsoft.AspNetCore.Hosting.Abstractions` to `2.2.0`
+  - Updates following `Readme` files to incorporate latest instructions:
+    - `Main.md` file.
+    - `branch-guide.md` file.
+    - `CONTRIBUTING.md` file.
+  - Contains following updates in `eShopOnContainers` wiki:
+    - Updates the System-requirements page.
+    - Docker-compose-deployment-files
+    - Updates the images Visual-Studio-2017-environment
+    - Updates the steps for Windows-setup
+    - Updates the steps for Mac-setup
+    - Moves the Xamarin-setup specific content to 
+    - Architecture
+    - gRPC
+    - Using-HealthChecks
+    - Azure-Key-Vault
+    - Unit-and-integration-testing
+    - Updates `Frequent-errors` page.
+    - Includes Github Actions related documentations.
+    
+  #### Bug Fixes
+
+  - Fixes `SameSite` cookie policy.
+  - Fixes `ContentPage.ToolbarItems` in a `TabbedPage`
+  - Fixes persistency for `ISubscriptionClient`
+  - Fixes `ordering-signalrhub` workflow badge image
+  - Fixes `WebSPA` pager display.
+  - Fixes `WebSPA` catalog filter.
+  - Fixes `mobileshoppingagg` address in mobileshopping `envoy.yaml`
+  - Fixes serialization in `EventBusServiceBus.cs` class.
+  - Fixes to use existing cosumerChannel in `EventRabbitMQ` queue.
+  - Fixes few typos in fields name, documentation and scripts.
+  - Fixes `deploy-all.sh` deployment script file
+
+  ### Contributions
+
+  We’d like to acknowledge and thank the following community members for their valuable contributions!
+
+  @dsrodenas, @vishipayyallore, @borjasanes, @mvelosop, @hetal-kapadia, @william-keller, @Sreenivas-Kalluru, @alecola, @f1nzer, @Marusyk, @n-stefan, @mohamed-seada-1994, @colindembovsky, @sanderobdeijn, @deckerbd, @michaelgregson, @kaypee90, @alan0428a, @GitHubPang, @ryanceleslie, @oliviergaumond, @zedy-wj
+
 
 ## 2021-01-21 - Release 3.1.1
 
