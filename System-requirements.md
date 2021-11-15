@@ -7,8 +7,8 @@
 ### Software requirements for Windows
 
 - Docker Desktop on Windows - with [System Requirements](https://docs.docker.com/docker-for-windows/install/#system-requirements).
-- Latest **.NET 5 SDK** from: https://www.microsoft.com/net/download
-- (Optional) Visual Studio 2019 **16.8** or later – Much better for debugging multi-containers apps.
+- Latest **.NET 6 SDK** from: https://www.microsoft.com/net/download
+- (Optional) Visual Studio 2022 **17.0** or later – Much better for debugging multi-containers apps.
 - (Optional) Visual Studio Code.
 
 If your system is OK with the Docker requirements above, you'll be fine for VS too.
@@ -29,7 +29,7 @@ If your system is OK with the Docker requirements above, you'll be fine for VS t
 ### Software requirements for Mac
 
 - Docker Desktop on Mac - with [System Requirements](https://docs.docker.com/docker-for-mac/install/#system-requirements)
-- Latest **.NET 5 SDK** from: https://www.microsoft.com/net/download
+- Latest **.NET 6 SDK** from: https://www.microsoft.com/net/download
 - (Optional) Visual Studio for Mac.
 - (Optional) Visual Studio Code.
 

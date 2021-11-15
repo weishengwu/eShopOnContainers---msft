@@ -251,7 +251,7 @@ If you want to explore the code and debug the application to see it working, you
 
 When installing [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/), you can select between multiple workloads or platforms.
 
-Make sure you select the .NET 5 platform:
+Make sure you select the .NET 6 platform:
 
 ![](images/Mac-setup/dotnetcore-workload-vs-mac.png)
 
@@ -259,11 +259,11 @@ Before completing the VS for Mac installation, it will demand you to install XCo
 
 If you install Android as a target platform, Java will also be installed as a dependency for building mobile apps for Android.
 
-For running just the Docker containers and web apps, you'd just need the .NET 5 platform.
+For running just the Docker containers and web apps, you'd just need the .NET 6 platform.
 
 But if you want to try the eShopOnContainers mobile app, that requires Xamarin and therefore, the iOS and Android platforms, too. Those mobile platforms are optional for this Wiki walkthrough, though.
 
-**Make sure you have the latest .NET 5 SDK from <https://dotnet.microsoft.com/download/dotnet/5.0> installed.**
+**Make sure you have the latest .NET 6 SDK from <https://dotnet.microsoft.com/download/dotnet/6.0> installed.**
 
 ### Open the solution with Visual Studio for Mac
 

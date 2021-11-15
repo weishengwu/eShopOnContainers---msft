@@ -157,7 +157,7 @@ If you want to explore the code and debug the application to see it working, you
 
 You have to install at least VS 2019 (16.8 or later) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
 
-**Make sure you have the latest .NET 5 SDK from <https://dotnet.microsoft.com/download/dotnet/5.0> installed.**
+**Make sure you have the latest .NET 6 SDK from <https://dotnet.microsoft.com/download/dotnet/6.0> installed.**
 
 Upon running the installer, select the following workloads depending on the apps you intend to test or work with:
 
