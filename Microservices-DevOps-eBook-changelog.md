@@ -1,5 +1,15 @@
 ## eBook: Containerized Docker Application Lifecycle with Microsoft Platform and Tools
 
+### Release 6.0 (2021-12-14)
+
+*Reference commits :* [3324825](https://github.com/dotnet/docs/pull/27449/commits/3324825f57be6cca01b265794a90655c494e2f46),[42e5a14](https://github.com/dotnet/docs/pull/27449/commits/42e5a14454a17f79fe962cd62f697ff524a4de43),[f702856](https://github.com/dotnet/docs/pull/27449/commits/f70285631945783d746981811f63c04b7de23391),[f09cf4a](https://github.com/dotnet/docs/pull/27449/commits/f09cf4a950d0d9c6ae8bb23279bbf5a8d23fd41d),[482ca17](https://github.com/dotnet/docs/pull/27449/commits/482ca17fb3d61fdf99f66830473379b38dbbfb6f),[140cc64](https://github.com/dotnet/docs/pull/27449/commits/140cc642947c20980ff0fa43409ed4f67f26f1dc),[6f663d1](https://github.com/dotnet/docs/pull/27449/commits/6f663d153314b743789f3abc32136028d637aed0),[e9636ad](https://github.com/dotnet/docs/pull/27449/commits/e9636ad3c451a59a529c752038a50c70d199b3b6),[eb47dbf](https://github.com/dotnet/docs/pull/27449/commits/eb47dbf91538bac7fac2666894e5e7e43fc1aee6)
+
+Updates `.NET 6` related content in the following pages :
+
+- `Index`
+- `Learn Docker specific terminologies`
+- `Design and develop containerized apps using Docker and Microsoft Azure`
+
 ### Release 5.0.2 (2021-07-08)
 
 *Reference commits :* [4cf773e](https://github.com/dotnet/docs/commit/4cf773e03f02dee55d5910b52babc84ab6514faf#diff-206aeac23eb3b58cd12ac0589d98395adca4dc488432db00ee7d774146950ffb),[c88e5aa](https://github.com/dotnet/docs/commit/c88e5aa50d2f87bd09433ce5b1d64205fd7d5d89#diff-206aeac23eb3b58cd12ac0589d98395adca4dc488432db00ee7d774146950ffb)
