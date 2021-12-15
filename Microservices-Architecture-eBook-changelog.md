@@ -1,5 +1,48 @@
 ## eBook -  .NET Microservices: Architecture for Containerized .NET Applications
 
+### Release 6.0 (2021-12-15)
+
+*Reference commits :* [ad8ac33](https://github.com/dotnet/docs/pull/27176/commits/ad8ac33c3f1484d893dd4a781c6ab57416217301), [cacaa85](https://github.com/dotnet/docs/pull/27176/commits/cacaa85afdc3f613fe1c06abbf7840ebba72ee03), [76c6a99](https://github.com/dotnet/docs/pull/27176/commits/76c6a99cb9a7b76a14793befc972df32db2c8b07), [8983735](https://github.com/dotnet/docs/pull/27176/commits/8983735f2fc2b812b5d01299c26aed8ea5d9048b), [a4ffedb](https://github.com/dotnet/docs/pull/27176/commits/a4ffedbd74221ca7d73375695f00037fad858322), [ee647de](https://github.com/dotnet/docs/pull/27176/commits/ee647debb001735d8a06cfcf3db62c34d2600071), [a1bf7f9](https://github.com/dotnet/docs/pull/27176/commits/a1bf7f90d5067543a03d461e4b8cc35536e784f7), [6e9af17](https://github.com/dotnet/docs/pull/27176/commits/6e9af17118ec3bac73c6a27573d9c51a2bdf9a2d), [d49d0f6](https://github.com/dotnet/docs/pull/27176/commits/d49d0f674efc3fbb68eaed85807660cbfddabcd6), [ef7254b](https://github.com/dotnet/docs/pull/27176/commits/ef7254ba55049e0f7aba7e6829a4f9e820c3f122), [8accd57](https://github.com/dotnet/docs/pull/27176/commits/8accd57c4028ac14bcfe5523ab6fa66c93564cf9), [2976835](https://github.com/dotnet/docs/pull/27176/commits/2976835e76b533c6f8962d165d6e6c5537cbbda9)
+
+Contains changes in the following pages :
+
+- `toc.yml`
+- `Index`
+- In module `container-docker-introduction`
+    - `Docker terminology`
+- In module `net-core-net-framework-containers`
+    - `Choosing Between .NET 6 and .NET Framework for Docker Containers`
+    - `General guidance`
+    - `When to choose .NET for Docker containers`
+    - `Developing and deploying cross platform`
+    - `Using containers for new ("green-field") projects`
+    - `Create and deploy microservices on containers`
+    - `Deploying high density in scalable systems`
+    - `Decision table. .NET frameworks to use for Docker`
+    - `What OS to target with .NET containers`
+    - `Migrating existing applications directly to a Windows Server container`
+    - `Official .NET Docker images`
+- In module `architect-microservice-container-applications`
+    - `Publishing a single-container-based application to Azure App Service` 
+    - `Microservices addressability and the service registry`
+    - `Software platforms for container clustering, orchestration, and scheduling`
+- In module `docker-application-development-process`
+    - `Index` 
+    - `.NET languages and frameworks for Docker containers`
+    - `Development workflow for Docker apps`
+    - `Workflow for developing Docker container-based applications`
+    - `Set up your local environment with Visual Studio`
+    - `Working with docker-compose.yml in Visual Studio 2022`
+    - `Testing and debugging containers with Visual Studio 2022`
+    - `Additional resources`
+- In module `multi-container-microservice-net-applications`
+    - `Defining your multi-container application with docker-compose.yml`
+    - `Building optimized ASP.NET Core Docker images`
+- In module `implement-resilient-applications`
+    - `Reference the .NET 6 packages`
+    - `Use the HealthChecks feature in your back-end ASP.NET microservices`
+    - `HealthChecks implementation in eShopOnContainers`	
+  
 ### Release 5.0.1 (2020-07-08)
 
 *Reference commits :* [2005c49](https://github.com/dotnet/docs/commit/2005c4978f004e7c7859dbbe3b68928ae9381beb#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[5e40fc1](https://github.com/dotnet/docs/commit/5e40fc18c26ab7e588069646823f7658838b42f1#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626), [1e2cfb2](https://github.com/dotnet/docs/commit/1e2cfb2c221f0210be0800400d1444f8c84f6a23#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[4c7afea](https://github.com/dotnet/docs/commit/4c7afea793eaa04a87a6590598596e36c341754f#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[e55bc52](https://github.com/dotnet/docs/commit/e55bc52c052219977ffffd8246f848b13b0a304b#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[a2105ae](https://github.com/dotnet/docs/commit/a2105ae181c63f047d5dae31f76f051d14e4c6f7#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[f96cab7](https://github.com/dotnet/docs/commit/f96cab7385054fe9a3993da50056614a9e1dac2b#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626),[732a6d3](https://github.com/dotnet/docs/commit/732a6d3f3259c9d3b6cb33178e3bece06e1e8b3e#diff-3cc024bf28c1dbd8422855aa7deb0a507276274b220f53c5eea0b5fa9607d626)
