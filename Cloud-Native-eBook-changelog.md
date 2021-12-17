@@ -1,5 +1,24 @@
 ## eBook -  Architecting Cloud Native .NET Applications for Azure
 
+### Release 6.0 (2021-12-17)
+
+*Reference commits :* [56ebe37](https://github.com/dotnet/docs/pull/27364/commits/56ebe37ec0fd8bec3d97ce1e3b6621441293b7ab), [2493f04](https://github.com/dotnet/docs/pull/27364/commits/2493f0428dadcd86846e27e5ae66f65eb0b8f525), [c2ff1f8](https://github.com/dotnet/docs/pull/27364/commits/c2ff1f823692ac1e19e3f62e0f14ac25b2dae014), [8adb068](https://github.com/dotnet/docs/pull/27364/commits/8adb068c0a206147db02095d03e61ef14f89c59d), [583059d](https://github.com/dotnet/docs/pull/27364/commits/583059deb7373be6a14cdbd0e4fd436ecc67a274), [020d60e](https://github.com/dotnet/docs/pull/27364/commits/020d60e44957d627a841bf41d302bff6b22f2899), [0b3686f](https://github.com/dotnet/docs/pull/27364/commits/0b3686f36a70ddf4285681c692a848ba15707936)
+
+- Updates NET 6 specific content in the following pages :
+   
+    - `Application resiliency patterns`
+    - `Deploying containers in Azure`
+    - `Azure Bridge to Kubernetes`
+    - `Deploying eShopOnContainers to Azure`
+    - `When should you avoid using containers and orchestrators?`
+    - `Leveraging serverless functions`
+    - `Front-end client communication`
+    - `Simple Gateways`
+    - `gRPC`
+    - `How to deploy an app to Azure Container Instances`
+    - `Cloud-native security`
+
+
 ### Release 1.0.3 (2021-07-12)
 
 *Reference commits :* [438e8bb](https://github.com/sughosneo/docs/commit/bd5ee250c6b69784704a590b961df2cc1673579b#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [0670f93](https://github.com/sughosneo/docs/commit/0670f93040fd486e835031a687f0c52c32195843#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [3db0f67](https://github.com/sughosneo/docs/commit/3db0f679968a91989aef367dba79eeec6ac11b6c#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [e6195b2](https://github.com/sughosneo/docs/commit/e6195b2a979fd25254542afca77257563aae7d86#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[6236ad3](https://github.com/sughosneo/docs/commit/6236ad3aacec028fd3f2bd27df064e9eb6acc9a1#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[4dab6c6](https://github.com/sughosneo/docs/commit/4dab6c62edd8c6b381174cf671bf25f4d2891b82#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[4fc1ea7](https://github.com/sughosneo/docs/commit/4fc1ea72e228e28bd1984119e81f82e87ed24681#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744),[97248bf](https://github.com/sughosneo/docs/commit/97248bf3405b5dd45fd09c4f3ad59fbe27fad2a0#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744), [f47aa43](https://github.com/sughosneo/docs/commit/f47aa43c0990cd75d7d2eacd21dc168954787152#diff-2a76c316b649c429f01b3ea942249a95c553292bf82b001aa540d5f5a413d744)
@@ -78,7 +97,7 @@ We’d like to acknowledge and thank the following community members for their v
     - `Deploying eShopOnContainers to Azure`
     - `DevOps`
     - `Distributed data`
-    - `Elasticsearch in cloud-native applications`
+    - `Elasticsearch in cloud-native applications`  
     - `Feature flags`
     - `Front-end client communication`
     - `gRPC`
