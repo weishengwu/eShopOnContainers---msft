@@ -1,6 +1,6 @@
 ## eBook -  Architecting Cloud Native .NET Applications for Azure
 
-### Release 6.0 (2021-12-17)
+### Release 1.0.2 (2021-12-17)
 
 *Reference commits :* [56ebe37](https://github.com/dotnet/docs/pull/27364/commits/56ebe37ec0fd8bec3d97ce1e3b6621441293b7ab), [2493f04](https://github.com/dotnet/docs/pull/27364/commits/2493f0428dadcd86846e27e5ae66f65eb0b8f525), [c2ff1f8](https://github.com/dotnet/docs/pull/27364/commits/c2ff1f823692ac1e19e3f62e0f14ac25b2dae014), [8adb068](https://github.com/dotnet/docs/pull/27364/commits/8adb068c0a206147db02095d03e61ef14f89c59d), [583059d](https://github.com/dotnet/docs/pull/27364/commits/583059deb7373be6a14cdbd0e4fd436ecc67a274), [020d60e](https://github.com/dotnet/docs/pull/27364/commits/020d60e44957d627a841bf41d302bff6b22f2899), [0b3686f](https://github.com/dotnet/docs/pull/27364/commits/0b3686f36a70ddf4285681c692a848ba15707936)
 
