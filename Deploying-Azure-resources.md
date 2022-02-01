@@ -11,7 +11,7 @@ Login into your azure subscription by typing `az login` (note that you maybe nee
 
 ## Deploying using CLI
 
-See the [README for Azure resource creation scripts](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/deploy/az/readme.md).
+See the [README for Azure resource creation scripts](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/deploy/azure/az/readme.md).
 
 ### Azure resources used by the services
 
