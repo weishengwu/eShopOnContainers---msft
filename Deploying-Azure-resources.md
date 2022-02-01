@@ -1,6 +1,6 @@
 This page contains links to README files about deploying Azure resources, see [Using Azure resources](Using-Azure-resources) for details on using them with eShopOnContainers.
 
-All related information is in the folder [**deploy/az** on the eShopOnContainers repo](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az).
+All related information is in the folder [**deploy/azure on the eShopOnContainers repo](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az).
 
 ## Pre-requisites
 
@@ -22,10 +22,10 @@ Using `docker-machine` is the recommended way to create a VM with docker install
 
 ### Azure resources used by the services
 
-1. [Deploying SQL Server and databases](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/sql/readme.md)
-2. [Deploying Azure Service Bus](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/servicebus/readme.md)
-3. [Deploying Redis Cache](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/redis/readme.md)
-4. [Deploying CosmosDb](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/cosmos/readme.md)
-5. [Deploying Catalog Storage](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/storage/catalog/readme.md)
-6. [Deploying Marketing Storage](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/storage/marketing/readme.md)
-7. [Deploying Marketing Azure functions](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/az/azurefunctions/readme.md)
+1. [Deploying SQL Server and databases](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/sql/readme.md)
+2. [Deploying Azure Service Bus](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/servicebus/readme.md)
+3. [Deploying Redis Cache](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/redis/readme.md)
+4. [Deploying CosmosDb](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/cosmos/readme.md)
+5. [Deploying Catalog Storage](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/storage/catalog/readme.md)
+6. [Deploying Marketing Storage](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/storage/marketing/readme.md)
+7. [Deploying Marketing Azure functions](https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/deploy/azure/az/azurefunctions/readme.md)
