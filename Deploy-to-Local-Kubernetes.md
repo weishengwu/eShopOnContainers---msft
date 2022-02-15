@@ -27,15 +27,15 @@ We have upgraded K8s scripts to work on the latest stable version of *Docker Des
 
 | Component                | Versions                |
 |--------------------------|-------------------------|
-| OS                       | Windows 10/ Mac / Linux |
+| OS                       | Windows 11/ macOS / Linux |
 | Docker Desktop           | 2.3.0.3                 |
-| Docker Engine            | 19.03.8                 |
-| kubectl                  | 1.16                    |
-| Kubernetes               | 1.16.5                  |
+| Docker Engine            | 20.10.12                |
+| kubectl                  | 1.22.5                  |
+| Kubernetes               | 1.22.5                  |
 | Kubernetes-Dashboard     | 2.0                     |
-| Helm                     | 3.2.4                   |
-| Nginx Ingress controller | 0.20                    |
-| Nginx                    | 1.15                    |
+| Helm                     | 3.8.0                   |
+| Nginx Ingress controller | 1.1.1                   |
+| Nginx                    | 4.0.15                  |
 
 
 ## Previous Versions
