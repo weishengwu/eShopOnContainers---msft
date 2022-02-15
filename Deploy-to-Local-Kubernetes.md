@@ -28,7 +28,7 @@ We have upgraded K8s scripts to work on the latest stable version of *Docker Des
 | Component                | Versions                |
 |--------------------------|-------------------------|
 | OS                       | Windows 11/ macOS / Linux |
-| Docker Desktop           | 2.3.0.3                 |
+| Docker Desktop           | 4.4.4                  |
 | Docker Engine            | 20.10.12                |
 | kubectl                  | 1.22.5                  |
 | Kubernetes               | 1.22.5                  |
