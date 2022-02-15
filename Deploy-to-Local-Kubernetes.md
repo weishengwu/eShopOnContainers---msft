@@ -88,15 +88,12 @@ Please note, `helm 3` onwards **Tiller Server** component has been removed. So y
 
 [NGINX](https://github.com/kubernetes/ingress-nginx/blob/master/README.md) is the Ingress controller used for eShopOnContainers.
 
-To install the NGINX Ingress controller, run the following commands from the **deploy/k8s/nginx-ingress** folder:
-
+To install the NGINX Ingress controller, run the following command:
 
 ```powershell
-kubectl apply -f mandatory.yaml
-kubectl apply -f local-cm.yaml
-kubectl apply -f local-svc.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 ```
-
+For more info, refer to the [Quick Start guide](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start).
 ## Install eShopOnContainers Using Helm
 
 Go to the **deploy/k8s/helm** folder in your local copy of the eShopOnContainers repo.
