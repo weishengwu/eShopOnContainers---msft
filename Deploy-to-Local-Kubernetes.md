@@ -93,7 +93,15 @@ To install the NGINX Ingress controller, run the following command:
 ```powershell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 ```
-For more info, refer to the [Quick Start guide](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start).
+Alternatively, you can also install using Helm. Refer to the [Quick Start Guide](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start) for details.
+
+Navigate to the folder **deploy\k8s\nginx-ingress** and run the following command:
+
+```powershell
+kubectl apply -f .\local-cm.yaml
+```
+The above command will set the proxy-buffer size to `128k` which is required by the identity service.
+
 ## Install eShopOnContainers Using Helm
 
 Go to the **deploy/k8s/helm** folder in your local copy of the eShopOnContainers repo.
