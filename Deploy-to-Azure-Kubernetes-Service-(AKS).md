@@ -35,14 +35,14 @@ We have upgraded K8s scripts to work on the latest versions of *Kubernetes* with
 | Component                | Versions |
 |--------------------------|----------|
 | Azure CLI                | 2.9.1    |
-| kubectl                  | 1.16     |
+| kubectl                  | 1.22.5     |
 | Kubernetes Services      | AKS      |
 | Container Registry       | ACS      |
-| Kubernetes Version       | 1.16.10  |
+| Kubernetes Version       | 1.21.7  |
 | Kubernetes-Dashboard     | 2.0      |
-| Helm                     | 3.2.4    |
-| Nginx Ingress controller | 0.20     |
-| Nginx                    | 1.15     |
+| Helm                     | 3.8.0    |
+| Nginx Ingress controller | 1.1.1     |
+| Nginx                    | 4.0.15     |
 
 ## Previous Versions
 
@@ -149,14 +149,19 @@ Please note, `helm 3` onwards **Tiller Server** component has been removed. So y
 
 [NGINX](https://github.com/kubernetes/ingress-nginx/blob/master/README.md) is the Ingress controller used for eShopOnContainers.
 
-To install the NGINX Ingress controller, run the following commands from the **deploy/k8s/nginx-ingress** folder:
-
+To install the NGINX Ingress controller, run the following command:
 
 ```powershell
-kubectl apply -f mandatory.yaml
-kubectl apply -f local-cm.yaml
-kubectl apply -f local-svc.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 ```
+Alternatively, you can also install using Helm. Refer to the [Quick Start Guide](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start) for details.
+
+Navigate to the folder **deploy\k8s\nginx-ingress** and run the following command:
+
+```powershell
+kubectl apply -f .\local-cm.yaml
+```
+The above command will set the proxy-buffer size to `128k` which is required by the identity service.
 
 ## Install eShopOnContainers Using Helm
 
