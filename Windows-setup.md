@@ -199,7 +199,7 @@ VS runs some docker related tasks when opening a project with Docker support, to
 
 Below you can see the full **eShopOnContainers-ServicesAndWebApps.sln** solution (server side) opened in Visual Studio 2022:
 
-![](images/Windows-setup/vs-2017-eshoponcontainers-servicesandwebapps-solution.png)
+![](images/Windows-setup/vs-2022-eshoponcontainers-servicesandwebapps-solution.png)
 
 Note how VS 2022 loads the `docker-compose.yml` files in a special node-tree so it uses that configuration to deploy/debug all the containers configured, at the same time into your Docker host.
 
