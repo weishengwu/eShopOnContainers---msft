@@ -226,7 +226,6 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get -y install nodejs
 RUN npm install
 RUN npm -v
-...
 ```
 
 2. In `docker-compose.override.yml` file at location `eShopOnContainers\src`, under webspa.environment update the value of `ASPNETCORE_ENVIRONMENT` to `Development` as illustrated below:
@@ -237,7 +236,6 @@ webspa:
     - ASPNETCORE_ENVIRONMENT=Development
     - ASPNETCORE_URLS=http://0.0.0.0:80
     - IdentityUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
-...
 ```	
 
 At this point, after waiting sometime for the NuGet packages to be properly restored, you should be able to build the whole solution or even directly deploy/debug it into Docker by simple hitting F5 or pressing the debug "Play" button that now should be labeled as "Docker": 
