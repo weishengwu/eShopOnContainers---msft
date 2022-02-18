@@ -20,8 +20,9 @@ This page covers the setup of your Windows development computer.
   - [Open eShopOnContainers solution in Visual Studio](#open-eshoponcontainers-solution-in-visual-studio)
   - [Build and run the application with F5 or Ctrl+F5](#build-and-run-the-application-with-f5-or-ctrlf5)
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
+    - [But if someone wants to debug WebSPA project in Visual Studio, then follow the below instructions:](#but-if-someone-wants-to-debug-webspa-project-in-visual-studio-then-follow-the-below-instructions)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-visual-studio-2019-tools-for-docker-and-network-proxiesfirewalls)
+  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-visual-studio-tools-for-docker-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Additional resources](#additional-resources)
@@ -155,7 +156,7 @@ You can now [explore the application](Explore-the-application) or continue with 
 
 If you want to explore the code and debug the application to see it working, you have to install Visual Studio.
 
-You have to install at least VS 2019 (16.8 or later) and you can install the latest release from https://visualstudio.microsoft.com/vs/.
+You have to install VS 2022 and you can install the latest release from https://visualstudio.microsoft.com/vs/.
 
 **Make sure you have the latest .NET 6 SDK from <https://dotnet.microsoft.com/download/dotnet/6.0> installed.**
 
@@ -196,11 +197,11 @@ VS runs some docker related tasks when opening a project with Docker support, to
 
 - If testing/working either with the server-side applications and services plus the Xamarin mobile apps, open the solution: **eShopOnContainers.sln**
 
-Below you can see the full **eShopOnContainers-ServicesAndWebApps.sln** solution (server side) opened in Visual Studio 2019:
+Below you can see the full **eShopOnContainers-ServicesAndWebApps.sln** solution (server side) opened in Visual Studio 2022:
 
 ![](images/Windows-setup/vs-2017-eshoponcontainers-servicesandwebapps-solution.png)
 
-Note how VS 2019 loads the `docker-compose.yml` files in a special node-tree so it uses that configuration to deploy/debug all the containers configured, at the same time into your Docker host.
+Note how VS 2022 loads the `docker-compose.yml` files in a special node-tree so it uses that configuration to deploy/debug all the containers configured, at the same time into your Docker host.
 
 ### Build and run the application with F5 or Ctrl+F5
 
@@ -210,11 +211,40 @@ Note how VS 2019 loads the `docker-compose.yml` files in a special node-tree so 
 
 ![](images/Windows-setup/set-docker-node-as-default.png)
 
+In Visual Studio before hitting F5, set the run configuration from the default 'Debug' to 'Release' for WebSpa as shown below:
+
+![](images/Windows-setup/SetConfigurationToReleaseForWebSPA.png)
+
+#### But if someone wants to debug WebSPA project in Visual Studio, then follow the below instructions:
+
+1. At location `eShopOnContainers\src\Web\WebSPA`, update the Dockerfile in WebSPA project(`src/Web/WebSPA/Dockerfile`), insert the below piece of code between `WORKDIR /app`( Line 5) and `EXPOSE 80` (Line 6) 
+
+```console
+RUN apt-get update
+RUN apt-get -y install curl gnupg
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get -y install nodejs
+RUN npm install
+RUN npm -v
+...
+```
+
+2. In `docker-compose.override.yml` file at location `eShopOnContainers\src`, under webspa.environment update the value of `ASPNETCORE_ENVIRONMENT` to `Development` as illustrated below:
+
+```console
+webspa:
+  environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:80
+    - IdentityUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
+...
+```	
+
 At this point, after waiting sometime for the NuGet packages to be properly restored, you should be able to build the whole solution or even directly deploy/debug it into Docker by simple hitting F5 or pressing the debug "Play" button that now should be labeled as "Docker": 
 
 ![](images/Windows-setup/debug-F5-button.png)
 
-VS 2019 should compile the .NET projects, then create the Docker images and finally deploy the containers in the Docker host (your by default Linux VM in Docker for Windows). 
+VS 2022 should compile the .NET projects, then create the Docker images and finally deploy the containers in the Docker host (your by default Linux VM in Docker for Windows). 
 Note that the first time you hit F5 it'll take more time, a few minutes at least, because in addition to compile your bits, it needs to pull/download the base images (SQL for Linux Docker Image, Redis Image, ASPNET image, etc.) and register them in the local image repo of your PC. The next time you hit F5 it'll be much faster.
 
 Finally, because the docker-compose configuration project is configured to open the MVC application, it should open your by default browser and show the MVC application with data coming from the microservices/containers:
@@ -235,7 +265,7 @@ You can see the 8 containers are running and what ports are being exposed, etc.
 
 #### Debug with several breakpoints across the multiple containers/projects
 
-Something very compelling and productive in VS 2019 is the capability to debug several breakpoints across the multiple containers/projects.
+Something very compelling and productive in VS 2022 is the capability to debug several breakpoints across the multiple containers/projects.
 For instance, you could set a breakpoint in a controller within the MVC web app plus a second breakpoint in a second controller within the Catalog Web API microservice, then refresh the browser if you were still running the app or F5 again, and VS will be stopping within your microservices running in Docker as shown below! :)
 
 Breakpoint at the MVC app running as Docker container in the Docker host:
@@ -250,9 +280,9 @@ Breakpoint at the Catalog microservice running as Docker container in the Docker
 
 And that's it! Super simple! Visual Studio is handling all the complexities under the covers and you can directly do F5 and debug a multi-container application!
 
-### Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls
+### Issue with "Visual Studio 2022 Tools for Docker" and network proxies/firewalls
 
-After installing VS2019 with docker support, if you cannot debug properly and you are trying from a corporate network behind a proxy, consider  the following issue and workarounds, until this issue is fixed in Visual Studio:
+After installing 2022 with docker support, if you cannot debug properly and you are trying from a corporate network behind a proxy, consider  the following issue and workarounds, until this issue is fixed in Visual Studio:
 
 - https://github.com/dotnet-architecture/eShopOnContainers/issues/224#issuecomment-319462344
 
@@ -272,22 +302,6 @@ It is also recommended to install the C# extension and the Docker extension for 
 
 ![](images/Windows-setup/vs-code-3-extensions.png)
 
-## Optional - To run WebSPA project via Visual Studio 2022 in debug mode:
-
-1. Update the Dockerfile in WebSPA project(src/Web/WebSPA/Dockerfile) to insert below instructions after WORKDIR /app
-
-```console
-    RUN apt-get update
-    RUN apt-get -y install curl gnupg
-    RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-    RUN apt-get -y install nodejs
-    RUN npm install
-    RUN npm -v
-```
-
-2. Update the value for webspa.environment in docker-compose.override.yml as follows:
-    `ASPNETCORE_ENVIRONMENT=Development`
-
 ## Explore the code
 
 You should be now ready to begin learning by [exploring the code](Explore-the-code) and debugging eShopOnContainers.
@@ -306,5 +320,5 @@ You should be now ready to begin learning by [exploring the code](Explore-the-co
 - **Troubleshoot Visual Studio development with Docker (Networking)** \
   <https://docs.microsoft.com/en-us/visualstudio/containers/troubleshooting-docker-errors?view=vs-2019#errors-specific-to-networking-when-debugging-your-application>
   
-- **[eShopOnContainers issue] Projects won't load in VS2019** \
+- **[eShopOnContainers issue] Projects won't load in Visual Studio** \
   https://github.com/dotnet-architecture/eShopOnContainers/issues/1013#issuecomment-488664792
