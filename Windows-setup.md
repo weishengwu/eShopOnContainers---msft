@@ -156,7 +156,7 @@ Upon running the installer, select the following workloads depending on the apps
 - ASP.NET and Web development
 - Azure development (Optional) - It is optional but recommended in case you want to deploy to Docker hosts in Azure or use any other infrastructure in Azure.
 
-![](images/Windows-setup/vs-2022-server-workload.png)
+![](images/Windows-setup/vs-2022-serverworkload.png)
 
 ### Mobile (Xamarin apps for iOS, Android and Windows UWP) - Workloads
 
@@ -166,7 +166,7 @@ If you also want to test/work with the eShopOnContainer model app based on Xamar
 - Universal Windows Platform development
 - .NET desktop development (Optional) - This is not required, but just in case you also want to make tests consuming the microservices from WPF or WinForms desktop apps
 
-![](images/Windows-setup/vs-2022-mobile-workloads.png)
+![](images/Windows-setup/vs-2022-mobileworkloads.png)
 
 IMPORTANT: As mentioned above, make sure you are NOT installing Google's Android emulator with Intel HAXM hypervisor or you will run on an incompatibility and Hyper-V won't work in your machine, therefore, Docker for Windows won't work when trying to run the Linux host or any host with Hyper-V.
 
