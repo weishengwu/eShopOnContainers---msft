@@ -22,7 +22,7 @@ This page covers the setup of your Windows development computer.
     - [Set docker-compose as the default StartUp project](#set-docker-compose-as-the-default-startup-project)
     - [But if someone wants to debug WebSPA project in Visual Studio, then follow the below instructions:](#but-if-someone-wants-to-debug-webspa-project-in-visual-studio-then-follow-the-below-instructions)
     - [Debug with several breakpoints across the multiple containers/projects](#debug-with-several-breakpoints-across-the-multiple-containersprojects)
-  - [Issue with "Visual Studio 2019 Tools for Docker" and network proxies/firewalls](#issue-with-visual-studio-tools-for-docker-and-network-proxiesfirewalls)
+  - [Issue with "Visual Studio Tools for Docker" and network proxies/firewalls](#issue-with-visual-studio-tools-for-docker-and-network-proxiesfirewalls)
 - [Optional - Use Visual Studio Code](#optional---use-visual-studio-code)
 - [Explore the code](#explore-the-code)
 - [Additional resources](#additional-resources)
@@ -43,20 +43,9 @@ The initial Docker for Desktop configuration is not suitable to run eShopOnConta
 
 Even though the microservices are rather light, the application also runs SQL Server, Redis, MongoDb, RabbitMQ and Seq as separate containers. The SQL Server container has four databases (for different microservices) and takes an important amount of memory.
 
-So it's important to configure enough memory RAM and CPU to Docker.
+So it's important to have enough memory RAM and CPU to Docker.
 
-### Memory and CPU
-
-Once Docker for Windows is installed, go to the **Settings > Advanced** option, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
-
-- Memory: 6.25 GB
-- CPU: 2
-
-This amount of memory is the recommended minimum to run the app, and that's why you need a 16GB RAM machine for optimal configuration.
-
-![](images/Docker-setup/eshoponcontainers-docker-configuration-memory-cpu-latest.png)
-
->**IMPORTANT:** If you are using *Docker Desktop WSL 2 backend* then you don't need to do any manual configuration mentioned in the above step. It automatically uses the required CPU and memory resources while building and running containers. For more details refer : [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/)
+>**IMPORTANT:** If you have installed Docker Desktop on a system that supports WSL 2, then WSL 2 will be enabled by default. It automatically uses the required CPU and memory resources while building and running containers. For more details refer : [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/)
 
 ### Shared drives
 
@@ -164,10 +153,10 @@ Upon running the installer, select the following workloads depending on the apps
 
 ### Server side (Microservices and web applications) - Workloads
 
-- .NET cross-platform development
+- ASP.NET and Web development
 - Azure development (Optional) - It is optional but recommended in case you want to deploy to Docker hosts in Azure or use any other infrastructure in Azure.
 
-![](images/Windows-setup/vs-2019-server-workload.png)
+![](images/Windows-setup/vs-2022-server-workload.png)
 
 ### Mobile (Xamarin apps for iOS, Android and Windows UWP) - Workloads
 
@@ -177,7 +166,7 @@ If you also want to test/work with the eShopOnContainer model app based on Xamar
 - Universal Windows Platform development
 - .NET desktop development (Optional) - This is not required, but just in case you also want to make tests consuming the microservices from WPF or WinForms desktop apps
 
-![](images/Windows-setup/vs-2019-mobile-workloads.png)
+![](images/Windows-setup/vs-2022-mobile-workloads.png)
 
 IMPORTANT: As mentioned above, make sure you are NOT installing Google's Android emulator with Intel HAXM hypervisor or you will run on an incompatibility and Hyper-V won't work in your machine, therefore, Docker for Windows won't work when trying to run the Linux host or any host with Hyper-V.
 
@@ -215,18 +204,20 @@ In Visual Studio before hitting F5, set the run configuration from the default '
 
 ![](images/Windows-setup/SetConfigurationToReleaseForWebSPA.png)
 
-#### But if someone wants to debug WebSPA project in Visual Studio, then follow the below instructions:
+#### In case you find [issues](https://github.com/dotnet-architecture/eShopOnContainers/issues/1821) with WebSPA project while browsing the app using `http://<url>:5104/` after hitting F5 to debug in Visual Studio, then follow the below instructions:
 
 1. At location `eShopOnContainers\src\Web\WebSPA`, update the Dockerfile in WebSPA project(`src/Web/WebSPA/Dockerfile`), insert the below piece of code between `WORKDIR /app`( Line 5) and `EXPOSE 80` (Line 6) 
 
-```console
-RUN apt-get update
-RUN apt-get -y install curl gnupg
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get -y install nodejs
-RUN npm install
-RUN npm -v
-```
+```bash  
+  RUN apt-get update
+  RUN apt-get -y install curl gnupg
+  RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+  RUN apt-get -y install nodejs
+  RUN npm install
+  RUN npm -v
+  ```
+
+  ![](img/spa/docker-file-changes.png)
 
 2. In `docker-compose.override.yml` file at location `eShopOnContainers\src`, under webspa.environment update the value of `ASPNETCORE_ENVIRONMENT` to `Development` as illustrated below:
 
