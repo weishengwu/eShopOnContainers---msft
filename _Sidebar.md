@@ -24,6 +24,8 @@
   - [Code Flow](Code-Flow)
 - [Application](Explore-the-application)
 - [Code](Explore-the-code)
+
+<!--
   - [Simplified CQRS & DDD](Simplified-CQRS-and-DDD)
   - [gRPC](gRPC)
   - [API gateways](API-gateways)
@@ -39,6 +41,7 @@
 - Tests
   - [Unit & Integration](Unit-and-integration-testing)
   - [Load](Load-testing)
+-->
 
 ### Deployment
 
