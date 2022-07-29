@@ -1,1 +1,0 @@
-Build and run the application placeholder.
